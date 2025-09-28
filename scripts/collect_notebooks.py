@@ -118,26 +118,30 @@ def list_ipynb_in_repo(session: requests.Session, owner: str, repo: str, ref: Op
     except Exception:
         return []
 
+def as_text(src) -> str:
+    """Normaliza cell.source (str | list[str] | None) para uma única string."""
+    if isinstance(src, str):
+        return src
+    if isinstance(src, list):
+        # junta só pedaços que são string
+        return "".join(s for s in src if isinstance(s, str))
+    return ""
+
 
 # ===============================
 # Particionamento por datas
 # ===============================
 
 def partition_date_range(session: requests.Session, start: dt.date, end: dt.date, max_count: int = 1000) -> List[Tuple[dt.date, dt.date]]:
-    """
-    Divide [start, end] em janelas menores, garantindo < max_count resultados por consulta.
-    Estratégia: busca iterativa por dias; quando ainda exceder, quebra pela metade.
-    """
     ranges = [(start, end)]
     final = []
     while ranges:
         a, b = ranges.pop()
-        q = f'extension:ipynb created:{a.isoformat()}..{b.isoformat()}'
+        q = f"created:{a.isoformat()}..{b.isoformat()} is:public fork:true"
         try:
-            j = gh_search_code(session, q, page=1, per_page=1)  # apenas conta
-            total = min(j.get("total_count", 0), 1000_000)  # proteção
-        except requests.HTTPError as e:
-            # Se algo falhar (ex.: permissões), quebra em dois e continua
+            j = gh_search_repos(session, q, page=1, per_page=1)
+            total = min(j.get("total_count", 0), 1_000_000)
+        except requests.HTTPError:
             if (b - a).days <= 0:
                 continue
             mid = a + (b - a)//2
@@ -145,35 +149,31 @@ def partition_date_range(session: requests.Session, start: dt.date, end: dt.date
             ranges.append((mid + dt.timedelta(days=1), b))
             continue
 
-        if total >= max_count:  # dividir mais
-            if (b - a).days <= 0:
-                # dia único ainda com >= max_count: não há o que fazer; aceitar risco de truncamento
-                final.append((a, b))
-            else:
-                mid = a + (b - a)//2
-                ranges.append((a, mid))
-                ranges.append((mid + dt.timedelta(days=1), b))
+        if total >= max_count and (b - a).days > 0:
+            mid = a + (b - a)//2
+            ranges.append((a, mid))
+            ranges.append((mid + dt.timedelta(days=1), b))
         else:
             final.append((a, b))
-    # Ordena cronologicamente
     return sorted(final, key=lambda t: t[0])
 
-def iterate_search_results(session: requests.Session, date_ranges: List[Tuple[dt.date, dt.date]], sample_limit: Optional[int]=None) -> Iterable[Dict]:
-    count = 0
+def iterate_repo_search(session: requests.Session, date_ranges: List[Tuple[dt.date, dt.date]], max_repos: Optional[int]=None) -> Iterable[Dict]:
+    seen = 0
     for a, b in date_ranges:
-        q = f'extension:ipynb created:{a.isoformat()}..{b.isoformat()}'
+        q = f"created:{a.isoformat()}..{b.isoformat()} is:public fork:true"
         page = 1
         while True:
-            data = gh_search_code(session, q, page=page, per_page=100)
+            data = gh_search_repos(session, q, page=page, per_page=100)
             items = data.get("items", [])
             if not items:
                 break
-            for it in items:
-                yield it
-                count += 1
-                if sample_limit and count >= sample_limit:
+            for repo in items:
+                yield repo
+                seen += 1
+                if max_repos and seen >= max_repos:
                     return
             page += 1
+
 
 # ===============================
 # Métricas por notebook
@@ -342,14 +342,14 @@ def parse_notebook_metrics(nb_json: dict) -> Tuple[dict, dict]:
 
     for c in cells:
         if c.get("cell_type") == "markdown":
-            src = c.get("source") or ""
+            src = as_text(c.get("source"))
             # Heurísticas IA
             for pat in AI_MARKER_PATTERNS:
                 if pat.search(src):
                     ai_marker_found = True
                     break
         elif c.get("cell_type") == "code":
-            src = c.get("source") or ""
+            src = as_text(c.get("source"))
             if TRIPLE_BACKTICKS_IN_CODE.search(src):
                 triple_bq_in_code = True
             if ABS_PATH_PATTERN.search(src):
@@ -485,68 +485,95 @@ def collect(
         w = csv.DictWriter(f, fieldnames=fields)
         w.writeheader()
 
-        for item in tqdm(iterate_search_results(session, date_ranges, sample_limit=max_items), desc="Coletando notebooks"):
-            repo = item["repository"]
+        for repo in tqdm(iterate_repo_search(session, date_ranges, max_repos=None), desc="Varredura de repositórios"):
             owner = repo["owner"]["login"]
             name = repo["name"]
             full = repo["full_name"]
             default_branch = repo.get("default_branch") or "main"
             created_at = repo.get("created_at")
             stargazers_count = repo.get("stargazers_count", 0)
-            file_path = item["path"]
-            file_sha = item.get("sha","")
-            html_url = item.get("html_url","")
-            file_size = item.get("score", 0)  # não há size no search/code; manter 0
+            repo_id = repo["id"]
 
-            # baixar notebook
-            nb_json = decode_notebook_content(item, session)
-            if not nb_json:
+            ipynb_paths = list_ipynb_in_repo(session, owner, name, default_branch)
+            if not ipynb_paths:
+                continue
+
+            for file_path in ipynb_paths:
+                if max_items is not None and max_items <= 0:
+                    break
+
+                try:
+                    contents = gh_get_contents(session, owner, name, file_path, ref=default_branch)
+                except Exception:
+                    continue
+
+                file_sha = contents.get("sha","")
+                html_url = contents.get("html_url","")
+                file_size = contents.get("size", 0)
+
+                nb_json = None
+                try:
+                    if contents.get("encoding") == "base64" and "content" in contents:
+                        raw = base64.b64decode(contents["content"])
+                        nb_json = json.loads(raw.decode("utf-8", errors="replace"))
+                    elif contents.get("download_url"):
+                        r = session.get(contents["download_url"])
+                        r.raise_for_status()
+                        nb_json = r.json()
+                except Exception:
+                    nb_json = None
+
+
+                if not nb_json:
+                    row = {
+                        "repo_full_name": full, "repo_id": repo_id, "repo_default_branch": default_branch,
+                        "repo_created_at": created_at, "repo_stars": stargazers_count,
+                        "file_path": file_path, "file_sha": file_sha, "file_size": file_size,
+                        "html_url": html_url, "nb_ok_parse": False,
+                    }
+                    for k in fields:
+                        if k not in row:
+                            row[k] = ""
+                    w.writerow(row)
+                    if max_items is not None:
+                        max_items -= 1
+                    continue
+
+                lang = (nb_json.get("metadata", {}).get("language_info") or {}).get("name", "")
+                if only_python and (not lang or "python" not in str(lang).lower()):
+                    continue
+
+                metrics, _ = parse_notebook_metrics(nb_json)
+                has_req, has_setup, has_pipfile = detect_deps_in_repo(session, owner, name, default_branch)
+
                 row = {
-                    "repo_full_name": full, "repo_id": repo["id"], "repo_default_branch": default_branch,
-                    "repo_created_at": created_at, "repo_stars": stargazers_count,
-                    "file_path": file_path, "file_sha": file_sha, "file_size": file_size,
-                    "html_url": html_url, "nb_ok_parse": False,
+                    "repo_full_name": full,
+                    "repo_id": repo_id,
+                    "repo_default_branch": default_branch,
+                    "repo_created_at": created_at,
+                    "repo_stars": stargazers_count,
+                    "file_path": file_path,
+                    "file_sha": file_sha,
+                    "file_size": file_size,
+                    "html_url": html_url,
+                    "nb_ok_parse": True,
+
+                    **metrics,
+
+                    "deps_requirements_txt": has_req,
+                    "deps_setup_py": has_setup,
+                    "deps_pipfile": has_pipfile,
+                    "deps_any": has_req or has_setup or has_pipfile,
                 }
                 for k in fields:
-                    if k not in row:
-                        row[k] = ""
+                    row.setdefault(k, "")
                 w.writerow(row)
-                continue
 
-            # filtrar por linguagem Python (opcional)
-            lang = (nb_json.get("metadata", {}).get("language_info") or {}).get("name", "")
-            if only_python and (not lang or "python" not in str(lang).lower()):
-                continue
+                if max_items is not None:
+                    max_items -= 1
+                if max_items is not None and max_items <= 0:
+                    break
 
-            # métricas
-            metrics, _ = parse_notebook_metrics(nb_json)
-
-            # deps no repo
-            has_req, has_setup, has_pipfile = detect_deps_in_repo(session, owner, name, default_branch)
-
-            row = {
-                "repo_full_name": full,
-                "repo_id": repo["id"],
-                "repo_default_branch": default_branch,
-                "repo_created_at": created_at,
-                "repo_stars": stargazers_count,
-                "file_path": file_path,
-                "file_sha": file_sha,
-                "file_size": file_size,
-                "html_url": html_url,
-                "nb_ok_parse": True,
-
-                **metrics,
-
-                "deps_requirements_txt": has_req,
-                "deps_setup_py": has_setup,
-                "deps_pipfile": has_pipfile,
-                "deps_any": has_req or has_setup or has_pipfile,
-            }
-            # garantir todas as chaves
-            for k in fields:
-                row.setdefault(k, "")
-            w.writerow(row)
 
 def parse_args(argv=None):
     p = argparse.ArgumentParser(description="Coleta metadados de notebooks Jupyter no GitHub.")
