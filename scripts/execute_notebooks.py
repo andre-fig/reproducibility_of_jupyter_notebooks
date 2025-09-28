@@ -21,7 +21,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import json
 import logging
 import os
 import shutil
@@ -42,9 +41,15 @@ try:
     except Exception:
         # fallback
         class CellExecutionError(Exception): ...
-except Exception as e:
+except Exception:
     print("ERRO: nbclient não está instalado. Rode: pip install nbclient", file=sys.stderr)
     raise
+
+# NEW: para checar kernels disponíveis
+try:
+    from jupyter_client.kernelspec import KernelSpecManager
+except Exception:
+    KernelSpecManager = None  # fallback se não existir
 
 GIT_BASE = "https://github.com"
 
@@ -55,6 +60,11 @@ def setup_logging(log_file: Path | None):
     logger = logging.getLogger("nbexec")
     logger.setLevel(logging.INFO)
     fmt = logging.Formatter("%(asctime)s | %(levelname)s | %(message)s")
+
+    # Evita handlers duplicados em re-runs
+    if logger.handlers:
+        for h in list(logger.handlers):
+            logger.removeHandler(h)
 
     h_console = logging.StreamHandler(sys.stdout)
     h_console.setFormatter(fmt)
@@ -105,7 +115,7 @@ def make_env(env_dir: Path, policy: str, logger: logging.Logger) -> tuple[str, s
     pip = venv_bin(env_dir, "pip")
     pybin = venv_bin(env_dir, "python")
 
-    # baseline (não especificamos libs pesadas para manter execução leve/rápida)
+    # baseline (leve/rápida)
     base = ["pip", "setuptools", "wheel", "nbclient", "ipykernel", "nbformat"]
     logger.info("Instalando baseline no venv (relaxed baseline)")
     sh([pip, "install", "--upgrade"] + base, check=True)
@@ -129,7 +139,6 @@ def install_reqs(pip: str, repo_dir: Path, logger: logging.Logger) -> bool:
 
     pipfile = list(repo_dir.rglob("Pipfile"))
     if pipfile:
-        # pipenv é opcional; se não tiver, ignora
         logger.info("Encontrado Pipfile; tentando pipenv (se disponível)")
         try:
             sh(["pipenv", "install", "--system", "--deploy"], cwd=repo_dir, check=True, timeout=600)
@@ -160,17 +169,46 @@ def clone_repo(full_name: str, dest: Path, branch: str, logger: logging.Logger):
 
 
 # -------------------------
+# Kernel fallback
+# -------------------------
+def resolve_kernel_name(requested: str | None) -> str:
+    """
+    Se o kernelspec solicitado não existir neste ambiente, cai para 'python3'.
+    """
+    req = (requested or "python3").strip()
+    if not KernelSpecManager:
+        return "python3"
+    try:
+        ksm = KernelSpecManager()
+        specs = ksm.find_kernel_specs()
+        return req if req in specs else "python3"
+    except Exception:
+        return "python3"
+
+
+# -------------------------
 # Execução headless e timeout real
 # -------------------------
 HEADLESS_ENV = {
+    # Desliga displays/GUI
+    "DISPLAY": "",
+    "QT_QPA_PLATFORM": "offscreen",
     # pygame / SDL
     "SDL_VIDEODRIVER": "dummy",
+    "SDL_AUDIODRIVER": "dummy",
+    "PYGAME_HIDE_SUPPORT_PROMPT": "1",
     # matplotlib
     "MPLBACKEND": "Agg",
-    # Qt
-    "QT_QPA_PLATFORM": "offscreen",
-    # Jupyter/Matplotlib: evita modos interativos
+    # Menos barulho
     "PYTHONWARNINGS": "ignore",
+    # Evita paralelismo exagerado
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    # Não injetar segredos por acidente
+    "OPENAI_API_KEY": "",
+    "HF_TOKEN": "",
+    "HF_HUB_DISABLE_TELEMETRY": "1",
 }
 
 def run_nb_with_timeout(pybin: str, repo_dir: Path, nb_path: Path, kernel: str, timeout_s: int,
@@ -179,7 +217,6 @@ def run_nb_with_timeout(pybin: str, repo_dir: Path, nb_path: Path, kernel: str, 
     Executa o notebook em subprocesso separado com timeout do SO.
     Se exceder timeout, o processo é finalizado e reportado como erro.
     """
-    # Comando minimalista para executar o notebook via nbclient dentro do venv
     code = (
         "import nbformat; "
         "from nbclient import NotebookClient; "
@@ -196,7 +233,6 @@ def run_nb_with_timeout(pybin: str, repo_dir: Path, nb_path: Path, kernel: str, 
         elapsed = round(time.time() - t0, 3)
         if p.returncode == 0:
             return True, {"error": None, "exc_name": None, "failed_cell_index": None, "elapsed_s": elapsed}
-        # Falhou mas sem explodir exceção do Python (retorno !=0)
         return False, {
             "error": "SubprocessError",
             "exc_name": None,
@@ -206,7 +242,6 @@ def run_nb_with_timeout(pybin: str, repo_dir: Path, nb_path: Path, kernel: str, 
             "stderr_tail": p.stderr[-2000:],
         }
     except subprocess.TimeoutExpired:
-        # processo morto por timeout do SO
         return False, {
             "error": "TimeoutExpired",
             "exc_name": None,
@@ -268,7 +303,9 @@ def main():
                 full = row["repo_full_name"]
                 branch = row.get("repo_default_branch") or "main"
                 rel = row["file_path"]
-                nb_kernel = row.get("kernel_name") or "python3"
+
+                # NEW: fallback automático de kernel
+                nb_kernel = resolve_kernel_name(row.get("kernel_name"))
 
                 repo_dir = tmp_root / full.replace("/", "__")
                 if not repo_dir.exists():
@@ -318,11 +355,9 @@ def main():
                     "elapsed_s": info.get("elapsed_s"),
                 })
 
-                if not ok:
-                    # loga um pequeno tail do stdout/stderr quando disponível
-                    if "stdout_tail" in info or "stderr_tail" in info:
-                        logger.warning(f"STDOUT(tail): {info.get('stdout_tail','')}")
-                        logger.warning(f"STDERR(tail): {info.get('stderr_tail','')}")
+                if not ok and ("stdout_tail" in info or "stderr_tail" in info):
+                    logger.warning(f"STDOUT(tail): {info.get('stdout_tail','')}")
+                    logger.warning(f"STDERR(tail): {info.get('stderr_tail','')}")
 
                 processed += 1
                 if args.limit and processed >= args.limit:
@@ -330,7 +365,6 @@ def main():
                     break
 
     finally:
-        # Se preferir manter para debug, comente a linha abaixo
         shutil.rmtree(tmp_root, ignore_errors=True)
         logger.info("Limpeza do workspace temporário concluída.")
 
