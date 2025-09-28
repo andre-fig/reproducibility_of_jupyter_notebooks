@@ -1,0 +1,38 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+env/
+.env
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Data inputs/outputs
+!data/inputs/.gitkeep
+data/outputs/*
+!data/outputs/.gitkeep
+
+# Figures
+*.png
+*.jpg
+*.jpeg
+
+# Reports
+*.pdf
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.swp
