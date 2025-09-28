@@ -105,7 +105,7 @@ python scripts/execute_notebooks.py \
   --input-csv  data/outputs/notebooks_2025_mar_1w.csv \
   --output-csv data/outputs/execution_results_2025_mar_1w.csv \
   --policy     relaxed \
-  --timeout    300 \
+  --timeout    30 \
   --limit      50
 ```
 

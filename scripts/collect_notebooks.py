@@ -29,19 +29,17 @@ from __future__ import annotations
 import argparse
 import base64
 import csv
-import dataclasses
-from dataclasses import dataclass, asdict
+import time
+from dataclasses import dataclass
 import datetime as dt
 import json
 import os
-import random
 import re
 import sys
 from typing import Dict, Iterable, List, Optional, Tuple
 
 import requests
 from requests.adapters import HTTPAdapter, Retry
-from dateutil.parser import isoparse
 from tqdm import tqdm
 import nbformat
 import ast
@@ -164,6 +162,7 @@ def iterate_repo_search(session: requests.Session, date_ranges: List[Tuple[dt.da
         page = 1
         while True:
             data = gh_search_repos(session, q, page=page, per_page=100)
+            time.sleep(2.1)  # ~28 req/min, abaixo do limite de 30 req/min para evitar 403
             items = data.get("items", [])
             if not items:
                 break
