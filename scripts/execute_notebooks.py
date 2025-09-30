@@ -1,194 +1,518 @@
-import argparse, csv, json, statistics as stats
-from collections import Counter, defaultdict
+"""
+Executa notebooks listados no CSV de coleta com nbclient, sob timeout real,
+headless (sem janelas/GUI) e isolamento por venv por repositório.
+
+- Preenche 'error' com a exceção real (ModuleNotFoundError, ImportError, etc.)
+- Mantém logs e tails de stdout/stderr quando falha.
+- (NOVO) Compara outputs do notebook executado vs. o notebook original salvo.
+
+Políticas de deps:
+- strict: tenta instalar deps do repo (requirements.txt / Pipfile / setup.py/pyproject).
+- relaxed: instala baseline mínima (nbclient, ipykernel, nbformat).
+
+Observações:
+- Clona o repositório (shallow).
+- Executa no caminho relativo do CSV.
+- Headless: evita abrir janelas (pygame, Qt, matplotlib interativo etc.).
+"""
+
+from __future__ import annotations
+import argparse, csv, logging, os, shutil, subprocess, sys, tempfile, time, json, re, hashlib
+from pathlib import Path
+from typing import Dict, Tuple, Optional, List
+
+try:
+    from jupyter_client.kernelspec import KernelSpecManager
+except Exception:
+    KernelSpecManager = None
+
+GIT_BASE = "https://github.com"
+RESULT_PREFIX = "NBEXEC_RESULT:"
 
 # -------------------------
-# utils
+# Logging
 # -------------------------
-def load_csv(path):
-    rows = []
-    with open(path, newline="", encoding="utf-8") as f:
-        rd = csv.DictReader(f)
-        for r in rd:
-            rows.append(r)
-    return rows
+def setup_logging(log_file: Path | None):
+    logger = logging.getLogger("nbexec")
+    logger.setLevel(logging.INFO)
+    fmt = logging.Formatter("%(asctime)s | %(levelname)s | %(message)s")
+    if logger.handlers:
+        for h in list(logger.handlers):
+            logger.removeHandler(h)
+    h_console = logging.StreamHandler(sys.stdout)
+    h_console.setFormatter(fmt)
+    logger.addHandler(h_console)
+    if log_file:
+        log_file.parent.mkdir(parents=True, exist_ok=True)
+        h_file = logging.FileHandler(str(log_file), encoding="utf-8")
+        h_file.setFormatter(fmt)
+        logger.addHandler(h_file)
+    return logger
 
-def pct(a, b):
-    return 0.0 if not b else 100.0 * a / b
+# -------------------------
+# Shell util
+# -------------------------
+def sh(cmd, cwd=None, env=None, check=True, timeout=None) -> subprocess.CompletedProcess:
+    return subprocess.run(
+        cmd, cwd=cwd, env=env, text=True,
+        capture_output=True, check=check, timeout=timeout
+    )
 
-def to_int(x, d=0):
+# -------------------------
+# Ambientes / deps
+# -------------------------
+def venv_bin(env_dir: Path, name: str) -> str:
+    if sys.platform.startswith("win"):
+        return str(env_dir / "Scripts" / name)
+    return str(env_dir / "bin" / name)
+
+def make_env(env_dir: Path, policy: str, logger: logging.Logger) -> tuple[str, str]:
+    env_dir.mkdir(parents=True, exist_ok=True)
+    logger.info(f"Criando venv: {env_dir}")
+    sh([sys.executable, "-m", "venv", str(env_dir)])
+    pip = venv_bin(env_dir, "pip")
+    pybin = venv_bin(env_dir, "python")
+    base = ["pip", "setuptools", "wheel", "nbclient", "ipykernel", "nbformat"]
+    logger.info("Instalando baseline no venv (relaxed baseline)")
+    sh([pip, "install", "--upgrade"] + base, check=True)
+    return pip, pybin
+
+def install_reqs(pip: str, repo_dir: Path, logger: logging.Logger) -> bool:
+    reqs = list(repo_dir.rglob("requirements.txt"))
+    if reqs:
+        pth = str(reqs[0])
+        logger.info(f"Instalando requirements.txt: {pth}")
+        try:
+            sh([pip, "install", "-r", pth], check=True, timeout=600)
+            return True
+        except Exception as e:
+            logger.warning(f"Falha ao instalar requirements.txt: {e}")
+    pipfile = list(repo_dir.rglob("Pipfile"))
+    if pipfile:
+        logger.info("Encontrado Pipfile; tentando pipenv (se disponível)")
+        try:
+            sh(["pipenv", "install", "--system", "--deploy"], cwd=repo_dir, check=True, timeout=600)
+            return True
+        except Exception as e:
+            logger.warning(f"Falha ao instalar via pipenv: {e}")
+    setup_py = list(repo_dir.rglob("setup.py"))
+    pyproject = list(repo_dir.rglob("pyproject.toml"))
+    if setup_py or pyproject:
+        logger.info("Instalando pacote local (setup.py/pyproject)")
+        try:
+            sh([pip, "install", "-e", "."], cwd=repo_dir, check=True, timeout=600)
+            return True
+        except Exception as e:
+            logger.warning(f"Falha ao instalar pacote local: {e}")
+    return False
+
+# -------------------------
+# Git
+# -------------------------
+def clone_repo(full_name: str, dest: Path, branch: str, logger: logging.Logger):
+    url = f"{GIT_BASE}/{full_name}.git"
+    logger.info(f"Clonando {full_name}@{branch}")
+    sh(["git", "clone", "--depth", "1", "--branch", branch, url, str(dest)], check=True, timeout=300)
+
+# -------------------------
+# Kernel fallback
+# -------------------------
+def resolve_kernel_name(requested: str | None) -> str:
+    req = (requested or "python3").strip()
+    if not KernelSpecManager:
+        return "python3"
     try:
-        # aceita "3.0" também
-        return int(float(x))
+        ksm = KernelSpecManager()
+        specs = ksm.find_kernel_specs()
+        return req if req in specs else "python3"
     except Exception:
-        return d
-
-def to_float(x, d=0.0):
-    try:
-        return float(x)
-    except Exception:
-        return d
-
-def to_bool(x):
-    if x is None:
-        return False
-    s = str(x).strip().lower()
-    return s in ("true", "1", "yes", "y", "t")
-
-def safe_stats_mean(vals):
-    return None if not vals else stats.mean(vals)
-
-def safe_stats_median(vals):
-    return None if not vals else stats.median(vals)
-
-def print_stat(label, val, fmt="{}"):
-    if val is not None:
-        print(f"{label}: {fmt.format(val)}")
+        return "python3"
 
 # -------------------------
-# main
+# Execução headless + timeout real
+# -------------------------
+HEADLESS_ENV = {
+    "DISPLAY": "",
+    "QT_QPA_PLATFORM": "offscreen",
+    "SDL_VIDEODRIVER": "dummy",
+    "SDL_AUDIODRIVER": "dummy",
+    "PYGAME_HIDE_SUPPORT_PROMPT": "1",
+    "MPLBACKEND": "Agg",
+    "PYTHONWARNINGS": "ignore",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENAI_API_KEY": "",
+    "HF_TOKEN": "",
+    "HF_HUB_DISABLE_TELEMETRY": "1",
+}
+
+# -------- Canonicalização & hash de outputs (compartilhado) ----------
+def canonicalize_outputs_struct(outputs: list) -> list:
+    """
+    Retorna uma representação mínima e ordenada dos outputs para comparação determinística.
+    - Ignora execution_count, metadata volátil, ids aleatórios.
+    - Mantém tipo, stream name (stdout/stderr), e dados MIME.
+    - Ordena chaves de data (MIME) e normaliza listas/strings.
+    """
+    canon = []
+    for out in outputs or []:
+        otype = out.get("output_type")
+        if otype == "stream":
+            canon.append({
+                "output_type": "stream",
+                "name": out.get("name"),            # stdout/stderr
+                "text": out.get("text", ""),        # texto
+            })
+        elif otype in ("display_data", "execute_result"):
+            data = out.get("data") or {}
+            # seleciona apenas MIME estáveis
+            keep = {}
+            for k in sorted(data.keys()):
+                v = data[k]
+                if isinstance(v, list):
+                    keep[k] = "".join(str(x) for x in v)
+                else:
+                    keep[k] = v
+            canon.append({
+                "output_type": otype,
+                "data": keep,
+            })
+        elif otype == "error":
+            canon.append({
+                "output_type": "error",
+                "ename": out.get("ename"),
+                "evalue": out.get("evalue"),
+                "traceback": "\n".join(out.get("traceback") or []),
+            })
+        else:
+            # outros tipos raros
+            data = out.get("data") or {}
+            keep = {}
+            for k in sorted(data.keys()):
+                v = data[k]
+                keep[k] = v if not isinstance(v, list) else "".join(str(x) for x in v)
+            canon.append({"output_type": otype, "data": keep})
+    return canon
+
+def hash_outputs_from_nbjson(nbjson: dict) -> tuple[str, int]:
+    try:
+        cells = (nbjson or {}).get("cells") or []
+        outs_min = []
+        for c in cells:
+            if c.get("cell_type") == "code":
+                outs_min.extend(canonicalize_outputs_struct(c.get("outputs") or []))
+        blob = json.dumps(outs_min, ensure_ascii=False, sort_keys=True)
+        return hashlib.sha256(blob.encode("utf-8")).hexdigest(), len(outs_min)
+    except Exception:
+        return "", 0
+
+# -------------------------
+# Código a ser executado no subprocesso
+# -------------------------
+def build_exec_code(nb_path: Path, kernel: str, timeout_s: int) -> str:
+    """
+    Código Python (executado no subprocesso) que:
+      - executa o notebook com nbclient
+      - calcula hash de outputs do notebook executado
+      - captura a exceção real
+      - imprime uma linha JSON com prefixo RESULT_PREFIX
+    """
+    return f"""
+import json, sys, re, nbformat, traceback, hashlib
+from nbclient import NotebookClient
+PREFIX = {RESULT_PREFIX!r}
+
+def canonicalize_outputs_struct(outputs):
+    canon = []
+    for out in outputs or []:
+        otype = out.get("output_type")
+        if otype == "stream":
+            canon.append({{"output_type":"stream","name":out.get("name"),"text":out.get("text","")}})
+        elif otype in ("display_data","execute_result"):
+            data = out.get("data") or {{}}
+            keep = {{}}
+            for k in sorted(data.keys()):
+                v = data[k]
+                if isinstance(v, list):
+                    keep[k] = "".join(str(x) for x in v)
+                else:
+                    keep[k] = v
+            canon.append({{"output_type":otype,"data":keep}})
+        elif otype == "error":
+            canon.append({{"output_type":"error","ename":out.get("ename"),"evalue":out.get("evalue"),"traceback":"\\n".join(out.get("traceback") or [])}})
+        else:
+            data = out.get("data") or {{}}
+            keep = {{}}
+            for k in sorted(data.keys()):
+                v = data[k]
+                keep[k] = v if not isinstance(v, list) else "".join(str(x) for x in v)
+            canon.append({{"output_type": otype, "data": keep}})
+    return canon
+
+def hash_outputs_from_nb(nb):
+    cells = nb.get("cells") or []
+    outs_min = []
+    for c in cells:
+        if c.get("cell_type") == "code":
+            outs_min.extend(canonicalize_outputs_struct(c.get("outputs") or []))
+    blob = json.dumps(outs_min, ensure_ascii=False, sort_keys=True)
+    return hashlib.sha256(blob.encode("utf-8")).hexdigest(), len(outs_min)
+
+try:
+    nb = nbformat.read(r'''{nb_path}''', as_version=4)
+    client = NotebookClient(nb, timeout={timeout_s}, kernel_name=r'''{kernel}''', allow_errors=False)
+    client.execute()
+    # nb foi modificado in-place; serialize para dict
+    nb_dict = nbformat.writes(nb)
+    nb_json = json.loads(nb_dict)
+    h, n = hash_outputs_from_nb(nb_json)
+    print(PREFIX + json.dumps({{"ok": True, "outputs_hash": h, "n_outputs": n}}))
+except Exception as e:
+    name = getattr(e, "ename", type(e).__name__)
+    msg  = getattr(e, "evalue", str(e))
+    info = {{"ok": False, "error": name, "exc_msg": msg}}
+    m = re.search(r"No module named '([^']+)'", msg)
+    if m:
+        info["missing_module"] = m.group(1)
+    if "401" in msg or "AuthenticationError" in name or "invalid_api_key" in msg.lower():
+        info["auth_error"] = True
+    if "FileNotFoundError" in name or "No such file or directory" in msg or "not found" in msg:
+        info["file_missing"] = True
+    print(PREFIX + json.dumps(info, ensure_ascii=False))
+    sys.exit(1)
+""".strip()
+
+def parse_result_from_stdout(stdout: str) -> dict | None:
+    for line in stdout.splitlines():
+        if line.startswith(RESULT_PREFIX):
+            try:
+                return json.loads(line[len(RESULT_PREFIX):].strip())
+            except Exception:
+                return None
+    return None
+
+def run_nb_with_timeout(pybin: str, repo_dir: Path, nb_path: Path, kernel: str, timeout_s: int,
+                        logger: logging.Logger) -> tuple[bool, Dict]:
+    code = build_exec_code(nb_path, kernel, timeout_s)
+    env = os.environ.copy()
+    env.update(HEADLESS_ENV)
+    t0 = time.time()
+    try:
+        p = sh([pybin, "-c", code], cwd=repo_dir, env=env, check=False, timeout=timeout_s)
+        elapsed = round(time.time() - t0, 3)
+
+        info = parse_result_from_stdout(p.stdout) or {}
+
+        if p.returncode == 0 and info.get("ok") is True:
+            return True, {
+                "error": None, "exc_name": None, "failed_cell_index": None, "elapsed_s": elapsed,
+                "outputs_hash_exec": info.get("outputs_hash",""), "n_outputs_exec": info.get("n_outputs",0)
+            }
+
+        err_name = (info.get("error") or "SubprocessError") if p.returncode != 0 else (info.get("error") or "UnknownError")
+        out = {
+            "error": err_name,
+            "exc_name": None,
+            "failed_cell_index": None,
+            "elapsed_s": elapsed,
+            "stdout_tail": p.stdout[-2000:],
+            "stderr_tail": p.stderr[-2000:],
+            "outputs_hash_exec": info.get("outputs_hash",""),
+            "n_outputs_exec": info.get("n_outputs",0)
+        }
+        if "missing_module" in info:
+            out["missing_module"] = info["missing_module"]
+        if "auth_error" in info:
+            out["auth_error"] = info["auth_error"]
+        if "file_missing" in info:
+            out["file_missing"] = info["file_missing"]
+        return False, out
+
+    except subprocess.TimeoutExpired:
+        return False, {
+            "error": "TimeoutExpired",
+            "exc_name": None,
+            "failed_cell_index": None,
+            "elapsed_s": round(time.time() - t0, 3),
+            "outputs_hash_exec": "",
+            "n_outputs_exec": 0
+        }
+    except Exception as e:
+        return False, {
+            "error": type(e).__name__,
+            "exc_name": None,
+            "failed_cell_index": None,
+            "elapsed_s": round(time.time() - t0, 3),
+            "outputs_hash_exec": "",
+            "n_outputs_exec": 0
+        }
+
+# -------------------------
+# Localização do original salvo
+# -------------------------
+def find_original_notebook(originals_dir: Path, owner: str, repo: str, file_basename: str) -> Optional[Path]:
+    """
+    Procura por arquivos no padrão: originals_dir/owner/repo/*_{basename}
+    Retorna o primeiro encontrado (ou None).
+    """
+    root = originals_dir / owner / repo
+    if not root.exists():
+        return None
+    # múltiplas versões (sha8_...). Escolhemos arbitrariamente a primeira.
+    candidates = sorted(root.glob(f"*_{file_basename}"))
+    return candidates[0] if candidates else None
+
+# -------------------------
+# Main
 # -------------------------
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--collection-csv", required=True, help="CSV gerado pelo coletor")
-    ap.add_argument("--exec-csv", required=False, help="CSV gerado pelo executor (opcional)")
+    ap.add_argument("--input", "--input-csv", dest="input_csv", required=True, help="CSV de coleta (notebooks)")
+    ap.add_argument("--output", "--output-csv", dest="output_csv", default="data/outputs/execution_results.csv")
+    ap.add_argument("--log-file", default="data/outputs/logs/execute_notebooks.log")
+    ap.add_argument("--policy", choices=["strict", "relaxed"], default="relaxed")
+    ap.add_argument("--timeout", type=int, default=300)
+    ap.add_argument("--limit", type=int, default=None)
+    ap.add_argument("--originals-dir", type=str, default=None,
+                    help="Diretório onde estão os .ipynb originais salvos pelo coletor (--save-notebooks-dir).")
     args = ap.parse_args()
 
-    # ---------- coleção ----------
-    coll = load_csv(args.collection_csv)
-    n = len(coll)
-    print(f"# Notebooks coletados (linhas): {n}")
+    logger = setup_logging(Path(args.log_file) if args.log_file else None)
+    logger.info("== Iniciando executor de notebooks (headless + timeout real) ==")
+    logger.info(f"Parâmetros: input={args.input_csv} output={args.output_csv} policy={args.policy} timeout={args.timeout}s limit={args.limit} originals_dir={args.originals_dir}")
 
-    parsed = [r for r in coll if to_bool(r.get("nb_ok_parse"))]
-    py = [r for r in coll if (r.get("language") or "").strip().lower().startswith("python")]
-    deps_any = [r for r in coll if to_bool(r.get("deps_any"))]
-    unamb = [r for r in coll if to_bool(r.get("has_unambiguous_order"))]
+    outp = Path(args.output_csv)
+    outp.parent.mkdir(parents=True, exist_ok=True)
 
-    print(f"nb_ok_parse=True: {len(parsed)} ({pct(len(parsed), n):.1f}%)")
-    print(f"language=python: {len(py)} ({pct(len(py), n):.1f}%)")
-    print(f"repos com deps_any=True: {len(deps_any)} ({pct(len(deps_any), n):.1f}%)")
-    print(f"unambiguous order: {len(unamb)} ({pct(len(unamb), n):.1f}%)")
+    originals_dir = Path(args.originals_dir) if args.originals_dir else None
 
-    n_code = [to_int(r.get("n_code")) for r in coll if r.get("n_code") not in (None, "")]
-    n_md = [to_int(r.get("n_markdown")) for r in coll if r.get("n_markdown") not in (None, "")]
-    n_outputs_cells = [to_int(r.get("n_cells_with_output")) for r in coll if r.get("n_cells_with_output") not in (None, "")]
-    perc_exec = [to_float(r.get("percent_code_executed")) for r in coll if r.get("percent_code_executed") not in (None, "")]
-    file_sizes = [to_int(r.get("file_size")) for r in coll if r.get("file_size") not in (None, "")]
-    stars = [to_int(r.get("repo_stars")) for r in coll if r.get("repo_stars") not in (None, "")]
+    tmp_root = Path(tempfile.mkdtemp(prefix="nbexec_"))
+    logger.info(f"Workspace temporário: {tmp_root}")
 
-    m = safe_stats_median; a = safe_stats_mean
-    print_stat("n_code median", m(n_code), "{:.0f}")
-    print_stat("n_code mean", a(n_code), "{:.2f}")
-    print_stat("n_markdown median", m(n_md), "{:.0f}")
-    print_stat("n_markdown mean", a(n_md), "{:.2f}")
-    print_stat("n_cells_with_output median", m(n_outputs_cells), "{:.0f}")
-    print_stat("n_cells_with_output mean", a(n_outputs_cells), "{:.2f}")
-    print_stat("%code executed median", m(perc_exec), "{:.1f}%")
-    print_stat("%code executed mean", a(perc_exec), "{:.1f}%")
+    processed = 0
+    try:
+        with open(args.input_csv, newline="", encoding="utf-8") as f_in, \
+             open(outp, "w", newline="", encoding="utf-8") as f_out:
 
-    # tamanhos brute do .ipynb (bytes)
-    if file_sizes:
-        print_stat("file_size median (KB)", m([s/1024 for s in file_sizes]), "{:.1f}")
-        print_stat("file_size mean (KB)", a([s/1024 for s in file_sizes]), "{:.1f}")
-        # percentis simples
-        for q in (50, 75, 90, 95, 99):
-            idx = int(len(file_sizes) * q / 100)
-            val = sorted(file_sizes)[min(max(idx-1,0), len(file_sizes)-1)] / 1024.0
-            print(f"file_size P{q} (KB): {val:.1f}")
+            rd = csv.DictReader(f_in)
+            fields = [
+                "repo_full_name", "repo_default_branch", "file_path",
+                "nb_ok_parse", "kernel_name", "language", "python_version_declared"
+            ]
+            out_fields = fields + [
+                "exec_ok", "error", "exc_name", "failed_cell_index", "elapsed_s",
+                "original_found", "outputs_equal", "outputs_hash_orig", "outputs_hash_exec",
+                "n_outputs_orig", "n_outputs_exec"
+            ]
+            wr = csv.DictWriter(f_out, fieldnames=out_fields)
+            wr.writeheader()
 
-    # imports agregados
-    counter = Counter()
-    for r in coll:
-        tj = r.get("top_imports_json") or "[]"
-        try:
-            items = json.loads(tj)
-            for mod, cnt in items:
-                counter[mod] += int(cnt)
-        except Exception:
-            pass
-    if counter:
-        print("Top imports (agregado):", counter.most_common(10))
+            env_cache: dict[str, tuple[str, str]] = {}
 
-    # ---------- execuções (opcional) ----------
-    if args.exec_csv:
-        ex = load_csv(args.exec_csv)
-        mexec = len(ex)
-        ok = [r for r in ex if to_bool(r.get("exec_ok"))]
-        fail = [r for r in ex if not to_bool(r.get("exec_ok"))]
+            for row in rd:
+                if row.get("nb_ok_parse") != "True":
+                    continue
 
-        print(f"# Execuções: {mexec}  |  sucesso: {len(ok)} ({pct(len(ok), mexec):.1f}%)")
+                full = row["repo_full_name"]          # owner/repo
+                owner, repo = full.split("/", 1)
+                branch = row.get("repo_default_branch") or "main"
+                rel = row["file_path"]
+                nb_kernel = resolve_kernel_name(row.get("kernel_name"))
 
-        # erros mais comuns
-        by_err = Counter((r.get("error") or "None") for r in fail)
-        print("Erros mais comuns:", by_err.most_common(12))
+                # Localiza original salvo (se informado)
+                original_found = False
+                outputs_hash_orig = ""
+                n_outputs_orig = ""
+                if originals_dir:
+                    orig_path = find_original_notebook(originals_dir, owner, repo, os.path.basename(rel))
+                    if orig_path and orig_path.exists():
+                        try:
+                            import nbformat
+                            nb_orig = nbformat.read(str(orig_path), as_version=4)
+                            # nbformat.read retorna NotebookNode; converte p/ dict consistente
+                            nb_orig_json = json.loads(nbformat.writes(nb_orig))
+                            outputs_hash_orig, n_orig = hash_outputs_from_nbjson(nb_orig_json)
+                            n_outputs_orig = str(n_orig)
+                            original_found = True
+                        except Exception as e:
+                            logger.warning(f"Falha ao ler original {orig_path}: {e}")
 
-        # tempos
-        elapsed_all = [to_float(r.get("elapsed_s")) for r in ex if r.get("elapsed_s")]
-        elapsed_ok = [to_float(r.get("elapsed_s")) for r in ok if r.get("elapsed_s")]
-        elapsed_fail = [to_float(r.get("elapsed_s")) for r in fail if r.get("elapsed_s")]
+                repo_dir = tmp_root / full.replace("/", "__")
+                if not repo_dir.exists():
+                    try:
+                        clone_repo(full, repo_dir, branch, logger)
+                    except Exception as e:
+                        logger.warning(f"Falha ao clonar {full}: {e}")
+                        continue
 
-        print_stat("elapsed_s (todos) median", safe_stats_median(elapsed_all), "{:.2f}s")
-        print_stat("elapsed_s (todos) mean", safe_stats_mean(elapsed_all), "{:.2f}s")
-        print_stat("elapsed_s (sucesso) median", safe_stats_median(elapsed_ok), "{:.2f}s")
-        print_stat("elapsed_s (sucesso) mean", safe_stats_mean(elapsed_ok), "{:.2f}s")
-        print_stat("elapsed_s (falha) median", safe_stats_median(elapsed_fail), "{:.2f}s")
-        print_stat("elapsed_s (falha) mean", safe_stats_mean(elapsed_fail), "{:.2f}s")
+                if full not in env_cache:
+                    env_dir = tmp_root / (full.replace("/", "__") + "_env")
+                    try:
+                        pip, pybin = make_env(env_dir, args.policy, logger)
+                        if args.policy == "strict":
+                            try:
+                                installed = install_reqs(pip, repo_dir, logger)
+                                logger.info(f"Deps strict: {'instaladas' if installed else 'não encontradas/instalação falhou'}")
+                            except Exception as e:
+                                logger.warning(f"Falha ao instalar deps strict: {e}")
+                        env_cache[full] = (pip, pybin)
+                    except Exception as e:
+                        logger.warning(f"Falha ao preparar venv para {full}: {e}")
+                        continue
+                else:
+                    pip, pybin = env_cache[full]
 
-        # repos/arquivos com mais falhas
-        fail_by_repo = Counter(r.get("repo_full_name") for r in fail)
-        if fail_by_repo:
-            print("Repos com mais falhas:", fail_by_repo.most_common(10))
+                nb_path = repo_dir / rel
+                if not nb_path.exists():
+                    logger.warning(f"Notebook não encontrado no clone: {nb_path}")
+                    continue
 
-        fail_by_file = Counter(f"{r.get('repo_full_name')}/{r.get('file_path')}" for r in fail)
-        if fail_by_file:
-            print("Notebooks com falha (top):", fail_by_file.most_common(10))
+                logger.info(f"Executando notebook: {nb_path}")
+                ok, info = run_nb_with_timeout(pybin, repo_dir, nb_path, nb_kernel, args.timeout, logger)
 
-        # --------- ORIGINAL vs EXECUTADO (reprodutibilidade) ----------
-        # colunas esperadas do executor:
-        # original_found, outputs_equal, outputs_hash_orig, outputs_hash_exec, n_outputs_orig, n_outputs_exec
-        have_orig_col = "original_found" in ex[0] if ex else False
-        have_equal_col = "outputs_equal" in ex[0] if ex else False
+                outputs_hash_exec = info.get("outputs_hash_exec","")
+                n_outputs_exec = info.get("n_outputs_exec",0)
+                outputs_equal = ""
+                if original_found and outputs_hash_orig:
+                    outputs_equal = str(outputs_hash_orig == outputs_hash_exec)
 
-        if have_orig_col or have_equal_col:
-            orig_found = [r for r in ex if to_bool(r.get("original_found"))]
-            print(f"originais encontrados: {len(orig_found)} ({pct(len(orig_found), mexec):.1f}%)")
+                wr.writerow({
+                    "repo_full_name": full,
+                    "repo_default_branch": branch,
+                    "file_path": rel,
+                    "nb_ok_parse": True,
+                    "kernel_name": nb_kernel,
+                    "language": row.get("language"),
+                    "python_version_declared": row.get("python_version_declared"),
+                    "exec_ok": ok,
+                    "error": info.get("error"),
+                    "exc_name": info.get("exc_name"),
+                    "failed_cell_index": info.get("failed_cell_index"),
+                    "elapsed_s": info.get("elapsed_s"),
+                    "original_found": str(original_found),
+                    "outputs_equal": outputs_equal,
+                    "outputs_hash_orig": outputs_hash_orig,
+                    "outputs_hash_exec": outputs_hash_exec,
+                    "n_outputs_orig": n_outputs_orig,
+                    "n_outputs_exec": n_outputs_exec,
+                })
 
-            equal_all = [r for r in ex if to_bool(r.get("outputs_equal"))]
-            print(f"outputs iguais (todas execuções): {len(equal_all)} ({pct(len(equal_all), mexec):.1f}%)")
+                if not ok and ("stdout_tail" in info or "stderr_tail" in info):
+                    logger.warning(f"STDOUT(tail): {info.get('stdout_tail','')}")
+                    logger.warning(f"STDERR(tail): {info.get('stderr_tail','')}")
 
-            # só entre execuções com sucesso
-            equal_ok = [r for r in ok if to_bool(r.get("outputs_equal"))]
-            print(f"outputs iguais (entre sucessos): {len(equal_ok)} ({pct(len(equal_ok), len(ok) or 1):.1f}%)")
+                processed += 1
+                if args.limit and processed >= args.limit:
+                    logger.info("Limite atingido; encerrando loop.")
+                    break
 
-            # divergências (útil mostrar alguns exemplos)
-            diffs = [r for r in ex if r.get("outputs_hash_orig") and r.get("outputs_hash_exec") and r.get("outputs_hash_orig") != r.get("outputs_hash_exec")]
-            if diffs:
-                print("Exemplos de divergência (até 10):")
-                for r in diffs[:10]:
-                    print(" -", f"{r.get('repo_full_name')}/{r.get('file_path')}",
-                          f"orig={r.get('outputs_hash_orig')[:8]} exec={r.get('outputs_hash_exec')[:8]}",
-                          f"n_orig={r.get('n_outputs_orig')} n_exec={r.get('n_outputs_exec')}")
+    finally:
+        shutil.rmtree(tmp_root, ignore_errors=True)
+        logger.info("Limpeza do workspace temporário concluída.")
 
-            # distribuição de n_outputs (orig vs exec) para investigar mudanças de quantidade
-            n_orig_vals = [to_int(r.get("n_outputs_orig")) for r in ex if r.get("n_outputs_orig") not in (None, "")]
-            n_exec_vals = [to_int(r.get("n_outputs_exec")) for r in ex if r.get("n_outputs_exec") not in (None, "")]
-            print_stat("n_outputs_orig median", safe_stats_median(n_orig_vals), "{:.0f}")
-            print_stat("n_outputs_orig mean", safe_stats_mean(n_orig_vals), "{:.1f}")
-            print_stat("n_outputs_exec median", safe_stats_median(n_exec_vals), "{:.0f}")
-            print_stat("n_outputs_exec mean", safe_stats_mean(n_exec_vals), "{:.1f}")
-
-            # crosstab simples: (exec_ok x outputs_equal)
-            crosstab = defaultdict(int)
-            for r in ex:
-                key = (to_bool(r.get("exec_ok")), to_bool(r.get("outputs_equal")))
-                crosstab[key] += 1
-            if crosstab:
-                print("Matriz (exec_ok x outputs_equal):")
-                # linhas: exec_ok False/True; colunas: outputs_equal False/True
-                for exec_ok in (False, True):
-                    row_vals = []
-                    for eq in (False, True):
-                        row_vals.append(crosstab[(exec_ok, eq)])
-                    print(f"  exec_ok={exec_ok}: {row_vals[0]} (equal=False), {row_vals[1]} (equal=True)")
+    logger.info(f"Concluído. Notebooks processados: {processed}")
+    logger.info(f"Resultados em: {outp}")
 
 if __name__ == "__main__":
     main()

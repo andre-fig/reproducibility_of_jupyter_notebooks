@@ -45,7 +45,7 @@ python3 scripts/collect_notebooks.py \
   --max-items  10 \
   --output     data/outputs/notebooks_jan.csv \
   --require-outputs \
-  --save-notebooks-dir data/raw_ipynb
+  --save-notebooks-dir data/outputs/raw_ipynb
 ```
 
 **Janela curta (sanidade):**
@@ -109,7 +109,7 @@ python3 scripts/execute_notebooks.py \
   --policy     strict \
   --timeout    30 \
   --limit      50 \
-  --originals-dir data/raw_ipynb
+  --originals-dir data/outputs/raw_ipynb
 ```
 
 **Saída (`data/outputs/execution_results_*.csv`):**
