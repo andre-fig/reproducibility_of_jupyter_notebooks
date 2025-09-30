@@ -46,6 +46,13 @@ python scripts/collect_notebooks.py \
   --output     data/outputs/notebooks_2025_jan-set.csv
 ```
 
+```bash
+python3 scripts/collect_notebooks.py \
+ --date-start 2025-01-01 --date-end 2025-01-31 \
+ --max-items 200 --output data/notebooks_jan.csv \
+ --require-outputs
+```
+
 **Janela curta (sanidade):**
 
 ```bash

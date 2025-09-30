@@ -151,7 +151,6 @@ def as_text(src) -> str:
     if isinstance(src, str):
         return src
     if isinstance(src, list):
-        # junta só pedaços que são string
         return "".join(s for s in src if isinstance(s, str))
     return ""
 
@@ -394,7 +393,6 @@ def parse_notebook_metrics(nb_json: dict) -> Tuple[dict, dict]:
                         imports.append(mod)
                         if TEST_MODULE_HINTS.search(mod) or mod in KNOWN_TEST_MODULES:
                             uses_testing = True
-                        # Heurística simples de local import: relativo não se aplica aqui; será via ImportFrom com level>0
                 elif isinstance(node, ast.ImportFrom):
                     mod = (node.module or "").split(".")[0]
                     if node.level and node.level > 0:
@@ -454,9 +452,8 @@ def detect_deps_in_repo(session: requests.Session, owner: str, repo: str, defaul
     """Procura por requirements.txt, setup.py e Pipfile em qualquer pasta do repo."""
     try:
         repo_info = gh_get_repo(session, owner, repo)
-        sha = repo_info.get("default_branch") or default_branch
-        ref = repo_info.get("default_branch") or "main"
-        # Pega o SH A da árvore do default branch
+        ref = repo_info.get("default_branch") or default_branch or "main"
+        # Pega o SHA da árvore do default branch
         branch = session.get(f"{GITHUB_API}/repos/{owner}/{repo}/branches/{ref}")
         branch.raise_for_status()
         tree_sha = branch.json()["commit"]["commit"]["tree"]["sha"]
@@ -488,13 +485,22 @@ def decode_notebook_content(item_json: Dict, session: requests.Session) -> Optio
     except Exception:
         return None
 
+def safe_join_save_path(base_dir: str, owner: str, repo: str, sha8: str, filename: str) -> str:
+    """Monta caminho seguro para salvar o ipynb."""
+    owner = re.sub(r"[^A-Za-z0-9_.-]", "_", owner)
+    repo = re.sub(r"[^A-Za-z0-9_.-]", "_", repo)
+    filename = re.sub(r"[^A-Za-z0-9_.-]", "_", os.path.basename(filename))
+    return os.path.join(base_dir, owner, repo, f"{sha8}_{filename}")
+
 def collect(
     token: Optional[str],
     date_start: dt.date,
     date_end: dt.date,
     max_items: Optional[int],
     output_csv: str,
-    only_python: bool = True
+    only_python: bool = True,
+    require_outputs: bool = False,
+    save_notebooks_dir: Optional[str] = None
 ) -> None:
     session = build_session(token)
     date_ranges = partition_date_range(session, date_start, date_end, max_count=900)
@@ -510,6 +516,10 @@ def collect(
         "deps_requirements_txt","deps_setup_py","deps_pipfile","deps_any",
         "ai_marker_found","triple_backticks_in_code","has_abs_data_path"
     ]
+    # Garantir diretório de saída dos notebooks, se solicitado
+    if save_notebooks_dir:
+        os.makedirs(save_notebooks_dir, exist_ok=True)
+
     with open(output_csv, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=fields)
         w.writeheader()
@@ -552,7 +562,7 @@ def collect(
                 except Exception:
                     nb_json = None
 
-
+                # Sem JSON legível: registra fallback e segue
                 if not nb_json:
                     row = {
                         "repo_full_name": full, "repo_id": repo_id, "repo_default_branch": default_branch,
@@ -568,12 +578,36 @@ def collect(
                         max_items -= 1
                     continue
 
+                # Filtra por linguagem
                 lang = (nb_json.get("metadata", {}).get("language_info") or {}).get("name", "")
                 if only_python and (not lang or "python" not in str(lang).lower()):
                     continue
 
+                # Extrai métricas
                 metrics, _ = parse_notebook_metrics(nb_json)
+
+                # Se exigir outputs salvos (estado executado), filtra aqui
+                if require_outputs:
+                    if metrics.get("n_cells_with_output", 0) <= 0:
+                        continue
+                    # opcionalmente, exigir alguma execução numerada
+                    if metrics.get("percent_code_executed", 0.0) <= 0.0 and metrics.get("max_execution_count", 0) <= 0:
+                        continue
+
+                # Detecta dependências no repo
                 has_req, has_setup, has_pipfile = detect_deps_in_repo(session, owner, name, default_branch)
+
+                # Salva o .ipynb bruto, se solicitado
+                if save_notebooks_dir:
+                    sha8 = (contents.get("sha","") or "")[:8] or "noSHA"
+                    out_path = safe_join_save_path(save_notebooks_dir, owner, name, sha8, os.path.basename(file_path))
+                    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+                    try:
+                        with open(out_path, "w", encoding="utf-8") as fh:
+                            json.dump(nb_json, fh, ensure_ascii=False)
+                    except Exception:
+                        # não impede a coleta; segue registrando no CSV
+                        pass
 
                 row = {
                     "repo_full_name": full,
@@ -611,6 +645,11 @@ def parse_args(argv=None):
     p.add_argument("--max-items", type=int, default=1000, help="Limite de notebooks a coletar (aprox.)")
     p.add_argument("--output", type=str, required=True, help="Caminho do CSV de saída")
     p.add_argument("--include-non-python", action="store_true", help="Não filtrar notebooks que não sejam Python")
+    # NOVOS FLAGS
+    p.add_argument("--require-outputs", action="store_true",
+                   help="Apenas notebooks com outputs salvos (estado executado).")
+    p.add_argument("--save-notebooks-dir", type=str, default=None,
+                   help="Se definido, salva o .ipynb original decodificado em owner/repo/sha8_nome.ipynb.")
     return p.parse_args(argv)
 
 def main(argv=None):
@@ -630,7 +669,9 @@ def main(argv=None):
         date_end=date_end,
         max_items=args.max_items,
         output_csv=args.output,
-        only_python=not args.include_non_python
+        only_python=not args.include_non_python,
+        require_outputs=args.require_outputs,
+        save_notebooks_dir=args.save_notebooks_dir
     )
 
 if __name__ == "__main__":
