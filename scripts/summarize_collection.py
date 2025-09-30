@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
 import argparse, csv, json, statistics as stats
-from collections import Counter, defaultdict
+from collections import Counter
 
 def load_csv(path):
     rows = []

@@ -42,7 +42,7 @@ Descobre repositórios por `created:` (GitHub Search **repositories**), varre a 
 python scripts/collect_notebooks.py \
   --date-start 2025-01-01 \
   --date-end   2025-09-28 \
-  --max-items  2000 \
+  --max-items  1000 \
   --output     data/outputs/notebooks_2025_jan-set.csv
 ```
 

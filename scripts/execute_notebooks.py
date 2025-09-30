@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Executa notebooks listados no CSV de coleta com nbclient, sob timeout real,
 headless (sem janelas/GUI) e isolamento por venv por repositório.
@@ -20,17 +19,6 @@ from __future__ import annotations
 import argparse, csv, logging, os, shutil, subprocess, sys, tempfile, time, json, re
 from pathlib import Path
 from typing import Dict, Tuple
-
-import nbformat
-try:
-    from nbclient import NotebookClient
-    try:
-        from nbclient.exceptions import CellExecutionError
-    except Exception:
-        class CellExecutionError(Exception): ...
-except Exception:
-    print("ERRO: nbclient não está instalado. Rode: pip install nbclient", file=sys.stderr)
-    raise
 
 try:
     from jupyter_client.kernelspec import KernelSpecManager

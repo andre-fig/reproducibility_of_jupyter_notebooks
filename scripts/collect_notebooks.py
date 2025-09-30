@@ -1,29 +1,3 @@
-"""
-collect_notebooks.py
---------------------
-Coleta metadados de Jupyter Notebooks no GitHub para o estudo de reprodutibilidade,
-seguindo e atualizando a metodologia de Pimentel et al. (2019).
-
-Principais funcionalidades:
-- Busca notebooks (.ipynb) por intervalo de datas, com divisão automática de janelas
-  para respeitar o limite de 1000 resultados por consulta do GitHub Search API.
-- Faz download do JSON do notebook (sem clonar repositório) e extrai métricas chave:
-  * contagem de células por tipo, execução e outputs;
-  * ordem de execução (ambígua vs. não-ambígua), skips e out-of-order;
-  * presença de imports, funções, classes, e possíveis módulos de teste;
-  * indicadores heurísticos de autoria/colagem por IA (comentários/padrões);
-  * presença de arquivos de dependências no repositório (requirements.txt, setup.py, Pipfile).
-- Salva um CSV tabular pronto para análises.
-
-Uso (exemplo):
-    GITHUB_TOKEN=ghp_xxx \
-    python scripts/collect_notebooks.py \
-        --date-start 2025-01-01 --date-end 2025-09-28 \
-        --max-items 2000 \
-        --output data/notebooks_metadata.csv
-
-Requisitos: ver requirements.txt
-"""
 from __future__ import annotations
 
 import argparse
@@ -37,6 +11,7 @@ import os
 import re
 import sys
 from typing import Dict, Iterable, List, Optional, Tuple
+import random
 
 import requests
 from requests.adapters import HTTPAdapter, Retry
@@ -49,6 +24,61 @@ GITHUB_API = "https://api.github.com"
 # ===============================
 # Utilidades HTTP e GitHub API
 # ===============================
+
+def request_with_backoff(session: requests.Session, method: str, url: str, **kwargs) -> requests.Response:
+    """
+    Faz a requisição com tratamento de 403 (rate limit/abuse) e 429, respeitando
+    os headers Retry-After e X-RateLimit-Reset. Aplica backoff exponencial + jitter.
+    """
+    max_attempts = 8
+    for attempt in range(max_attempts):
+        resp = session.request(method, url, **kwargs)
+
+        if resp.status_code not in (403, 429):
+            # OK ou outros erros tratados fora por raise_for_status()
+            return resp
+
+        # Extrai dicas de espera dos headers
+        retry_after = resp.headers.get("Retry-After")
+        reset_epoch = resp.headers.get("X-RateLimit-Reset")
+        remaining = resp.headers.get("X-RateLimit-Remaining")
+
+        # Tenta identificar mensagem de abuso
+        try:
+            msg = resp.json().get("message", "")
+        except Exception:
+            msg = (resp.text or "")[:200]
+        abuse = "abuse" in msg.lower()
+
+        # Calcula sleep
+        wait = 0.0
+        if retry_after:
+            # Servidor mandou esperar N segundos
+            try:
+                wait = float(retry_after)
+            except Exception:
+                wait = 30.0
+        elif remaining == "0" and reset_epoch:
+            # Rate limit hard: espera até reset + colchão
+            try:
+                reset = float(reset_epoch)
+            except Exception:
+                reset = time.time() + 60
+            wait = max(0.0, reset - time.time()) + 5.0
+        elif abuse:
+            # Abuse detection: seja conservador
+            wait = 30.0 * (attempt + 1)
+        else:
+            # fallback: backoff exponencial
+            wait = (2 ** attempt) * 3.0
+
+        # jitter aleatório para dessaturar
+        wait += random.uniform(0.5, 2.5)
+        time.sleep(wait)
+
+    # Se chegou aqui, esgotou as tentativas
+    resp.raise_for_status()
+    return resp  # pragma: no cover
 
 def build_session(token: Optional[str]) -> requests.Session:
     s = requests.Session()
@@ -70,32 +100,32 @@ def build_session(token: Optional[str]) -> requests.Session:
 
 def gh_search_code(session: requests.Session, q: str, page: int = 1, per_page: int = 100) -> Dict:
     url = f"{GITHUB_API}/search/code"
-    resp = session.get(url, params={"q": q, "page": page, "per_page": per_page})
+    resp = request_with_backoff(session, "GET", url, params={"q": q, "page": page, "per_page": per_page})
     resp.raise_for_status()
     return resp.json()
 
 def gh_get_repo(session: requests.Session, owner: str, repo: str) -> Dict:
     url = f"{GITHUB_API}/repos/{owner}/{repo}"
-    r = session.get(url)
+    r = request_with_backoff(session, "GET", url)
     r.raise_for_status()
     return r.json()
 
 def gh_get_contents(session: requests.Session, owner: str, repo: str, path: str, ref: Optional[str]=None) -> Dict:
     url = f"{GITHUB_API}/repos/{owner}/{repo}/contents/{path}"
     params = {"ref": ref} if ref else None
-    r = session.get(url, params=params)
+    r = request_with_backoff(session, "GET", url, params=params)
     r.raise_for_status()
     return r.json()
 
 def gh_get_tree(session: requests.Session, owner: str, repo: str, sha: str) -> Dict:
     url = f"{GITHUB_API}/repos/{owner}/{repo}/git/trees/{sha}"
-    r = session.get(url, params={"recursive": 1})
+    r = request_with_backoff(session, "GET", url, params={"recursive": 1})
     r.raise_for_status()
     return r.json()
 
 def gh_search_repos(session: requests.Session, q: str, page: int = 1, per_page: int = 100) -> Dict:
     url = f"{GITHUB_API}/search/repositories"
-    resp = session.get(url, params={"q": q, "page": page, "per_page": per_page, "sort": "updated", "order": "desc"})
+    resp = request_with_backoff(session, "GET", url, params={"q": q, "page": page, "per_page": per_page, "sort": "updated", "order": "desc"})
     resp.raise_for_status()
     return resp.json()
 
@@ -162,7 +192,7 @@ def iterate_repo_search(session: requests.Session, date_ranges: List[Tuple[dt.da
         page = 1
         while True:
             data = gh_search_repos(session, q, page=page, per_page=100)
-            time.sleep(2.1)  # ~28 req/min, abaixo do limite de 30 req/min para evitar 403
+            time.sleep(3.5 + random.uniform(0.0, 2.0))
             items = data.get("items", [])
             if not items:
                 break
@@ -516,7 +546,7 @@ def collect(
                         raw = base64.b64decode(contents["content"])
                         nb_json = json.loads(raw.decode("utf-8", errors="replace"))
                     elif contents.get("download_url"):
-                        r = session.get(contents["download_url"])
+                        r = request_with_backoff(session, "GET", contents["download_url"])
                         r.raise_for_status()
                         nb_json = r.json()
                 except Exception:
