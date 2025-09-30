@@ -347,9 +347,9 @@ def parse_notebook_metrics(nb_json: dict) -> Tuple[dict, dict]:
                 outputs_text = True
             if any(mime.startswith(x) for x in ["image/png", "image/jpeg", "image/svg"]):
                 outputs_image = True
-            if any(mime in x for x in ["text/html", "application/javascript"]):
+            if mime in ("text/html", "application/javascript"):
                 outputs_html_js = True
-            if any(mime in x for x in ["text/latex", "text/markdown"]):
+            if mime in ("text/latex", "text/markdown"):
                 outputs_formatted = True
             # extensões comuns (widgets/plotly/bokeh)
             if any(mime.startswith(x) for x in ["application/vnd.", "application/plotly", "application/vnd.bokeh"]):
@@ -551,7 +551,7 @@ def collect(
 
             for file_path in ipynb_paths:
                 if max_items is not None and max_items <= 0:
-                    break
+                    return
 
                 try:
                     contents = gh_get_contents(session, owner, name, file_path, ref=default_branch)
@@ -588,6 +588,8 @@ def collect(
                     w.writerow(row)
                     if max_items is not None:
                         max_items -= 1
+                        if max_items <= 0:
+                            return
                     continue
 
                 # Filtra por linguagem
@@ -646,8 +648,8 @@ def collect(
 
                 if max_items is not None:
                     max_items -= 1
-                if max_items is not None and max_items <= 0:
-                    break
+                    if max_items <= 0:
+                        return
 
 
 def parse_args(argv=None):
