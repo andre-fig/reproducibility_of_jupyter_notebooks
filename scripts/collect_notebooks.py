@@ -168,7 +168,8 @@ def partition_date_range(session: requests.Session, start: dt.date, end: dt.date
         try:
             j = gh_search_repos(session, q, page=1, per_page=1)
             total = min(j.get("total_count", 0), 1_000_000)
-        except requests.HTTPError:
+        except requests.HTTPError as e:
+            # 422 costuma indicar cap de 1000; force split
             if (b - a).days <= 0:
                 continue
             mid = a + (b - a)//2
@@ -190,17 +191,28 @@ def iterate_repo_search(session: requests.Session, date_ranges: List[Tuple[dt.da
         q = f"created:{a.isoformat()}..{b.isoformat()} is:public fork:true"
         page = 1
         while True:
-            data = gh_search_repos(session, q, page=page, per_page=100)
+            try:
+                data = gh_search_repos(session, q, page=page, per_page=100)
+            except requests.HTTPError as e:
+                # Se for 422 do limite de 1000, não adianta continuar essa janela
+                if e.response is not None and e.response.status_code == 422:
+                    break
+                raise
             time.sleep(3.5 + random.uniform(0.0, 2.0))
+
             items = data.get("items", [])
             if not items:
                 break
+
             for repo in items:
                 yield repo
                 seen += 1
                 if max_repos and seen >= max_repos:
                     return
+
             page += 1
+            if page > 10:  # 10 * 100 = 1000
+                break
 
 
 # ===============================
