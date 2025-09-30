@@ -39,18 +39,13 @@ Descobre repositórios por `created:` (GitHub Search **repositories**), varre a 
 **Jan–Set/2025 (exemplo, ~2000 notebooks):**
 
 ```bash
-python scripts/collect_notebooks.py \
-  --date-start 2025-01-01 \
-  --date-end   2025-09-28 \
-  --max-items  1000 \
-  --output     data/outputs/notebooks_2025_jan-set.csv
-```
-
-```bash
 python3 scripts/collect_notebooks.py \
- --date-start 2025-01-01 --date-end 2025-01-31 \
- --max-items 200 --output data/notebooks_jan.csv \
- --require-outputs
+  --date-start 2025-01-01 \
+  --date-end   2025-01-07 \
+  --max-items  10 \
+  --output     data/outputs/notebooks_jan.csv \
+  --require-outputs \
+  --save-notebooks-dir data/raw_ipynb
 ```
 
 **Janela curta (sanidade):**
@@ -108,12 +103,13 @@ Políticas:
 - `--policy strict`: tenta instalar `requirements.txt` / `Pipfile` / `setup.py`/`pyproject` do repositório.
 
 ```bash
-python scripts/execute_notebooks.py \
-  --input-csv  data/outputs/notebooks_2025_mar_1w.csv \
-  --output-csv data/outputs/execution_results_2025_mar_1w.csv \
+python3 scripts/execute_notebooks.py \
+  --input-csv  data/outputs/notebooks_jan.csv \
+  --output-csv data/outputs/execution_results_jan.csv \
   --policy     strict \
   --timeout    30 \
-  --limit      50
+  --limit      50 \
+  --originals-dir data/raw_ipynb
 ```
 
 **Saída (`data/outputs/execution_results_*.csv`):**
@@ -133,9 +129,9 @@ Lê o CSV de coleta (e opcionalmente o CSV de execução) e imprime estatística
 
 ```bash
 python scripts/summarize_collection.py \
-  --collection-csv data/outputs/notebooks_2025_mar_1w.csv \
-  --exec-csv       data/outputs/execution_results_2025_mar_1w.csv \
-  | tee data/outputs/summary_2025_mar_1w.txt
+  --collection-csv data/outputs/notebooks_jan.csv \
+  --exec-csv       data/outputs/execution_results_jan.csv \
+  | tee data/outputs/summary_jan.txt
 ```
 
 Produz (exemplos):
