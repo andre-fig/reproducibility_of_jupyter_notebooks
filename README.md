@@ -104,11 +104,11 @@ Políticas:
 
 ```bash
 python3 scripts/execute_notebooks.py \
-  --input-csv  data/outputs/notebooks_jan.csv \
-  --output-csv data/outputs/execution_results_jan.csv \
+  --input-csv  data/outputs/notebooks_2025_all.csv \
+  --output-csv data/outputs/execution_results_2025_all.csv \
   --policy     strict \
   --timeout    30 \
-  --limit      50 \
+  --limit      300 \
   --originals-dir data/outputs/raw_ipynb
 ```
 
@@ -128,10 +128,10 @@ Script: `scripts/summarize_collection.py`
 Lê o CSV de coleta (e opcionalmente o CSV de execução) e imprime estatísticas descritivas.
 
 ```bash
-python scripts/summarize_collection.py \
-  --collection-csv data/outputs/notebooks_jan.csv \
-  --exec-csv       data/outputs/execution_results_jan.csv \
-  | tee data/outputs/summary_jan.txt
+python3 scripts/summarize_collection.py \
+  --collection-csv data/outputs/notebooks_2025_all.csv \
+  --exec-csv       data/outputs/execution_results_2025_all.csv \
+  | tee data/outputs/summary_2025_all.txt
 ```
 
 Produz (exemplos):
