@@ -1,5 +1,8 @@
-import argparse, csv, json, statistics as stats
-from collections import Counter, defaultdict
+import argparse
+import csv
+import json
+import statistics as stats
+from collections import Counter
 
 # ---------- utils ----------
 def load_csv(path):
@@ -16,17 +19,18 @@ def pct(a, b):
 def to_int(x, d=0):
     try:
         return int(float(x))
-    except:
+    except (ValueError, TypeError):
         return d
 
 def to_float(x, d=0.0):
     try:
         return float(x)
-    except:
+    except (ValueError, TypeError):
         return d
 
 def to_bool(x):
-    if x is None: return False
+    if x is None:
+        return False
     s = str(x).strip().lower()
     return s in ("true","1","yes","y","t")
 

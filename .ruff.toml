@@ -1,0 +1,37 @@
+# Configuração do Ruff para o projeto de reprodutibilidade de notebooks
+
+# Diretórios a serem ignorados
+exclude = [
+    "data/",
+    "scripts/data/",
+    "scripts/run_*/",
+    "scripts/*/data/",
+    "*.ipynb",
+    "__pycache__/",
+    ".git/",
+    ".venv/",
+    "venv/",
+    ".pytest_cache/",
+    "build/",
+    "dist/",
+    "*.egg-info/",
+]
+
+# Configurações de linha
+line-length = 88
+target-version = "py310"
+
+# Configurações de linting
+[lint]
+ignore = [
+    "E501",  # line too long
+    "E203",  # whitespace before ':'
+    "E402",  # module level import not at top of file
+    "F401",  # imported but unused
+    "B008",  # do not perform function calls in argument defaults
+    "B006",  # do not use mutable data structures for argument defaults
+    "C901",  # too complex
+    "S101",  # use of assert detected
+    "T201",  # print statements found
+    "T203",  # pprint statements found
+]

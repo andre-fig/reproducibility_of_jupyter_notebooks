@@ -168,7 +168,7 @@ def partition_date_range(session: requests.Session, start: dt.date, end: dt.date
         try:
             j = gh_search_repos(session, q, page=1, per_page=1)
             total = min(j.get("total_count", 0), 1_000_000)
-        except requests.HTTPError as e:
+        except requests.HTTPError:
             # 422 costuma indicar cap de 1000; force split
             if (b - a).days <= 0:
                 continue
@@ -532,9 +532,18 @@ def collect(
     if save_notebooks_dir:
         os.makedirs(save_notebooks_dir, exist_ok=True)
 
+    print("🔍 Iniciando coleta de notebooks...", flush=True)
+    print(f"   Período: {date_start} até {date_end}", flush=True)
+    print(f"   Meta: {max_items if max_items else 'ilimitado'} notebooks", flush=True)
+    print(f"   Requer outputs: {require_outputs}", flush=True)
+    print(f"   Output: {output_csv}\n", flush=True)
+    
     with open(output_csv, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=fields)
         w.writeheader()
+        
+        repo_count = 0
+        notebooks_found_count = 0
 
         for repo in tqdm(iterate_repo_search(session, date_ranges, max_repos=None), desc="Varredura de repositórios"):
             owner = repo["owner"]["login"]
@@ -544,10 +553,16 @@ def collect(
             created_at = repo.get("created_at")
             stargazers_count = repo.get("stargazers_count", 0)
             repo_id = repo["id"]
+            
+            repo_count += 1
+            print(f"[Repo {repo_count}] Processando: {full} ...", flush=True)
 
             ipynb_paths = list_ipynb_in_repo(session, owner, name, default_branch)
             if not ipynb_paths:
+                print("  └─ Nenhum notebook encontrado", flush=True)
                 continue
+            
+            print(f"  └─ Encontrados {len(ipynb_paths)} notebook(s), analisando...", flush=True)
 
             for file_path in ipynb_paths:
                 if max_items is not None and max_items <= 0:
@@ -586,9 +601,12 @@ def collect(
                         if k not in row:
                             row[k] = ""
                     w.writerow(row)
+                    notebooks_found_count += 1
+                    print(f"     ├─ ✗ {file_path}: falha no parse (total: {notebooks_found_count})", flush=True)
                     if max_items is not None:
                         max_items -= 1
                         if max_items <= 0:
+                            print(f"\n✅ Meta de {notebooks_found_count} notebooks atingida!", flush=True)
                             return
                     continue
 
@@ -645,11 +663,22 @@ def collect(
                 for k in fields:
                     row.setdefault(k, "")
                 w.writerow(row)
+                notebooks_found_count += 1
+                # Se chegou até aqui, parse foi OK (nb_ok_parse=True)
+                print(f"     └─ ✓ OK: {file_path} (total: {notebooks_found_count})", flush=True)
 
                 if max_items is not None:
                     max_items -= 1
                     if max_items <= 0:
+                        print(f"\n✅ Meta de {notebooks_found_count} notebooks atingida!", flush=True)
                         return
+    
+    print("\n" + "="*60, flush=True)
+    print("✅ Coleta concluída!", flush=True)
+    print(f"   Total de notebooks coletados: {notebooks_found_count}", flush=True)
+    print(f"   Repositórios processados: {repo_count}", flush=True)
+    print(f"   Arquivo salvo: {output_csv}", flush=True)
+    print("="*60 + "\n", flush=True)
 
 
 def parse_args(argv=None):

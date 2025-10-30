@@ -36,3 +36,9 @@ data/outputs/*
 .vscode/
 .idea/
 *.swp
+.cursor/
+paper/
+.venv-*/
+.ruff_cache/
+data/run_20251028_144659/*
+data/run_*/

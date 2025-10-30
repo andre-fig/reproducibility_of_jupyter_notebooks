@@ -1,0 +1,105 @@
+# Dockerfile para Python 3.8
+FROM python:3.8-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    build-essential \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Jupyter + nbconvert + nbclient + common scientific libraries
+RUN pip install --no-cache-dir \
+    jupyter \
+    nbconvert \
+    nbclient \
+    ipykernel \
+    nbformat \
+    numpy \
+    pandas \
+    scipy \
+    scikit-learn \
+    matplotlib \
+    seaborn \
+    requests \
+    jupyter_client \
+    torch \
+    torchvision \
+    torchaudio \
+    transformers \
+    openai \
+    langchain \
+    streamlit \
+    plotly \
+    bokeh \
+    altair \
+    plotnine \
+    statsmodels \
+    sympy \
+    networkx \
+    pillow \
+    opencv-python \
+    beautifulsoup4 \
+    lxml \
+    html5lib \
+    xlrd \
+    openpyxl \
+    sqlalchemy \
+    psycopg2-binary \
+    pymongo \
+    redis \
+    celery \
+    flask \
+    fastapi \
+    django \
+    pytest \
+    black \
+    flake8 \
+    mypy \
+    jupyterlab \
+    ipywidgets \
+    tqdm \
+    click \
+    pyyaml \
+    toml \
+    python-dotenv \
+    python-dateutil \
+    pytz \
+    tzdata
+
+# Create working directory
+WORKDIR /workspace
+
+# Copy execution script
+COPY scripts/execute_notebook_copy.py /workspace/
+
+# Copy extra requirements (optional common libraries)
+COPY requirements_extra.txt /workspace/
+
+# Install extra requirements if present
+RUN if [ -f requirements_extra.txt ]; then \
+    pip install --no-cache-dir -r requirements_extra.txt || true; \
+    fi
+
+# Set environment variables for headless execution
+ENV DISPLAY=""
+ENV QT_QPA_PLATFORM="offscreen"
+ENV SDL_VIDEODRIVER="dummy"
+ENV SDL_AUDIODRIVER="dummy"
+ENV PYGAME_HIDE_SUPPORT_PROMPT="1"
+ENV MPLBACKEND="Agg"
+ENV PYTHONWARNINGS="ignore"
+
+# Default timeout and policy can be overridden
+ENV TIMEOUT_SECS=300
+ENV POLICY="relaxed"
+ENV NOTEBOOK_DIR="/workspace/notebooks"
+
+# Mount point for notebooks
+VOLUME ["/workspace/notebooks", "/workspace/data"]
+
+# By default run the execution script
+CMD ["python", "/workspace/execute_notebook_copy.py", \
+     "--input-csv", "/workspace/data/notebooks.csv", \
+     "--output-csv", "/workspace/data/execution_results.csv", \
+     "--log-file", "/workspace/data/logs/execute_notebooks.log"]

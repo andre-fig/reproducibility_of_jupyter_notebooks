@@ -220,7 +220,46 @@ def hash_outputs_from_nbjson(nbjson: dict) -> tuple[str, int]:
 # -------------------------
 # Código a ser executado no subprocesso
 # -------------------------
-def build_exec_code(nb_path: Path, kernel: str, timeout_s: int) -> str:
+def detect_python_version_compatibility(declared_version: str, current_version: tuple) -> tuple[bool, str]:
+    """
+    Verifica se a versão Python declarada é compatível com a versão atual.
+    Retorna: (is_compatible, warning_message)
+    """
+    if not declared_version:
+        return True, ""
+    
+    try:
+        # Parse da versão declarada (ex: "3.11.9" ou "3.12.0")
+        declared_parts = declared_version.split('.')
+        declared_major = int(declared_parts[0])
+        declared_minor = int(declared_parts[1]) if len(declared_parts) > 1 else 0
+        
+        current_major, current_minor = current_version[:2]
+        
+        # Python 2.x é incompatível
+        if declared_major == 2:
+            return False, f"Python 2.x não suportado (declarado: {declared_version})"
+        
+        # Python 3.x - verificar compatibilidade
+        if declared_major == 3:
+            # Versões muito antigas podem ter problemas
+            if declared_minor < 7:
+                return False, f"Python {declared_version} muito antigo (mínimo: 3.7)"
+            
+            # Versões muito novas podem ter recursos não disponíveis
+            if declared_minor > current_minor + 2:
+                return False, f"Python {declared_version} muito novo (atual: {current_major}.{current_minor})"
+            
+            # Avisos para diferenças menores
+            if declared_minor != current_minor:
+                return True, f"Versão diferente: declarado {declared_version}, atual {current_major}.{current_minor}"
+        
+        return True, ""
+    
+    except (ValueError, IndexError):
+        return True, f"Versão malformada: {declared_version}"
+
+def build_exec_code(nb_path: Path, kernel: str, timeout_s: int, declared_python_version: str = None) -> str:
     """
     Código Python (executado no subprocesso) que:
       - executa o notebook com nbclient
@@ -270,6 +309,26 @@ def hash_outputs_from_nb(nb):
     return hashlib.sha256(blob.encode("utf-8")).hexdigest(), len(outs_min)
 
 try:
+    # Verificar compatibilidade de versão Python
+    import sys
+    current_version = sys.version_info
+    declared_version = {declared_python_version!r}
+    
+    if declared_version:
+        declared_parts = declared_version.split('.')
+        declared_major = int(declared_parts[0])
+        declared_minor = int(declared_parts[1]) if len(declared_parts) > 1 else 0
+        
+        # Python 2.x é incompatível
+        if declared_major == 2:
+            print(PREFIX + json.dumps({{"ok": False, "error": "Python2NotSupported", "exc_msg": f"Python 2.x não suportado (declarado: {{declared_version}})"}}))
+            sys.exit(1)
+        
+        # Versões muito antigas
+        if declared_major == 3 and declared_minor < 7:
+            print(PREFIX + json.dumps({{"ok": False, "error": "PythonTooOld", "exc_msg": f"Python {{declared_version}} muito antigo (mínimo: 3.7)"}}))
+            sys.exit(1)
+    
     nb = nbformat.read(r'''{nb_path}''', as_version=4)
     client = NotebookClient(nb, timeout={timeout_s}, kernel_name=r'''{kernel}''', allow_errors=False)
     client.execute()
@@ -303,13 +362,27 @@ def parse_result_from_stdout(stdout: str) -> dict | None:
     return None
 
 def run_nb_with_timeout(pybin: str, repo_dir: Path, nb_path: Path, kernel: str, timeout_s: int,
-                        logger: logging.Logger) -> tuple[bool, Dict]:
-    code = build_exec_code(nb_path, kernel, timeout_s)
+                        logger: logging.Logger, declared_python_version: str = None) -> tuple[bool, Dict]:
     env = os.environ.copy()
     env.update(HEADLESS_ENV)
+    
+    # Criar diretório isolado para evitar conflitos com módulos locais
+    isolated_dir = repo_dir.parent / f"{repo_dir.name}_isolated"
+    isolated_dir.mkdir(exist_ok=True)
+    
+    # Copiar apenas o notebook para o diretório isolado
+    isolated_nb_path = isolated_dir / nb_path.name
+    shutil.copy2(nb_path, isolated_nb_path)
+    
+    # Adicionar o diretório original ao PYTHONPATH para imports relativos funcionarem
+    env["PYTHONPATH"] = f"{repo_dir}:{env.get('PYTHONPATH', '')}"
+    
+    code = build_exec_code(isolated_nb_path, kernel, timeout_s, declared_python_version)
+    
     t0 = time.time()
     try:
-        p = sh([pybin, "-c", code], cwd=repo_dir, env=env, check=False, timeout=timeout_s)
+        # Executar no diretório isolado, mas com PYTHONPATH apontando para o repo original
+        p = sh([pybin, "-c", code], cwd=isolated_dir, env=env, check=False, timeout=timeout_s)
         elapsed = round(time.time() - t0, 3)
 
         info = parse_result_from_stdout(p.stdout) or {}
@@ -359,6 +432,116 @@ def run_nb_with_timeout(pybin: str, repo_dir: Path, nb_path: Path, kernel: str, 
         }
 
 # -------------------------
+# Mapeamento de módulos relacionados
+# -------------------------
+MODULE_FAMILIES = {
+    "torch": ["torch", "torchvision", "torchaudio", "torchinfo"],
+    "tensorflow": ["tensorflow", "tensorflow-gpu"],
+    "sklearn": ["scikit-learn", "sklearn"],
+    "cv2": ["opencv-python", "opencv-contrib-python"],
+    "PIL": ["Pillow"],
+    "bs4": ["beautifulsoup4"],
+    "yaml": ["PyYAML"],
+    "dotenv": ["python-dotenv"],
+    "dateutil": ["python-dateutil"],
+    "pytz": ["pytz"],
+    "tzdata": ["tzdata"],
+    "psycopg2": ["psycopg2-binary"],
+    "pymongo": ["pymongo"],
+    "redis": ["redis"],
+    "celery": ["celery"],
+    "flask": ["Flask"],
+    "fastapi": ["fastapi"],
+    "django": ["Django"],
+    "pytest": ["pytest"],
+    "black": ["black"],
+    "flake8": ["flake8"],
+    "mypy": ["mypy"],
+    "jupyter": ["jupyter", "jupyterlab"],
+    "ipywidgets": ["ipywidgets"],
+    "tqdm": ["tqdm"],
+    "click": ["click"],
+    "toml": ["toml"],
+    "networkx": ["networkx"],
+    "sympy": ["sympy"],
+    "statsmodels": ["statsmodels"],
+    "plotly": ["plotly"],
+    "bokeh": ["bokeh"],
+    "altair": ["altair"],
+    "plotnine": ["plotnine"],
+    "transformers": ["transformers"],
+    "openai": ["openai"],
+    "langchain": ["langchain"],
+    "streamlit": ["streamlit"],
+}
+
+def get_related_modules(module_name: str) -> list[str]:
+    """Retorna uma lista de módulos relacionados que podem ser instalados juntos."""
+    return MODULE_FAMILIES.get(module_name, [module_name])
+
+# -------------------------
+# Retry com instalação de módulo
+# -------------------------
+def retry_with_module_install(pip: str, pybin: str, repo_dir: Path, nb_path: Path, 
+                               kernel: str, timeout_s: int, missing_module: str,
+                               logger: logging.Logger, max_retries: int = 5) -> tuple[bool, Dict, bool, str]:
+    """
+    Tenta instalar o módulo ausente e re-executar o notebook.
+    Se ainda houver ModuleNotFoundError, tenta instalar recursivamente até max_retries.
+    Retorna: (success, info_dict, retry_attempted, installed_modules)
+    """
+    installed_modules = []
+    retry_count = 0
+    
+    while retry_count < max_retries:
+        logger.info(f"Tentativa {retry_count + 1}/{max_retries}: instalando módulo ausente: {missing_module}")
+        try:
+            # Instala o módulo e módulos relacionados
+            related_modules = get_related_modules(missing_module)
+            logger.info(f"Instalando módulos relacionados: {related_modules}")
+            
+            result = sh([pip, "install"] + related_modules, check=False, timeout=300)
+            if result.returncode != 0:
+                logger.warning(f"Falha ao instalar {related_modules}: {result.stderr[:500]}")
+                # Tenta instalar apenas o módulo principal
+                result = sh([pip, "install", missing_module], check=False, timeout=120)
+                if result.returncode != 0:
+                    logger.warning(f"Falha ao instalar {missing_module}: {result.stderr[:500]}")
+                    return False, {"error": "ModuleInstallFailed", "elapsed_s": 0}, True, ",".join(installed_modules)
+            
+            installed_modules.extend(related_modules)
+            logger.info(f"Módulo {missing_module} instalado com sucesso. Tentando executar novamente...")
+            
+            # Re-executa o notebook
+            ok, info = run_nb_with_timeout(pybin, repo_dir, nb_path, kernel, timeout_s, logger, None)
+            
+            if ok:
+                return True, info, True, ",".join(installed_modules)
+            
+            # Se ainda há ModuleNotFoundError, tenta instalar o próximo módulo
+            if "missing_module" in info:
+                missing_module = info["missing_module"]
+                retry_count += 1
+                continue
+            else:
+                # Outro tipo de erro, não é mais ModuleNotFoundError
+                return False, info, True, ",".join(installed_modules)
+        
+        except subprocess.TimeoutExpired:
+            logger.warning(f"Timeout ao instalar {missing_module}")
+            return False, {"error": "ModuleInstallTimeout", "elapsed_s": 0}, True, ",".join(installed_modules)
+        except Exception as e:
+            logger.warning(f"Erro ao instalar {missing_module}: {e}")
+            return False, {
+                "error": f"ModuleInstallError_{type(e).__name__}",
+                "elapsed_s": 0
+            }, True, ",".join(installed_modules)
+    
+    # Se chegou aqui, esgotou as tentativas
+    logger.warning(f"Esgotadas {max_retries} tentativas de instalação de módulos")
+    return False, {"error": "MaxRetriesExceeded", "elapsed_s": 0}, True, ",".join(installed_modules)
+
+# -------------------------
 # Localização do original salvo
 # -------------------------
 def find_original_notebook(originals_dir: Path, owner: str, repo: str, file_basename: str) -> Optional[Path]:
@@ -376,6 +559,58 @@ def find_original_notebook(originals_dir: Path, owner: str, repo: str, file_base
 # -------------------------
 # Main
 # -------------------------
+def analyze_python_versions_from_csv(csv_path: Path) -> dict:
+    """
+    Analisa as versões Python declaradas no CSV e retorna estatísticas.
+    """
+    versions_count = {}
+    total_notebooks = 0
+    
+    try:
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row.get("nb_ok_parse") == "True":
+                    total_notebooks += 1
+                    version = row.get("python_version_declared", "").strip()
+                    if version:
+                        versions_count[version] = versions_count.get(version, 0) + 1
+                    else:
+                        versions_count["unknown"] = versions_count.get("unknown", 0) + 1
+    except Exception as e:
+        print(f"Erro ao analisar CSV: {e}")
+    
+    return {
+        "versions_count": versions_count,
+        "total_notebooks": total_notebooks,
+        "most_common_version": max(versions_count.items(), key=lambda x: x[1])[0] if versions_count else "unknown"
+    }
+
+def suggest_docker_image(python_version: str) -> str:
+    """
+    Sugere a imagem Docker baseada na versão Python.
+    """
+    if not python_version or python_version == "unknown":
+        return "notebook-executor"  # Python 3.10 padrão
+    
+    version_parts = python_version.split('.')
+    major = int(version_parts[0]) if version_parts else 0
+    minor = int(version_parts[1]) if len(version_parts) > 1 else 0
+    
+    if major == 3:
+        if minor == 8:
+            return "notebook-executor-python38"
+        elif minor == 9:
+            return "notebook-executor-python39"
+        elif minor == 10:
+            return "notebook-executor"
+        elif minor == 11:
+            return "notebook-executor-python311"
+        elif minor == 12:
+            return "notebook-executor-python312"
+    
+    return "notebook-executor"  # fallback
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--input", "--input-csv", dest="input_csv", required=True, help="CSV de coleta (notebooks)")
@@ -386,14 +621,59 @@ def main():
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--originals-dir", type=str, default=None,
                     help="Diretório onde estão os .ipynb originais salvos pelo coletor (--save-notebooks-dir).")
+    ap.add_argument("--analyze-versions", action="store_true",
+                    help="Apenas analisar versões Python no CSV e sugerir imagem Docker.")
     args = ap.parse_args()
 
     logger = setup_logging(Path(args.log_file) if args.log_file else None)
     logger.info("== Iniciando executor de notebooks (headless + timeout real) ==")
     logger.info(f"Parâmetros: input={args.input_csv} output={args.output_csv} policy={args.policy} timeout={args.timeout}s limit={args.limit} originals_dir={args.originals_dir}")
 
+    # Análise de versões Python se solicitado
+    if args.analyze_versions:
+        logger.info("🔍 Analisando versões Python nos notebooks...")
+        analysis = analyze_python_versions_from_csv(Path(args.input_csv))
+        
+        print("\n📊 Análise de versões Python:")
+        print(f"   Total de notebooks: {analysis['total_notebooks']}")
+        print("   Versões encontradas:")
+        
+        for version, count in sorted(analysis['versions_count'].items()):
+            percentage = (count / analysis['total_notebooks']) * 100 if analysis['total_notebooks'] > 0 else 0
+            print(f"     - Python {version}: {count} notebooks ({percentage:.1f}%)")
+        
+        most_common = analysis['most_common_version']
+        suggested_image = suggest_docker_image(most_common)
+        
+        print("\n🎯 Recomendações:")
+        print(f"   Versão mais comum: Python {most_common}")
+        print(f"   Imagem Docker sugerida: {suggested_image}")
+        
+        if most_common != "unknown":
+            print("\n🚀 Comando para construir e executar:")
+            print(f"   docker build -t {suggested_image} -f Dockerfile.python{most_common.replace('.', '')} .")
+            print(f"   docker run --rm -v $(pwd)/scripts/data:/workspace/data -v $(pwd)/scripts/data/run_20251028_144659/raw_ipynb:/workspace/originals {suggested_image}")
+        else:
+            print("\n⚠️  Nenhuma versão Python declarada encontrada. Usando imagem padrão.")
+        
+        return
+
     outp = Path(args.output_csv)
     outp.parent.mkdir(parents=True, exist_ok=True)
+
+    # Análise rápida de versões Python para logging
+    logger.info("🔍 Analisando versões Python nos notebooks...")
+    analysis = analyze_python_versions_from_csv(Path(args.input_csv))
+    most_common = analysis['most_common_version']
+    suggested_image = suggest_docker_image(most_common)
+    
+    logger.info(f"📊 Versões Python encontradas: {dict(analysis['versions_count'])}")
+    logger.info(f"🎯 Versão mais comum: Python {most_common}")
+    logger.info(f"🐳 Imagem Docker sugerida: {suggested_image}")
+    
+    if most_common != "unknown":
+        logger.info("💡 Para usar a versão correta, execute:")
+        logger.info(f"   docker build -t {suggested_image} -f Dockerfile.python{most_common.replace('.', '')} .")
 
     originals_dir = Path(args.originals_dir) if args.originals_dir else None
 
@@ -412,6 +692,7 @@ def main():
             ]
             out_fields = fields + [
                 "exec_ok", "error", "exc_name", "failed_cell_index", "elapsed_s",
+                "retry_attempted", "retry_success", "installed_modules",
                 "original_found", "outputs_equal", "outputs_hash_orig", "outputs_hash_exec",
                 "n_outputs_orig", "n_outputs_exec"
             ]
@@ -478,8 +759,57 @@ def main():
                     logger.warning(f"Notebook não encontrado no clone: {nb_path}")
                     continue
 
+                # Verificar compatibilidade de versão Python
+                declared_python_version = row.get("python_version_declared", "")
+                if declared_python_version:
+                    is_compatible, warning = detect_python_version_compatibility(declared_python_version, sys.version_info)
+                    if not is_compatible:
+                        logger.warning(f"Incompatibilidade de versão Python: {warning}")
+                        # Pular notebook incompatível
+                        wr.writerow({
+                            "repo_full_name": full,
+                            "repo_default_branch": branch,
+                            "file_path": rel,
+                            "nb_ok_parse": True,
+                            "kernel_name": nb_kernel,
+                            "language": row.get("language"),
+                            "python_version_declared": declared_python_version,
+                            "exec_ok": False,
+                            "error": "PythonVersionIncompatible",
+                            "exc_name": None,
+                            "failed_cell_index": None,
+                            "elapsed_s": 0,
+                            "retry_attempted": False,
+                            "retry_success": False,
+                            "installed_modules": "",
+                            "original_found": str(original_found),
+                            "outputs_equal": "",
+                            "outputs_hash_orig": outputs_hash_orig,
+                            "outputs_hash_exec": "",
+                            "n_outputs_orig": n_outputs_orig,
+                            "n_outputs_exec": 0,
+                        })
+                        processed += 1
+                        continue
+                    elif warning:
+                        logger.info(f"Aviso de versão: {warning}")
+
                 logger.info(f"Executando notebook: {nb_path}")
-                ok, info = run_nb_with_timeout(pybin, repo_dir, nb_path, nb_kernel, args.timeout, logger)
+                ok, info = run_nb_with_timeout(pybin, repo_dir, nb_path, nb_kernel, args.timeout, logger, declared_python_version)
+                
+                # Retry logic se ModuleNotFoundError
+                retry_attempted = False
+                retry_success = False
+                installed_modules = ""
+                
+                if not ok and "missing_module" in info:
+                    missing_mod = info["missing_module"]
+                    logger.info(f"ModuleNotFoundError detectado: {missing_mod}. Tentando instalar e re-executar...")
+                    ok, info, retry_attempted, installed_modules = retry_with_module_install(
+                        pip, pybin, repo_dir, nb_path, nb_kernel, args.timeout, missing_mod, logger
+                    )
+                    retry_success = ok
+                    logger.info(f"Resultado do retry: {'sucesso' if ok else 'falha'}")
 
                 outputs_hash_exec = info.get("outputs_hash_exec","")
                 n_outputs_exec = info.get("n_outputs_exec",0)
@@ -500,6 +830,9 @@ def main():
                     "exc_name": info.get("exc_name"),
                     "failed_cell_index": info.get("failed_cell_index"),
                     "elapsed_s": info.get("elapsed_s"),
+                    "retry_attempted": str(retry_attempted),
+                    "retry_success": str(retry_success) if retry_attempted else "",
+                    "installed_modules": installed_modules,
                     "original_found": str(original_found),
                     "outputs_equal": outputs_equal,
                     "outputs_hash_orig": outputs_hash_orig,
