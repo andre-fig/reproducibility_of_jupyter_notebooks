@@ -1,7 +1,7 @@
-# Base image: Python 3.10 slim for smaller size
-FROM python:3.10-slim
+# Dockerfile para Python 3.11
+FROM python:3.11-slim
 
-# Install system dependencies that might be needed
+# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     build-essential \
@@ -70,8 +70,9 @@ RUN pip install --no-cache-dir \
 # Create working directory
 WORKDIR /workspace
 
-# Copy execution script
-COPY scripts/execute_notebook_copy.py /workspace/
+# Copy pipeline scripts (container_worker, execution_core, etc.)
+COPY scripts /opt/pipeline/scripts
+ENV PYTHONPATH="/opt/pipeline:${PYTHONPATH}"
 
 # Copy extra requirements (optional common libraries)
 COPY requirements_extra.txt /workspace/
@@ -99,9 +100,4 @@ ENV NOTEBOOK_DIR="/workspace/notebooks"
 VOLUME ["/workspace/notebooks", "/workspace/data"]
 
 # By default run the execution script
-# Override with docker run arguments as needed
-CMD ["python", "/workspace/execute_notebook_copy.py", \
-     "--input-csv", "/workspace/data/notebooks.csv", \
-     "--output-csv", "/workspace/data/execution_results.csv", \
-     "--log-file", "/workspace/data/logs/execute_notebooks.log"]
-
+CMD ["python", "-m", "scripts.container_worker"]

@@ -42,3 +42,5 @@ paper/
 .ruff_cache/
 data/run_20251028_144659/*
 data/run_*/
+
+plano*.md

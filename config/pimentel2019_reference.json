@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "source": "Pimentel et al. 2019",
+    "note": "Valores de referência do estudo original (aproximados)",
+    "notebooks_count": 1159166,
+    "python_notebooks_count": 863878
+  },
+  "metrics": {
+    "rq1_literate_programming": {
+      "no_markdown_ratio": 0.3093,
+      "comment": "Percentual de notebooks sem markdown"
+    },
+    "rq2_naming": {
+      "untitled_ratio": 0.0,
+      "non_portable_name_ratio": 0.0
+    },
+    "rq3_modularization": {
+      "local_imports_ratio": 0.103
+    },
+    "rq4_testing": {
+      "notebooks_with_testing_import_ratio": 0.0154
+    },
+    "rq6_execution_order": {
+      "out_of_order_ratio": 0.3636,
+      "has_skip_ratio": 0.769
+    },
+    "rq7_reproducibility": {
+      "exec_ok_ratio": 0.2411,
+      "outputs_equal_ratio": 0.0403
+    }
+  }
+}
+

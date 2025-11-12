@@ -1,0 +1,34 @@
+# Base image: Python 3.6 slim
+FROM python:3.6-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    build-essential \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy executor code
+WORKDIR /executor
+COPY . /executor
+
+# Install minimal dependencies
+RUN pip install --no-cache-dir \
+    jupyter \
+    nbformat \
+    ipykernel \
+    nbclient \
+    requests \
+    || true
+
+# Set environment variables for headless execution
+ENV DISPLAY=""
+ENV QT_QPA_PLATFORM="offscreen"
+ENV SDL_VIDEODRIVER="dummy"
+ENV SDL_AUDIODRIVER="dummy"
+ENV PYGAME_HIDE_SUPPORT_PROMPT="1"
+ENV MPLBACKEND="Agg"
+ENV PYTHONWARNINGS="ignore"
+
+# Default entrypoint
+ENTRYPOINT ["python", "-m", "scripts.container_worker"]
