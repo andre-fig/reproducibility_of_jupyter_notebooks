@@ -1,8 +1,15 @@
 # Base image: Python 2.7 slim
 FROM python:2.7-slim
 
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN set -eux; \
+    sed -i 's|http://deb.debian.org/debian|http://archive.debian.org/debian|g' /etc/apt/sources.list; \
+    sed -i '/security.debian.org/d' /etc/apt/sources.list; \
+    echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99freeze-check-valid-until
+
 # Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update -o Acquire::Check-Valid-Until=false && apt-get install -y --no-install-recommends \
     git \
     build-essential \
     && apt-get clean \

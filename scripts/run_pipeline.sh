@@ -58,7 +58,7 @@ EXECUTION_CSV="$DATA_OUTPUTS/execution_results.csv"
 PIMENTEL_REF="$CONFIG_DIR/pimentel2019_reference.json"
 
 # Valores padrão
-MAX_ITEMS="${MAX_ITEMS:-50}"
+MAX_ITEMS="${MAX_ITEMS:-400}"
 EXEC_TIMEOUT="${EXEC_TIMEOUT:-300}"
 EXEC_POLICY="${EXEC_POLICY:-strict}"
 SAVE_NOTEBOOKS="${SAVE_NOTEBOOKS:-true}"
@@ -66,6 +66,7 @@ DOWNLOAD_FULL_REPOS="${DOWNLOAD_FULL_REPOS:-true}"
 SKIP_COLLECT="${SKIP_COLLECT:-false}"
 SKIP_EXECUTE="${SKIP_EXECUTE:-false}"
 RUN_SUMMARY="${RUN_SUMMARY:-true}"
+REBUILD_IMAGES="${REBUILD_IMAGES:-false}"
 
 # Variáveis que serão definidas via argumentos
 DATE_START=""
@@ -94,6 +95,7 @@ OPÇÕES:
   --skip-collect         Pular etapa de coleta se collection.csv já existe
   --skip-execute         Pular etapa de execução se execution_results.csv já existe
   --no-summary           Não executar summarize_collection.py
+  --rebuild-images       Forçar rebuild das imagens Docker antes da execução
   -h, --help             Exibir esta ajuda
 
 VARIÁVEIS DE AMBIENTE:
@@ -108,6 +110,7 @@ VARIÁVEIS DE AMBIENTE:
   SKIP_COLLECT           Pular coleta (true/false)
   SKIP_EXECUTE           Pular execução (true/false)
   RUN_SUMMARY            Executar resumo (true/false)
+  REBUILD_IMAGES         Forçar rebuild das imagens Docker (true/false)
 
 EXEMPLOS:
   # Uso básico
@@ -175,6 +178,10 @@ parse_args() {
                 ;;
             --no-summary)
                 RUN_SUMMARY="false"
+                shift
+                ;;
+            --rebuild-images)
+                REBUILD_IMAGES="true"
                 shift
                 ;;
             -h|--help)
@@ -379,6 +386,9 @@ PY
 }
 
 ensure_docker_images() {
+    if [[ "$REBUILD_IMAGES" == "true" ]]; then
+        warning "Flag --rebuild-images ativa: todas as imagens necessárias serão reconstruídas agora."
+    fi
     info "Verificando imagens Docker necessárias..."
     local -a required_images=()
     mapfile -t required_images < <(get_required_images)
@@ -388,9 +398,13 @@ ensure_docker_images() {
     fi
 
     for image in "${required_images[@]}"; do
-        if docker image inspect "$image" >/dev/null 2>&1; then
-            info "Imagem disponível: $image"
-            continue
+        if [[ "$REBUILD_IMAGES" != "true" ]]; then
+            if docker image inspect "$image" >/dev/null 2>&1; then
+                info "Imagem disponível: $image"
+                continue
+            fi
+        else
+            info "Forçando rebuild da imagem $image"
         fi
         local dockerfile="${DOCKERFILE_MAP[$image]:-}"
         if [[ -z "$dockerfile" ]]; then

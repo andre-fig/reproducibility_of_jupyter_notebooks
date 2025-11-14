@@ -1,0 +1,579 @@
+2025-11-12 00:28:27,556 | INFO | == Iniciando executor de notebooks (headless + timeout real) ==
+2025-11-12 00:28:27,557 | INFO | Parâmetros: input=/home/asu/reproducibility_of_jupyter_notebooks-1/data/outputs/collection.csv output=/home/asu/reproducibility_of_jupyter_notebooks-1/data/outputs/execution_results.csv policy=strict timeout=300s limit=None originals_dir=/home/asu/reproducibility_of_jupyter_notebooks-1/data/outputs/notebooks_originais
+2025-11-12 00:28:27,557 | INFO | 🔍 Analisando versões Python nos notebooks...
+2025-11-12 00:28:27,558 | INFO | 📊 Versões Python encontradas: {'3.13': 30, '3.6': 7, 'unknown': 6, '3.12': 3}
+2025-11-12 00:28:27,558 | INFO | 🎯 Versão mais comum: Python 3.13
+2025-11-12 00:28:27,559 | INFO | 🐳 Imagem Docker sugerida: notebook-executor-py313
+2025-11-12 00:28:27,559 | INFO | 💡 Para usar a versão correta, execute:
+2025-11-12 00:28:27,559 | INFO |    docker build -t notebook-executor-py313 -f Dockerfile.python313 .
+2025-11-12 00:28:27,559 | INFO | Workspace temporário: /tmp/nbexec_jnwd5uv4
+2025-11-12 00:28:27,881 | INFO | Clonando wewnumam/learn-ai@main
+2025-11-12 00:28:29,571 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_1.ipynb
+2025-11-12 00:28:29,571 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__FreeCodeCamp-Pandas-Real-Life-Example__Exercises_1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=c2e53f77127f68dd7cb996540e06a7bfa63d1b63cc2fa697c00f311cf42dd2d6 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:30,405 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:30,417 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_2.ipynb
+2025-11-12 00:28:30,417 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__FreeCodeCamp-Pandas-Real-Life-Example__Exercises_2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=d97db5d1574e42f3c2700c5f9fae8c9e5858a5b4a8ec6810b0e9fea3a50a9a7f notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:30,913 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:30,929 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_1.ipynb
+2025-11-12 00:28:30,930 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__FreeCodeCamp-Pandas-Real-Life-Example__Lecture_1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=931de126d369b599ed4f430b7c00ff9973990ffee7777a99daf51daa70586392 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:31,387 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:31,395 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_2.ipynb
+2025-11-12 00:28:31,395 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__FreeCodeCamp-Pandas-Real-Life-Example__Lecture_2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=7707961d01863dfa29aded1f2a9291575746cfd0ffc12753383f619b11166303 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:31,897 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:31,963 | INFO | Executando via Docker: image=notebook-executor-py36 nb=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-1-reading-csv-and-txt-files/files/Lecture.ipynb
+2025-11-12 00:28:31,963 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__RDP-Reading-Data-with-Python-and-Pandas__unit-1-reading-data-with-python-and-pandas__lesson-1-reading-csv-and-txt-files__files__Lecture.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-1-reading-csv-and-txt-files/files/Lecture.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.6 -e NOTEBOOK_ID=da43bbd214c4f8acd75fb7b713ecc219b3232971f8589d7058f57bd1cd7074cc notebook-executor-py36 python -m scripts.container_worker
+2025-11-12 00:28:32,444 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/runpy.py", line 183, in _run_module_as_main
+    mod_name, mod_spec, code = _get_module_details(mod_name, _Error)
+  File "/usr/local/lib/python3.6/runpy.py", line 153, in _get_module_details
+    code = loader.get_code(mod_name)
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/executor/scripts/container_worker.py", line 15
+    from __future__ import annotations
+    ^
+SyntaxError: future feature annotations is not defined
+
+2025-11-12 00:28:32,450 | INFO | Executando via Docker: image=notebook-executor-py36 nb=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-11-reading-data-from-relational-databases/files/Lecture.ipynb
+2025-11-12 00:28:32,451 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__RDP-Reading-Data-with-Python-and-Pandas__unit-1-reading-data-with-python-and-pandas__lesson-11-reading-data-from-relational-databases__files__Lecture.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-11-reading-data-from-relational-databases/files/Lecture.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.6 -e NOTEBOOK_ID=ce1f0f4876ea82818df6638f3e3554aa22fbfc48a8a238f86e3d4f01b29252ce notebook-executor-py36 python -m scripts.container_worker
+2025-11-12 00:28:32,874 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/runpy.py", line 183, in _run_module_as_main
+    mod_name, mod_spec, code = _get_module_details(mod_name, _Error)
+  File "/usr/local/lib/python3.6/runpy.py", line 153, in _get_module_details
+    code = loader.get_code(mod_name)
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/executor/scripts/container_worker.py", line 15
+    from __future__ import annotations
+    ^
+SyntaxError: future feature annotations is not defined
+
+2025-11-12 00:28:32,881 | INFO | Executando via Docker: image=notebook-executor-py36 nb=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-15-fetching-data-from-a-rest-api/files/Lecture.ipynb
+2025-11-12 00:28:32,882 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__RDP-Reading-Data-with-Python-and-Pandas__unit-1-reading-data-with-python-and-pandas__lesson-15-fetching-data-from-a-rest-api__files__Lecture.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-15-fetching-data-from-a-rest-api/files/Lecture.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.6 -e NOTEBOOK_ID=1d9cb73d5cdab6459a7a262a588541a57bca90f86ca81296e28e45b90f21758f notebook-executor-py36 python -m scripts.container_worker
+2025-11-12 00:28:33,311 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/runpy.py", line 183, in _run_module_as_main
+    mod_name, mod_spec, code = _get_module_details(mod_name, _Error)
+  File "/usr/local/lib/python3.6/runpy.py", line 153, in _get_module_details
+    code = loader.get_code(mod_name)
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/executor/scripts/container_worker.py", line 15
+    from __future__ import annotations
+    ^
+SyntaxError: future feature annotations is not defined
+
+2025-11-12 00:28:33,318 | INFO | Executando via Docker: image=notebook-executor-py36 nb=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-17-reading-html-tables/files/Lecture.ipynb
+2025-11-12 00:28:33,318 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__RDP-Reading-Data-with-Python-and-Pandas__unit-1-reading-data-with-python-and-pandas__lesson-17-reading-html-tables__files__Lecture.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-17-reading-html-tables/files/Lecture.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.6 -e NOTEBOOK_ID=58a25dbb7e3cee5c8b8343fda33bfc2b2522263ecc613cadd6dfb163005c9f3b notebook-executor-py36 python -m scripts.container_worker
+2025-11-12 00:28:33,763 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/runpy.py", line 183, in _run_module_as_main
+    mod_name, mod_spec, code = _get_module_details(mod_name, _Error)
+  File "/usr/local/lib/python3.6/runpy.py", line 153, in _get_module_details
+    code = loader.get_code(mod_name)
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/executor/scripts/container_worker.py", line 15
+    from __future__ import annotations
+    ^
+SyntaxError: future feature annotations is not defined
+
+2025-11-12 00:28:33,769 | INFO | Executando via Docker: image=notebook-executor-py36 nb=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-19-complementary-file-types-and-io-tools/files/Lecture.ipynb
+2025-11-12 00:28:33,769 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__RDP-Reading-Data-with-Python-and-Pandas__unit-1-reading-data-with-python-and-pandas__lesson-19-complementary-file-types-and-io-tools__files__Lecture.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-19-complementary-file-types-and-io-tools/files/Lecture.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.6 -e NOTEBOOK_ID=92fdf1af23611040cb77056b3548ff872db87baae81cf3b5210229778fa730db notebook-executor-py36 python -m scripts.container_worker
+2025-11-12 00:28:34,226 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/runpy.py", line 183, in _run_module_as_main
+    mod_name, mod_spec, code = _get_module_details(mod_name, _Error)
+  File "/usr/local/lib/python3.6/runpy.py", line 153, in _get_module_details
+    code = loader.get_code(mod_name)
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/executor/scripts/container_worker.py", line 15
+    from __future__ import annotations
+    ^
+SyntaxError: future feature annotations is not defined
+
+2025-11-12 00:28:34,233 | INFO | Executando via Docker: image=notebook-executor-py36 nb=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-5-reading-excel-files/files/Lecture.ipynb
+2025-11-12 00:28:34,233 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__RDP-Reading-Data-with-Python-and-Pandas__unit-1-reading-data-with-python-and-pandas__lesson-5-reading-excel-files__files__Lecture.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-5-reading-excel-files/files/Lecture.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.6 -e NOTEBOOK_ID=965bbf9ab3550a9dac0de3fbaefd2fc63786416c11cf844a12c307bc62621ffd notebook-executor-py36 python -m scripts.container_worker
+2025-11-12 00:28:34,676 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/runpy.py", line 183, in _run_module_as_main
+    mod_name, mod_spec, code = _get_module_details(mod_name, _Error)
+  File "/usr/local/lib/python3.6/runpy.py", line 153, in _get_module_details
+    code = loader.get_code(mod_name)
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/executor/scripts/container_worker.py", line 15
+    from __future__ import annotations
+    ^
+SyntaxError: future feature annotations is not defined
+
+2025-11-12 00:28:34,684 | INFO | Executando via Docker: image=notebook-executor-py36 nb=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-8-reading-json-files/files/Lecture.ipynb
+2025-11-12 00:28:34,684 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__RDP-Reading-Data-with-Python-and-Pandas__unit-1-reading-data-with-python-and-pandas__lesson-8-reading-json-files__files__Lecture.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-8-reading-json-files/files/Lecture.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.6 -e NOTEBOOK_ID=9c8b089b8a6be14aadb22e01391f07381185feaefaea98a156bc27efc243b939 notebook-executor-py36 python -m scripts.container_worker
+2025-11-12 00:28:35,162 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/runpy.py", line 183, in _run_module_as_main
+    mod_name, mod_spec, code = _get_module_details(mod_name, _Error)
+  File "/usr/local/lib/python3.6/runpy.py", line 153, in _get_module_details
+    code = loader.get_code(mod_name)
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/executor/scripts/container_worker.py", line 15
+    from __future__ import annotations
+    ^
+SyntaxError: future feature annotations is not defined
+
+2025-11-12 00:28:35,164 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/data-cleaning-rmotr-freecodecamp/1 - Missing Data.ipynb
+2025-11-12 00:28:35,164 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__data-cleaning-rmotr-freecodecamp__1 - Missing Data.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/data-cleaning-rmotr-freecodecamp/1 - Missing Data.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=f5d517369a7c78daae0af067ef014668a4fa800a0565ad0b5fab7bf2f0dbed4d notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:35,653 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:35,655 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/data-cleaning-rmotr-freecodecamp/2 - Handling Missing Data with Pandas.ipynb
+2025-11-12 00:28:35,655 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__data-cleaning-rmotr-freecodecamp__2 - Handling Missing Data with Pandas.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/data-cleaning-rmotr-freecodecamp/2 - Handling Missing Data with Pandas.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=3602e8019807053a848681da02e9d5f5e5d52b10c020a69cdccfcd5f609cc5b4 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:36,112 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:36,114 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/data-cleaning-rmotr-freecodecamp/3 - Cleaning Not Null Values.ipynb
+2025-11-12 00:28:36,114 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__data-cleaning-rmotr-freecodecamp__3 - Cleaning Not Null Values.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/data-cleaning-rmotr-freecodecamp/3 - Cleaning Not Null Values.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=b24652ff968e871c4657d7c602236d0d9dbf128fa6c193ba741fac799f9b4a40 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:36,619 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:36,621 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/data-cleaning-rmotr-freecodecamp/4 - More Visualizations.ipynb
+2025-11-12 00:28:36,621 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__data-cleaning-rmotr-freecodecamp__4 - More Visualizations.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/data-cleaning-rmotr-freecodecamp/4 - More Visualizations.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=2983c66ede47e8f995218bc475be10e9eef33bb2b0a996ff54873c16a296f94f notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:37,118 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:37,119 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/data-cleaning-rmotr-freecodecamp/5 - Real Example.ipynb
+2025-11-12 00:28:37,119 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__data-cleaning-rmotr-freecodecamp__5 - Real Example.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/data-cleaning-rmotr-freecodecamp/5 - Real Example.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=fb7c2a129af47f80c10156b86679555b32bc98cf3e1fe77ed2fa8723043c0501 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:37,591 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:37,592 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/freecodecamp-intro-to-pandas/1 - Pandas - Series.ipynb
+2025-11-12 00:28:37,592 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__freecodecamp-intro-to-pandas__1 - Pandas - Series.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/freecodecamp-intro-to-pandas/1 - Pandas - Series.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=bc2fe5203c71eafe437c4be9f8bcc0a597ec49de634fce790321089ff9435fe7 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:38,052 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:38,053 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/freecodecamp-intro-to-pandas/2 - Pandas Series exercises.ipynb
+2025-11-12 00:28:38,053 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__freecodecamp-intro-to-pandas__2 - Pandas Series exercises.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/freecodecamp-intro-to-pandas/2 - Pandas Series exercises.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=b4e5a597df960403067a9e96c4afdcc44409466d47a7a1f34c0e01ee36f91235 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:38,557 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:38,558 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/freecodecamp-intro-to-pandas/3 - Pandas - DataFrames.ipynb
+2025-11-12 00:28:38,558 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__freecodecamp-intro-to-pandas__3 - Pandas - DataFrames.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/freecodecamp-intro-to-pandas/3 - Pandas - DataFrames.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=2a4d7f4eb0d345db0b141ec89440989b9958da7002b122981c91c668a681af73 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:39,067 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:39,068 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/freecodecamp-intro-to-pandas/4 - Pandas DataFrames exercises.ipynb
+2025-11-12 00:28:39,068 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__freecodecamp-intro-to-pandas__4 - Pandas DataFrames exercises.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/freecodecamp-intro-to-pandas/4 - Pandas DataFrames exercises.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=415d8ebd1b64e8feaf4a774b21fe884fdb4b1e70c770ec4d1fc877ff08561daf notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:39,522 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:39,524 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/freecodecamp-intro-to-pandas/5 - Pandas - Reading CSV and Basic Plotting.ipynb
+2025-11-12 00:28:39,524 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__freecodecamp-intro-to-pandas__5 - Pandas - Reading CSV and Basic Plotting.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/freecodecamp-intro-to-pandas/5 - Pandas - Reading CSV and Basic Plotting.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=e5e6ce15f5a6a5528d6ed0483b1468c9f57a64e9c76cc80e5fffa524985b887c notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:40,033 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:40,059 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/programming-with-mosh/HelloWorld.ipynb
+2025-11-12 00:28:40,059 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-analysis__programming-with-mosh__HelloWorld.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/programming-with-mosh/HelloWorld.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=c08f6d4f7295a9c8225d9d298f61f7738c3c02b0ee3ea45a2499c8c1d70ce03b notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:40,556 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:40,558 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-science/freecodecamp-intro-to-numpy/1. Introduction to Data Science.ipynb
+2025-11-12 00:28:40,558 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-science__freecodecamp-intro-to-numpy__1. Introduction to Data Science.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-science/freecodecamp-intro-to-numpy/1. Introduction to Data Science.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=2f265f05414c75f1328687c31fd55d8da421470c91e6ae1c7cf920417d3e9196 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:41,097 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:41,098 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-science/freecodecamp-intro-to-numpy/2. NumPy.ipynb
+2025-11-12 00:28:41,098 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-science__freecodecamp-intro-to-numpy__2. NumPy.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-science/freecodecamp-intro-to-numpy/2. NumPy.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=2858f9d33f294a2101304ba8ddd3579cd2f80b2951172ff9558b4a5d9fa51405 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:41,569 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:41,570 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-science/freecodecamp-intro-to-numpy/3. NumPy exercises.ipynb
+2025-11-12 00:28:41,570 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-science__freecodecamp-intro-to-numpy__3. NumPy exercises.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-science/freecodecamp-intro-to-numpy/3. NumPy exercises.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=5a7650594104fca13d0d714f5807799e84970f7d903125e28eff973ebdbc1c12 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:42,066 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:42,071 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-science/freecodecamp-intro-to-numpy/Untitled.ipynb
+2025-11-12 00:28:42,071 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/data-science__freecodecamp-intro-to-numpy__Untitled.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-science/freecodecamp-intro-to-numpy/Untitled.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=24d4e9827fa2276e4e0f622db05e7e997d61ca19a778a0e98f2e14e94ee26371 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:42,548 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:42,551 | INFO | Executando via Docker: image=notebook-executor-py313 nb=machine-learning/decision-tree-classifier/MusicGenreClassifier.ipynb
+2025-11-12 00:28:42,551 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/machine-learning__decision-tree-classifier__MusicGenreClassifier.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=machine-learning/decision-tree-classifier/MusicGenreClassifier.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=9a72d4b0ff503a4548aa3a128e4957eded8c5971d9a184683789c34edd8d5482 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:43,047 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:43,049 | INFO | Executando via Docker: image=notebook-executor-py313 nb=machine-learning/decision-tree-classifier/PresistingModel.ipynb
+2025-11-12 00:28:43,050 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/machine-learning__decision-tree-classifier__PresistingModel.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=machine-learning/decision-tree-classifier/PresistingModel.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=becfe407b02fcdaa75a18aad5d90699def023b2fcc133e4900be03e443f0bfb9 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:43,497 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:43,557 | INFO | Executando via Docker: image=notebook-executor nb=mka-ugm/ace/summary/Summarizer.ipynb
+2025-11-12 00:28:43,557 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/mka-ugm__ace__summary__Summarizer.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=mka-ugm/ace/summary/Summarizer.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED= -e NOTEBOOK_ID=aa94d220b7d39f342b8835e43cbb1039c7fefc988db4011a7ba536c2a2056503 notebook-executor python -m scripts.container_worker
+2025-11-12 00:28:44,110 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/local/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/opt/pipeline/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:44,206 | INFO | Executando via Docker: image=notebook-executor nb=mka-ugm/pma/Tugas_1_Exploratory_Data_Analysis.ipynb
+2025-11-12 00:28:44,206 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/mka-ugm__pma__Tugas_1_Exploratory_Data_Analysis.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=mka-ugm/pma/Tugas_1_Exploratory_Data_Analysis.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED= -e NOTEBOOK_ID=bb642fb641415bdb4da4192112567696b410a2bfc3ac3f9f1e079b22183e1ddb notebook-executor python -m scripts.container_worker
+2025-11-12 00:28:44,679 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/local/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/opt/pipeline/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+/home/asu/reproducibility_of_jupyter_notebooks-1/.venv-for-project/lib/python3.13/site-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  validate(nb)
+2025-11-12 00:28:44,690 | INFO | Executando via Docker: image=notebook-executor-py313 nb=mka-ugm/stmh/Analysis_of_Algorithms.ipynb
+2025-11-12 00:28:44,691 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/mka-ugm__stmh__Analysis_of_Algorithms.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=mka-ugm/stmh/Analysis_of_Algorithms.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=9753aac533759c40772a38c4ee3a9e849cdb2ef3980de12ef96a4244674e5663 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:45,243 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+/home/asu/reproducibility_of_jupyter_notebooks-1/.venv-for-project/lib/python3.13/site-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  validate(nb)
+2025-11-12 00:28:45,250 | INFO | Executando via Docker: image=notebook-executor-py313 nb=mka-ugm/stmh/Analysis_of_Algorithms_Enhanced.ipynb
+2025-11-12 00:28:45,251 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/mka-ugm__stmh__Analysis_of_Algorithms_Enhanced.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=mka-ugm/stmh/Analysis_of_Algorithms_Enhanced.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=57fa626092a7d919a3a82d4acb3e35c7163a581058361bc8a3d0992f14267acf notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:45,731 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:45,733 | INFO | Executando via Docker: image=notebook-executor-py313 nb=mka-ugm/stmh/FeatureSelectionGA.ipynb
+2025-11-12 00:28:45,733 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/mka-ugm__stmh__FeatureSelectionGA.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=mka-ugm/stmh/FeatureSelectionGA.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=91c0afbec4ee0321728abfb490cbb5e1b950af359bb20cfc57d843939ffbb200 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:46,184 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:46,190 | INFO | Executando via Docker: image=notebook-executor-py313 nb=mka-ugm/stmh/GeneticAlgorithm.ipynb
+2025-11-12 00:28:46,190 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/mka-ugm__stmh__GeneticAlgorithm.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=mka-ugm/stmh/GeneticAlgorithm.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=6c6014b6d0af72ea41093534b5c5df3cca8422ae9e241709ee6a49e62663b0c4 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:46,669 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:46,671 | INFO | Executando via Docker: image=notebook-executor-py313 nb=mka-ugm/stmh/Quiz.ipynb
+2025-11-12 00:28:46,672 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/mka-ugm__stmh__Quiz.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=mka-ugm/stmh/Quiz.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=d43509acb374901552d7384fa55bf29f5ac2a60d99ccf8934def0d630ac5f798 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:47,176 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:47,180 | INFO | Executando via Docker: image=notebook-executor-py313 nb=projects/data-analysis-with-python-projects/demographic-data-analysis/Untitled.ipynb
+2025-11-12 00:28:47,180 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/projects__data-analysis-with-python-projects__demographic-data-analysis__Untitled.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=projects/data-analysis-with-python-projects/demographic-data-analysis/Untitled.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=541a16f5eb0f2b6d438e62aaa5a6c67400e709d757e8bf4859fe7dbb688cbdf4 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:47,683 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:47,686 | INFO | Executando via Docker: image=notebook-executor-py313 nb=projects/data-analysis-with-python-projects/medical-data-visualizer/Untitled.ipynb
+2025-11-12 00:28:47,687 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/projects__data-analysis-with-python-projects__medical-data-visualizer__Untitled.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=projects/data-analysis-with-python-projects/medical-data-visualizer/Untitled.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=c6144e14aa7154ba913b5260f08376fb63251e12b754d77cd5d7cbe64c365c95 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:48,130 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:48,133 | INFO | Executando via Docker: image=notebook-executor-py313 nb=projects/data-analysis-with-python-projects/sea-level-predictor/Untitled.ipynb
+2025-11-12 00:28:48,134 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/projects__data-analysis-with-python-projects__sea-level-predictor__Untitled.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=projects/data-analysis-with-python-projects/sea-level-predictor/Untitled.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=f90bb3769edaee7bb1e23bffcfc00f9fafb9f049543e9d69b948ed883407a21f notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:48,622 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:48,626 | INFO | Executando via Docker: image=notebook-executor-py313 nb=projects/data-analysis-with-python-projects/time-series-visualizer/Untitled.ipynb
+2025-11-12 00:28:48,626 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/wewnumam__learn-ai/_out/projects__data-analysis-with-python-projects__time-series-visualizer__Untitled.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=projects/data-analysis-with-python-projects/time-series-visualizer/Untitled.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=e6e90d26a96ec508860e40cf3b21d0125b4fa69146dd8b683917743c816cc3d0 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:28:49,146 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/executor/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:49,165 | INFO | Clonando jasonkneen/smolagents@main
+2025-11-12 00:28:49,864 | INFO | Executando via Docker: image=notebook-executor-python312 nb=examples/open_deep_research/analysis.ipynb
+2025-11-12 00:28:49,864 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/jasonkneen__smolagents:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/jasonkneen__smolagents/_out/examples__open_deep_research__analysis.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=examples/open_deep_research/analysis.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.12 -e NOTEBOOK_ID=aaae41c39c5534912ee5fa9094451fe7eab0897c061de6b45fe4e18b0a5a37c5 notebook-executor-python312 python -m scripts.container_worker
+2025-11-12 00:28:50,356 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/pipeline/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:50,359 | INFO | Executando via Docker: image=notebook-executor-python312 nb=examples/open_deep_research/visual_vs_text_browser.ipynb
+2025-11-12 00:28:50,359 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/jasonkneen__smolagents:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/jasonkneen__smolagents/_out/examples__open_deep_research__visual_vs_text_browser.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=examples/open_deep_research/visual_vs_text_browser.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.12 -e NOTEBOOK_ID=7ffdce5485c1f1a3f36c4199a0751deceb7cbfea05d6af384cfcc00f7aa3239b notebook-executor-python312 python -m scripts.container_worker
+2025-11-12 00:28:50,821 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/pipeline/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:50,823 | INFO | Executando via Docker: image=notebook-executor-python312 nb=examples/smolagents_benchmark/score.ipynb
+2025-11-12 00:28:50,823 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/jasonkneen__smolagents:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/jasonkneen__smolagents/_out/examples__smolagents_benchmark__score.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=examples/smolagents_benchmark/score.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.12 -e NOTEBOOK_ID=9c948c5085a427829c9195bef3cfa770ced3aa5dbedb7fa9498fe26cd6af6f89 notebook-executor-python312 python -m scripts.container_worker
+2025-11-12 00:28:51,352 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/pipeline/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:51,365 | INFO | Clonando 1drie5/py-playground@main
+2025-11-12 00:28:52,152 | INFO | Executando via Docker: image=notebook-executor nb=pytorch-campusx/2_tensors_in_pytorch.ipynb
+2025-11-12 00:28:52,152 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/1drie5__py-playground:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/1drie5__py-playground/_out/pytorch-campusx__2_tensors_in_pytorch.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=pytorch-campusx/2_tensors_in_pytorch.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED= -e NOTEBOOK_ID=48c0ad09c6478f1852779c0dce2378c050055abd260d88750421118c7797a620 notebook-executor python -m scripts.container_worker
+2025-11-12 00:28:52,633 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/local/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/opt/pipeline/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:52,642 | INFO | Executando via Docker: image=notebook-executor nb=pytorch-campusx/3_pytorch_autograd.ipynb
+2025-11-12 00:28:52,642 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/1drie5__py-playground:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/1drie5__py-playground/_out/pytorch-campusx__3_pytorch_autograd.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=pytorch-campusx/3_pytorch_autograd.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED= -e NOTEBOOK_ID=bcf3988d483f5877bb571105fb0af7350bef01c840e41411b458325b388a40a2 notebook-executor python -m scripts.container_worker
+2025-11-12 00:28:53,134 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/local/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/opt/pipeline/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:53,141 | INFO | Executando via Docker: image=notebook-executor nb=pytorch-campusx/4_pytorch_training_pipeline.ipynb
+2025-11-12 00:28:53,141 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/1drie5__py-playground:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/1drie5__py-playground/_out/pytorch-campusx__4_pytorch_training_pipeline.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=pytorch-campusx/4_pytorch_training_pipeline.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED= -e NOTEBOOK_ID=201396860268cfc3212f75cde7830699873c61a5ad7e721f6b982479f48fee9c notebook-executor python -m scripts.container_worker
+2025-11-12 00:28:53,650 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/local/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/opt/pipeline/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:53,655 | INFO | Executando via Docker: image=notebook-executor nb=pytorch-campusx/5_pytorch_nn_module.ipynb
+2025-11-12 00:28:53,655 | INFO | docker run: docker run --rm -v /tmp/nbexec_jnwd5uv4/1drie5__py-playground:/workspace/repo:ro -v /tmp/nbexec_jnwd5uv4/1drie5__py-playground/_out/pytorch-campusx__5_pytorch_nn_module.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=pytorch-campusx/5_pytorch_nn_module.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED= -e NOTEBOOK_ID=0a8ee176667ea5293fd5c9cf42e3b4d0f97fb3420f8d80e8f9a99317976b226b notebook-executor python -m scripts.container_worker
+2025-11-12 00:28:54,126 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/local/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/opt/pipeline/scripts/container_worker.py", line 25, in <module>
+    from execution_core import execute_notebook_in_current_env
+ModuleNotFoundError: No module named 'execution_core'
+
+2025-11-12 00:28:54,158 | INFO | Limpeza do workspace temporário concluída.
+2025-11-12 00:28:54,158 | INFO | Concluído. Notebooks processados: 46
+2025-11-12 00:28:54,158 | INFO | Resultados em: /home/asu/reproducibility_of_jupyter_notebooks-1/data/outputs/execution_results.csv

@@ -74,14 +74,6 @@ WORKDIR /workspace
 COPY scripts /opt/pipeline/scripts
 ENV PYTHONPATH="/opt/pipeline:${PYTHONPATH}"
 
-# Copy extra requirements (optional common libraries)
-COPY requirements_extra.txt /workspace/
-
-# Install extra requirements if present
-RUN if [ -f requirements_extra.txt ]; then \
-    pip install --no-cache-dir -r requirements_extra.txt || true; \
-    fi
-
 # Set environment variables for headless execution
 ENV DISPLAY=""
 ENV QT_QPA_PLATFORM="offscreen"
@@ -102,4 +94,3 @@ VOLUME ["/workspace/notebooks", "/workspace/data"]
 # By default run the execution script
 # Override with docker run arguments as needed
 CMD ["python", "-m", "scripts.container_worker"]
-

@@ -1,0 +1,229 @@
+🔍 Iniciando coleta de notebooks...
+   Período: 2025-01-01 até 2025-01-31
+   Meta: 50 notebooks
+   Requer outputs: False
+   Output: /home/asu/reproducibility_of_jupyter_notebooks-1/data/outputs/collection.csv
+
+Varredura de repositórios: 0it [00:00, ?it/s][Repo 1] Processando: elizaos-plugins/plugin-solana ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 1it [00:06,  6.91s/it][Repo 2] Processando: craftycodie/bnet-website ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 2it [00:07,  3.13s/it][Repo 3] Processando: MituFun/hhhhomepage ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 3it [00:07,  1.91s/it][Repo 4] Processando: marcndo/algo_ds_playground ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 4it [00:08,  1.32s/it][Repo 5] Processando: jijingdeyi/cv-rookie ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 5it [00:08,  1.01s/it][Repo 6] Processando: ALucek/ppt2desc ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 6it [00:09,  1.21it/s][Repo 7] Processando: bigdargon/hostsVN-DeadDomainsLinter ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 7it [00:09,  1.43it/s][Repo 8] Processando: d-shimily/d-shimily ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 8it [00:10,  1.62it/s][Repo 9] Processando: dsc-courses/dsc140a-2025-wi ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 9it [00:10,  1.72it/s][Repo 10] Processando: dillfrescott/mvsep-beta ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 10it [00:11,  1.87it/s][Repo 11] Processando: rvaughan/cardiff_trains ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 11it [00:11,  1.54it/s][Repo 12] Processando: SwightsNotFound/swightshome ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 12it [00:12,  1.67it/s][Repo 13] Processando: alihusains/YouTube_to_m3u ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 13it [00:12,  1.76it/s][Repo 14] Processando: makaubenson/auto-follow-unfollow ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 14it [00:13,  1.86it/s][Repo 15] Processando: samimiair/git-point ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 15it [00:13,  1.97it/s][Repo 16] Processando: carloslk18/beecrowd-pr ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 16it [00:14,  2.02it/s][Repo 17] Processando: AuthScape/AuthScape.Core ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 17it [00:14,  2.03it/s][Repo 18] Processando: Divyanshudiv/Divyanshudiv ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 18it [00:15,  2.10it/s][Repo 19] Processando: bryce-hoehn/profile ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 19it [00:15,  2.12it/s][Repo 20] Processando: cindycarson09/commit ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 20it [00:16,  2.15it/s][Repo 21] Processando: javadkhajavi/multi-proxy-config-fetcher ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 21it [00:16,  2.16it/s][Repo 22] Processando: vpnineh/v3 ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 22it [00:17,  2.17it/s][Repo 23] Processando: javadkhajavi/auto-warp-config ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 23it [00:17,  2.19it/s][Repo 24] Processando: alihusains/iptv-generator-youtube ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 24it [00:17,  2.13it/s][Repo 25] Processando: CloudEngineHub/next.js ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 25it [00:20,  1.04it/s][Repo 26] Processando: CloudEngineHub/n8n ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 26it [00:21,  1.03s/it][Repo 27] Processando: zhnnou/AutoBuildImmortalWrt ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 27it [00:21,  1.16it/s][Repo 28] Processando: CloudEngineHub/MarkEdit ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 28it [00:22,  1.31it/s][Repo 29] Processando: hhanh00/zcash-vote-server ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 29it [00:22,  1.48it/s][Repo 30] Processando: theGeekist/with-clap ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 30it [00:23,  1.63it/s][Repo 31] Processando: kusnadi26/auto-commit ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 31it [00:23,  1.78it/s][Repo 32] Processando: WiscArData/Emperor ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 32it [00:24,  1.52it/s][Repo 33] Processando: StruggleYang/AwesomeYang.com ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 33it [00:25,  1.63it/s][Repo 34] Processando: chieflens/chieflens ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 34it [00:25,  1.77it/s][Repo 35] Processando: uswelcomeu/uswelcomeu ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 35it [00:25,  1.87it/s][Repo 36] Processando: deembear0001/hf-live-3g ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 36it [00:26,  1.98it/s][Repo 37] Processando: soyonorin123/SteamFriends ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 37it [00:26,  2.04it/s][Repo 38] Processando: papra-hq/papra ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 38it [00:27,  1.95it/s][Repo 39] Processando: toothpaster/upptime ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 39it [00:27,  2.01it/s][Repo 40] Processando: shazron/caprover ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 40it [00:28,  2.08it/s][Repo 41] Processando: RocYuki/SteamFriends ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 41it [00:28,  2.07it/s][Repo 42] Processando: wewnumam/learn-ai ...
+  └─ Encontrados 43 notebook(s), analisando...
+  └─ Módulos Python locais detectados: 70
+  └─ Repositório completo salvo em: /home/asu/reproducibility_of_jupyter_notebooks-1/data/outputs/repositorios_completos/wewnumam/learn-ai/8ab772e1ed75123431f37ef9483e6c15dba4d264
+     └─ ✓ OK: data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_1.ipynb (total: 1)
+     └─ ✓ OK: data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_2.ipynb (total: 2)
+     └─ ✓ OK: data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_1.ipynb (total: 3)
+     └─ ✓ OK: data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_2.ipynb (total: 4)
+     └─ ✓ OK: data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-1-reading-csv-and-txt-files/files/Lecture.ipynb (total: 5)
+     └─ ✓ OK: data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-11-reading-data-from-relational-databases/files/Lecture.ipynb (total: 6)
+     └─ ✓ OK: data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-15-fetching-data-from-a-rest-api/files/Lecture.ipynb (total: 7)
+     └─ ✓ OK: data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-17-reading-html-tables/files/Lecture.ipynb (total: 8)
+     └─ ✓ OK: data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-19-complementary-file-types-and-io-tools/files/Lecture.ipynb (total: 9)
+     └─ ✓ OK: data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-5-reading-excel-files/files/Lecture.ipynb (total: 10)
+     └─ ✓ OK: data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-8-reading-json-files/files/Lecture.ipynb (total: 11)
+     └─ ✓ OK: data-analysis/data-cleaning-rmotr-freecodecamp/1 - Missing Data.ipynb (total: 12)
+     └─ ✓ OK: data-analysis/data-cleaning-rmotr-freecodecamp/2 - Handling Missing Data with Pandas.ipynb (total: 13)
+     └─ ✓ OK: data-analysis/data-cleaning-rmotr-freecodecamp/3 - Cleaning Not Null Values.ipynb (total: 14)
+     └─ ✓ OK: data-analysis/data-cleaning-rmotr-freecodecamp/4 - More Visualizations.ipynb (total: 15)
+     └─ ✓ OK: data-analysis/data-cleaning-rmotr-freecodecamp/5 - Real Example.ipynb (total: 16)
+     └─ ✓ OK: data-analysis/freecodecamp-intro-to-pandas/1 - Pandas - Series.ipynb (total: 17)
+     └─ ✓ OK: data-analysis/freecodecamp-intro-to-pandas/2 - Pandas Series exercises.ipynb (total: 18)
+     └─ ✓ OK: data-analysis/freecodecamp-intro-to-pandas/3 - Pandas - DataFrames.ipynb (total: 19)
+     └─ ✓ OK: data-analysis/freecodecamp-intro-to-pandas/4 - Pandas DataFrames exercises.ipynb (total: 20)
+     └─ ✓ OK: data-analysis/freecodecamp-intro-to-pandas/5 - Pandas - Reading CSV and Basic Plotting.ipynb (total: 21)
+     └─ ✓ OK: data-analysis/programming-with-mosh/HelloWorld.ipynb (total: 22)
+     └─ ✓ OK: data-science/freecodecamp-intro-to-numpy/1. Introduction to Data Science.ipynb (total: 23)
+     └─ ✓ OK: data-science/freecodecamp-intro-to-numpy/2. NumPy.ipynb (total: 24)
+     └─ ✓ OK: data-science/freecodecamp-intro-to-numpy/3. NumPy exercises.ipynb (total: 25)
+     └─ ✓ OK: data-science/freecodecamp-intro-to-numpy/Untitled.ipynb (total: 26)
+     └─ ✓ OK: machine-learning/decision-tree-classifier/MusicGenreClassifier.ipynb (total: 27)
+     └─ ✓ OK: machine-learning/decision-tree-classifier/PresistingModel.ipynb (total: 28)
+     └─ ✓ OK: mka-ugm/ace/summary/Summarizer.ipynb (total: 29)
+     └─ ✓ OK: mka-ugm/pma/Tugas_1_Exploratory_Data_Analysis.ipynb (total: 30)
+     ├─ ✗ mka-ugm/pma/Tugas_2_LogisticRegression.ipynb: falha no parse (total: 31)
+     └─ ✓ OK: mka-ugm/stmh/Analysis_of_Algorithms.ipynb (total: 32)
+     └─ ✓ OK: mka-ugm/stmh/Analysis_of_Algorithms_Enhanced.ipynb (total: 33)
+     ├─ ✗ mka-ugm/stmh/FCGA.ipynb: falha no parse (total: 34)
+     ├─ ✗ mka-ugm/stmh/FSGA.ipynb: falha no parse (total: 35)
+     └─ ✓ OK: mka-ugm/stmh/FeatureSelectionGA.ipynb (total: 36)
+     └─ ✓ OK: mka-ugm/stmh/GeneticAlgorithm.ipynb (total: 37)
+     └─ ✓ OK: mka-ugm/stmh/Quiz.ipynb (total: 38)
+     ├─ ✗ mka-ugm/stmh/Untitled.ipynb: falha no parse (total: 39)
+     └─ ✓ OK: projects/data-analysis-with-python-projects/demographic-data-analysis/Untitled.ipynb (total: 40)
+     └─ ✓ OK: projects/data-analysis-with-python-projects/medical-data-visualizer/Untitled.ipynb (total: 41)
+     └─ ✓ OK: projects/data-analysis-with-python-projects/sea-level-predictor/Untitled.ipynb (total: 42)
+     └─ ✓ OK: projects/data-analysis-with-python-projects/time-series-visualizer/Untitled.ipynb (total: 43)
+Varredura de repositórios: 42it [00:46,  5.74s/it][Repo 43] Processando: jasonkneen/smolagents ...
+  └─ Encontrados 3 notebook(s), analisando...
+  └─ Módulos Python locais detectados: 62
+  └─ Repositório completo salvo em: /home/asu/reproducibility_of_jupyter_notebooks-1/data/outputs/repositorios_completos/jasonkneen/smolagents/9c29c0e00ee86a7eafc0368260ba2500605da09b
+     └─ ✓ OK: examples/open_deep_research/analysis.ipynb (total: 44)
+     └─ ✓ OK: examples/open_deep_research/visual_vs_text_browser.ipynb (total: 45)
+     └─ ✓ OK: examples/smolagents_benchmark/score.ipynb (total: 46)
+Varredura de repositórios: 43it [00:49,  4.92s/it][Repo 44] Processando: Deodat-Lawson/PDR_AI_v2 ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 44it [00:50,  3.59s/it][Repo 45] Processando: alanunni/Voxel-Engine ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 45it [00:50,  2.66s/it][Repo 46] Processando: Mingg10/raymondmy.github.io ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 46it [00:51,  2.01s/it][Repo 47] Processando: winter-love-dev/winter-love-dev.github.io ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 47it [00:51,  1.54s/it][Repo 48] Processando: scoppetuoloa/aria2.conf ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 48it [00:52,  1.25s/it][Repo 49] Processando: fummicc1/swift-evolution-masking ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 49it [00:52,  1.03s/it][Repo 50] Processando: emmawoplin/amanansdiahnid-1 ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 50it [00:53,  1.15it/s][Repo 51] Processando: beacon-hq/pennant-driver-beacon ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 51it [00:53,  1.33it/s][Repo 52] Processando: dwongdev/Kvaesitso ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 52it [00:54,  1.36it/s][Repo 53] Processando: ARProxy/Programmers ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 53it [00:54,  1.51it/s][Repo 54] Processando: dmaruyama-51/tech-jobs-data-platform ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 54it [00:55,  1.67it/s][Repo 55] Processando: holddyxu/Shadowrocket-ADBlock-Rules-Forever ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 55it [00:55,  1.81it/s][Repo 56] Processando: Yehia-Nour/LeetCode-Solutions ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 56it [00:56,  1.89it/s][Repo 57] Processando: xiaomi-selene/android_device_xiaomi_selene ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 57it [00:56,  1.88it/s][Repo 58] Processando: WeisiChen1995/CV ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 58it [00:57,  1.88it/s][Repo 59] Processando: Func86/anilist-wikidata ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 59it [00:57,  1.92it/s][Repo 60] Processando: cloudyun233/cloudyun-AD-rules ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 60it [00:58,  1.90it/s][Repo 61] Processando: nodeify-eth/helm-charts ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 61it [00:59,  1.81it/s][Repo 62] Processando: IvanJustYT/CS2-XP-Calculator ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 62it [00:59,  1.73it/s][Repo 63] Processando: standardebooks/thomas-wolfe_look-homeward-angel ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 63it [01:00,  1.80it/s][Repo 64] Processando: standardebooks/oliver-la-farge_laughing-boy ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 64it [01:00,  1.86it/s][Repo 65] Processando: skyline69/balatro-mod-index ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 65it [01:01,  1.69it/s][Repo 66] Processando: InhaNotice/inha_notice ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 66it [01:02,  1.68it/s][Repo 67] Processando: blukai/shin ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 67it [01:02,  1.78it/s][Repo 68] Processando: SusanHex/RE-Actor ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 68it [01:03,  1.81it/s][Repo 69] Processando: unitedcorean/newsletter ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 69it [01:03,  1.83it/s][Repo 70] Processando: chenlong622/xbmc ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 70it [01:04,  1.45it/s][Repo 71] Processando: Angaro920/agroclima-react-iot ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 71it [01:05,  1.58it/s][Repo 72] Processando: TR4SPY/FTRotE ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 72it [01:06,  1.08it/s][Repo 73] Processando: enve-check/enve-check.github.io ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 73it [01:07,  1.26it/s][Repo 74] Processando: euannerocha/leet365code ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 74it [01:07,  1.36it/s][Repo 75] Processando: RaghavAbboy/Fit-Chef ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 75it [01:08,  1.40it/s][Repo 76] Processando: Sujan-Rai-426/Portfolio ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 76it [01:09,  1.48it/s][Repo 77] Processando: Maks-gaming/discord-servers ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 77it [01:09,  1.62it/s][Repo 78] Processando: neuwcodebox/nodejs-typescript-template ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 78it [01:10,  1.68it/s][Repo 79] Processando: benvansleen/hyprbar ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 79it [01:10,  1.77it/s][Repo 80] Processando: standardebooks/john-buchan_the-courts-of-the-morning ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 80it [01:11,  1.85it/s][Repo 81] Processando: rroohit/LeetCode-2025 ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 81it [01:11,  1.90it/s][Repo 82] Processando: 1drie5/py-playground ...
+  └─ Encontrados 4 notebook(s), analisando...
+  └─ Módulos Python locais detectados: 81
+  └─ Repositório completo salvo em: /home/asu/reproducibility_of_jupyter_notebooks-1/data/outputs/repositorios_completos/1drie5/py-playground/c70d89bffb0e3cf6840e1a7d4030eb7ced1e1f11
+     └─ ✓ OK: pytorch-campusx/2_tensors_in_pytorch.ipynb (total: 47)
+     └─ ✓ OK: pytorch-campusx/3_pytorch_autograd.ipynb (total: 48)
+     └─ ✓ OK: pytorch-campusx/4_pytorch_training_pipeline.ipynb (total: 49)
+     └─ ✓ OK: pytorch-campusx/5_pytorch_nn_module.ipynb (total: 50)
+
+✅ Meta de 50 notebooks atingida!
+Varredura de repositórios: 81it [01:14,  1.08it/s]

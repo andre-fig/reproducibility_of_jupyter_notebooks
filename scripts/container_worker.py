@@ -12,8 +12,6 @@ Contract:
 - result.json always contains all expected fields (with null/empty defaults if not applicable)
 """
 
-from __future__ import annotations
-
 import os
 import json
 import sys
@@ -22,7 +20,7 @@ import logging
 from pathlib import Path
 from typing import Dict, Set
 
-from execution_core import execute_notebook_in_current_env
+from scripts.execution_core import execute_notebook_in_current_env
 
 # Setup logging
 logging.basicConfig(

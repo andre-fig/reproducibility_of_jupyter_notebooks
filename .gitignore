@@ -16,18 +16,14 @@ env/
 .DS_Store
 Thumbs.db
 
-# Logs
-*.log
 
 # Data inputs/outputs
 !data/inputs/.gitkeep
-data/outputs/*
+data/run_*/
+data/outputs/repositorios_completos/* 
+data/outputs/notebooks_originais/*
 !data/outputs/.gitkeep
 
-# Figures
-*.png
-*.jpg
-*.jpeg
 
 # Reports
 *.pdf

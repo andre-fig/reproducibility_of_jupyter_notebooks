@@ -6,15 +6,14 @@ it's running in a Python environment with necessary libraries (nbclient, etc.)
 and doesn't know about Docker, venv, or any other execution context.
 """
 
-from __future__ import annotations
-
 import json
 import hashlib
+import re
 import time
 import traceback
 import sys
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict, Optional, Tuple
 
 try:
     import nbformat
@@ -84,7 +83,32 @@ def canonicalize_outputs_struct(outputs: list) -> list:
     return canon
 
 
-def hash_outputs_from_nbjson(nbjson: dict) -> tuple[str, int]:
+ANSI_ESCAPE_RE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
+
+
+def _strip_ansi(text: str) -> str:
+    return ANSI_ESCAPE_RE.sub("", text)
+
+
+def _module_from_text(text: str) -> Optional[str]:
+    """
+    Returns the top-level module referenced in a ModuleNotFoundError/ImportError message.
+    """
+    if not text:
+        return None
+    patterns = [
+        r"No module named '([^']+)'",
+        r"No module named ([^\s,]+)",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, text)
+        if match:
+            module_name = match.group(1)
+            return module_name.split(".")[0]
+    return None
+
+
+def hash_outputs_from_nbjson(nbjson: dict) -> Tuple[str, int]:
     """
     Computes SHA256 hash of canonicalized outputs from notebook JSON.
     Returns: (hash_hex, count_of_outputs)
@@ -103,30 +127,31 @@ def hash_outputs_from_nbjson(nbjson: dict) -> tuple[str, int]:
 
 def extract_missing_module_name(exc: BaseException) -> Optional[str]:
     """
-    Extracts top-level module name from ModuleNotFoundError/ImportError.
-    Returns None if not a module import error.
+    Attempts to extract the missing module name from ModuleNotFoundError/ImportError
+    *or* wrapper exceptions such as CellExecutionError that embed the message.
     """
+    candidates = []
     exc_type = type(exc).__name__
-    exc_str = str(exc)
-    
-    if exc_type not in ("ModuleNotFoundError", "ImportError"):
-        return None
-    
-    import re
-    # Pattern: "No module named 'foo'" or "No module named foo" or "No module named 'foo.bar'"
-    patterns = [
-        r"No module named '([^']+)'",
-        r"No module named ([^\s,]+)",
-    ]
-    
-    for pattern in patterns:
-        m = re.search(pattern, exc_str)
-        if m:
-            module_name = m.group(1)
-            # Extract top-level module (before first dot)
-            top_level = module_name.split(".")[0]
-            return top_level
-    
+
+    # Direct exception string (strip ANSI sequences emitted by nbclient)
+    candidates.append(_strip_ansi(str(exc)))
+
+    # CellExecutionError exposes additional metadata
+    if exc_type == "CellExecutionError":
+        candidates.append(_strip_ansi(getattr(exc, "ename", "") or ""))
+        candidates.append(_strip_ansi(getattr(exc, "evalue", "") or ""))
+
+    # Include chained exceptions for completeness
+    if exc.__cause__:
+        candidates.append(_strip_ansi(str(exc.__cause__)))
+    if exc.__context__:
+        candidates.append(_strip_ansi(str(exc.__context__)))
+
+    for text in candidates:
+        module = _module_from_text(text)
+        if module:
+            return module
+
     return None
 
 

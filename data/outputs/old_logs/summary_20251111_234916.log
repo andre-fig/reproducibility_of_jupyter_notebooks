@@ -1,0 +1,43 @@
+# Notebooks (linhas): 50
+nb_ok_parse=True: 46 (92.0%)
+language=python: 46 (92.0%)
+deps_any=True (alguma especificação simples de deps): 46 (92.0%)
+repo_has_env_spec=True (qualquer spec reconhecida): 46 (92.0%)
+nb_has_unambiguous_exec_order=True: 42 (84.0%)
+repo_has_requirements_txt: 46 (92.0%)
+repo_has_setup_py: 0 (0.0%)
+repo_has_pipfile: 0 (0.0%)
+repo_has_environment_yml: 0 (0.0%)
+repo_has_lockfile: 0 (0.0%)
+n_code: median=27, mean=33.33
+n_markdown: median=14, mean=15.74
+%code executed: median=100.0, mean=80.6
+Top imports (agregado): [('pandas', 20), ('numpy', 17), ('matplotlib', 9), ('random', 5), ('seaborn', 4), ('sklearn', 4), ('math', 3), ('torch', 3), ('requests', 1), ('joblib', 1)]
+
+Join report:
+  matched via notebook_id: 46
+  recovered via fallback:  0
+  left_only (collection only): 4
+  right_only remaining (execution only): 0
+Master merged CSV written: data/outputs/master_notebooks_merged.csv (46 rows)
+# Execuções: 46  |  sucesso: 0 (0.0%)
+Erros mais comuns: [('other', 46)]
+Repos com mais falhas: [('wewnumam/learn-ai', 39), ('1drie5/py-playground', 4), ('jasonkneen/smolagents', 3)]
+Notebooks com falha (top): [('wewnumam/learn-ai/data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_1.ipynb', 1), ('wewnumam/learn-ai/data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_2.ipynb', 1), ('wewnumam/learn-ai/data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_1.ipynb', 1), ('wewnumam/learn-ai/data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_2.ipynb', 1), ('wewnumam/learn-ai/data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-1-reading-csv-and-txt-files/files/Lecture.ipynb', 1), ('wewnumam/learn-ai/data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-11-reading-data-from-relational-databases/files/Lecture.ipynb', 1), ('wewnumam/learn-ai/data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-15-fetching-data-from-a-rest-api/files/Lecture.ipynb', 1), ('wewnumam/learn-ai/data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-17-reading-html-tables/files/Lecture.ipynb', 1), ('wewnumam/learn-ai/data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-19-complementary-file-types-and-io-tools/files/Lecture.ipynb', 1), ('wewnumam/learn-ai/data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-5-reading-excel-files/files/Lecture.ipynb', 1)]
+originais encontrados: 33 (71.7%)
+outputs iguais (todas execuções): 0 (0.0%)
+outputs iguais (entre sucessos): 0 (0.0%)
+n_outputs_orig: median=11, mean=17.2
+n_outputs_exec: median=0, mean=0.0
+Reprodutibilidade (entre originais): 0.0% (0/33)
+
+============================================================
+SANITY CHECK: Reprodutibilidade Básica (não resultados finais)
+============================================================
+NOTA: Análises detalhadas de RQ1/RQ2/RQ3 devem ser feitas no pipeline_master.ipynb
+
+Ordem de grandeza (sanity check):
+  - Originais encontrados: 33 (71.7%)
+  - Outputs iguais (entre originais): 0 (0.0%)
+
+  (Valores finais para o paper devem ser calculados no pipeline_master.ipynb)

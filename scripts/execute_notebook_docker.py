@@ -20,6 +20,7 @@ import argparse
 import csv
 import logging
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -275,7 +276,7 @@ def suggest_docker_image(python_version: str) -> str:
 
 def run_worker_in_docker(image: str, repo_dir: Path, out_dir: Path, notebook_rel_path: str,
                          timeout_s: int, declared_python_version: str, logger: logging.Logger,
-                         notebook_id: str | None = None) -> Dict:
+                         notebook_id: str | None = None, run_id: str | None = None) -> Dict:
     """
     Orquestra a execução no container chamando scripts.container_worker.
     Lê o result.json gerado no volume /workspace/out.
@@ -288,6 +289,8 @@ def run_worker_in_docker(image: str, repo_dir: Path, out_dir: Path, notebook_rel
     ]
     if notebook_id:
         envs += ["-e", f"NOTEBOOK_ID={notebook_id}"]
+    if run_id:
+        envs += ["-e", f"RUN_ID={run_id}"]
     cmd = [
         "docker", "run", "--rm",
         "-v", f"{str(repo_dir.absolute())}:/workspace/repo:ro",
@@ -464,8 +467,22 @@ def main():
                     ensure_docker_image(image, logger)
                     ensured_images.add(image)
                 logger.info(f"Executando via Docker: image={image} nb={rel}")
+                timestamp_ms = int(time.time() * 1000)
+                base_id = (notebook_id or commit_sha or Path(rel).stem)[:32]
+                safe_base = re.sub(r"[^A-Za-z0-9_.-]", "_", base_id) or "nb"
+                run_id = f"{timestamp_ms}-{safe_base}"
                 out_dir = repo_dir / "_out" / rel.replace("/", "__")
-                info = run_worker_in_docker(image, repo_dir, out_dir, rel, args.timeout, declared_python_version, logger, notebook_id=notebook_id)
+                info = run_worker_in_docker(
+                    image,
+                    repo_dir,
+                    out_dir,
+                    rel,
+                    args.timeout,
+                    declared_python_version,
+                    logger,
+                    notebook_id=notebook_id,
+                    run_id=run_id,
+                )
 
                 outputs_hash_exec = info.get("outputs_hash_exec","")
                 n_outputs_exec = info.get("n_outputs_exec",0)

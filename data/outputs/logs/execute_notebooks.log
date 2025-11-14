@@ -1,0 +1,25 @@
+2025-10-28 16:36:15,698 | INFO | == Iniciando executor de notebooks (headless + timeout real) ==
+2025-10-28 16:36:15,698 | INFO | Parâmetros: input=data/run_20251028_144659/notebooks_collected.csv output=data/run_20251028_144659/execution_results.csv policy=relaxed timeout=300s limit=None originals_dir=data/run_20251028_144659/raw_ipynb
+2025-10-28 16:36:15,698 | INFO | Workspace temporário: /tmp/nbexec_2xyme8y2
+2025-10-28 16:36:16,107 | INFO | Clonando 1drie5/py-playground@main
+2025-10-28 16:36:17,211 | INFO | Criando venv: /tmp/nbexec_2xyme8y2/1drie5__py-playground_env
+2025-10-28 16:36:18,939 | INFO | Instalando baseline no venv (relaxed baseline)
+2025-10-28 16:36:25,318 | INFO | Executando notebook: /tmp/nbexec_2xyme8y2/1drie5__py-playground/pytorch-campusx/3_pytorch_autograd.ipynb
+2025-10-28 16:36:26,544 | INFO | ModuleNotFoundError detectado: torch. Tentando instalar e re-executar...
+2025-10-28 16:36:26,544 | INFO | Tentando instalar módulo ausente: torch
+2025-10-28 16:38:05,110 | WARNING | Falha ao instalar torch: [31mERROR: Could not install packages due to an OSError: [Errno 28] No space left on device
+[0m[31m
+[0m
+2025-10-28 16:38:05,111 | INFO | Resultado do retry: falha
+2025-10-28 16:38:05,115 | INFO | Executando notebook: /tmp/nbexec_2xyme8y2/1drie5__py-playground/pytorch-campusx/4_pytorch_training_pipeline.ipynb
+2025-10-28 16:38:06,371 | INFO | ModuleNotFoundError detectado: numpy. Tentando instalar e re-executar...
+2025-10-28 16:38:06,371 | INFO | Tentando instalar módulo ausente: numpy
+2025-10-28 16:38:08,882 | INFO | Módulo numpy instalado com sucesso. Tentando executar novamente...
+2025-10-28 16:38:10,314 | INFO | Resultado do retry: falha
+2025-10-28 16:38:10,315 | WARNING | STDOUT(tail): NBEXEC_RESULT:{"ok": false, "error": "ModuleNotFoundError", "exc_msg": "No module named 'pandas'", "missing_module": "pandas"}
+
+2025-10-28 16:38:10,315 | WARNING | STDERR(tail): 
+2025-10-28 16:38:10,318 | INFO | Executando notebook: /tmp/nbexec_2xyme8y2/1drie5__py-playground/pytorch-campusx/5_pytorch_nn_module.ipynb
+2025-10-28 16:38:11,557 | INFO | ModuleNotFoundError detectado: torch. Tentando instalar e re-executar...
+2025-10-28 16:38:11,558 | INFO | Tentando instalar módulo ausente: torch
+2025-10-28 16:38:17,780 | INFO | Limpeza do workspace temporário concluída.

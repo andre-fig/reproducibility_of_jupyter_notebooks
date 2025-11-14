@@ -1,0 +1,5 @@
+metric_name,value_2018,value_2025
+no_markdown_ratio,0.3093,0.1675
+out_of_order_ratio,0.3636,0.165
+has_skip_ratio,0.769,0.3575
+notebooks_with_testing_import_ratio,0.0154,0.0

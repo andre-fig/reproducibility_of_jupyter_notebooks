@@ -1,0 +1,15 @@
+feature,importance
+bad_data_not_available,2.153501422747718
+retry_success,1.9231546217720747
+retry_attempted,1.7814991908432483
+repo_has_data_dir,0.619844708483655
+bad_has_exec_skips,0.47974394262187403
+repo_has_tests_dir,0.35607240099954746
+bad_out_of_order_exec,0.342603110213372
+bad_no_local_imports,0.22035917491410228
+retry_missing_modules_count,0.13183646140076968
+repo_has_ci_workflow,0.12283131594938418
+bad_no_markdown,0.09700546069946721
+repo_has_env_spec,0.08108960235230914
+bad_no_testing_imports,0.015260703834108685
+bad_missing_dependencies,0.0
