@@ -30,31 +30,224 @@ logging.basicConfig(
 )
 logger = logging.getLogger("container_worker")
 
+# Mapping of import names to pip package names
+MODULE_NAME_MAP = {
+    "sklearn": "scikit-learn",
+    "skimage": "scikit-image",
+}
+
+
+def install_repo_dependencies(repo_dir: Path, logger: logging.Logger) -> bool:
+    """
+    Attempts to install dependencies from repository specification files.
+    Checks for requirements.txt, Pipfile, setup.py, pyproject.toml, environment.yml.
+    Returns True if at least one installation attempt was made (regardless of success).
+    """
+    installed_any = False
+    
+    # Check for requirements.txt
+    requirements_txt = repo_dir / "requirements.txt"
+    if requirements_txt.exists():
+        logger.info(f"Found requirements.txt, installing dependencies...")
+        try:
+            if sys.version_info >= (3, 7):
+                result = subprocess.run(
+                    ["pip", "install", "-r", str(requirements_txt)],
+                    capture_output=True,
+                    text=True,
+                    timeout=600,
+                    check=False,
+                    cwd=str(repo_dir)
+                )
+            else:
+                result = subprocess.run(
+                    ["pip", "install", "-r", str(requirements_txt)],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                    timeout=600,
+                    check=False,
+                    cwd=str(repo_dir)
+                )
+            if result.returncode == 0:
+                logger.info("Successfully installed dependencies from requirements.txt")
+                installed_any = True
+            else:
+                logger.warning(f"Failed to install from requirements.txt: {result.stderr[:500]}")
+                installed_any = True  # Still count as attempted
+        except subprocess.TimeoutExpired:
+            logger.warning("Timeout installing from requirements.txt")
+            installed_any = True
+        except Exception as e:
+            logger.warning(f"Error installing from requirements.txt: {e}")
+            installed_any = True
+    
+    # Check for Pipfile (requires pipenv)
+    pipfile = repo_dir / "Pipfile"
+    if pipfile.exists():
+        logger.info(f"Found Pipfile, attempting to install with pipenv...")
+        try:
+            # Try to install pipenv if not available
+            if sys.version_info >= (3, 7):
+                subprocess.run(["pip", "install", "pipenv"], capture_output=True, text=True, timeout=60, check=False)
+            else:
+                subprocess.run(["pip", "install", "pipenv"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=60, check=False)
+            if sys.version_info >= (3, 7):
+                result = subprocess.run(
+                    ["pipenv", "install", "--system", "--deploy"],
+                    capture_output=True,
+                    text=True,
+                    timeout=600,
+                    check=False,
+                    cwd=str(repo_dir)
+                )
+            else:
+                result = subprocess.run(
+                    ["pipenv", "install", "--system", "--deploy"],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                    timeout=600,
+                    check=False,
+                    cwd=str(repo_dir)
+                )
+            if result.returncode == 0:
+                logger.info("Successfully installed dependencies from Pipfile")
+                installed_any = True
+            else:
+                logger.warning(f"Failed to install from Pipfile: {result.stderr[:500]}")
+                installed_any = True
+        except subprocess.TimeoutExpired:
+            logger.warning("Timeout installing from Pipfile")
+            installed_any = True
+        except Exception as e:
+            logger.warning(f"Error installing from Pipfile: {e}")
+            installed_any = True
+    
+    # Check for setup.py (install in editable mode)
+    setup_py = repo_dir / "setup.py"
+    if setup_py.exists():
+        logger.info(f"Found setup.py, installing package in editable mode...")
+        try:
+            if sys.version_info >= (3, 7):
+                result = subprocess.run(
+                    ["pip", "install", "-e", "."],
+                    capture_output=True,
+                    text=True,
+                    timeout=600,
+                    check=False,
+                    cwd=str(repo_dir)
+                )
+            else:
+                result = subprocess.run(
+                    ["pip", "install", "-e", "."],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                    timeout=600,
+                    check=False,
+                    cwd=str(repo_dir)
+                )
+            if result.returncode == 0:
+                logger.info("Successfully installed package from setup.py")
+                installed_any = True
+            else:
+                logger.warning(f"Failed to install from setup.py: {result.stderr[:500]}")
+                installed_any = True
+        except subprocess.TimeoutExpired:
+            logger.warning("Timeout installing from setup.py")
+            installed_any = True
+        except Exception as e:
+            logger.warning(f"Error installing from setup.py: {e}")
+            installed_any = True
+    
+    # Check for pyproject.toml (PEP 518/621)
+    pyproject_toml = repo_dir / "pyproject.toml"
+    if pyproject_toml.exists():
+        logger.info(f"Found pyproject.toml, attempting to install...")
+        try:
+            # Try installing with pip (PEP 621 support)
+            if sys.version_info >= (3, 7):
+                result = subprocess.run(
+                    ["pip", "install", "."],
+                    capture_output=True,
+                    text=True,
+                    timeout=600,
+                    check=False,
+                    cwd=str(repo_dir)
+                )
+            else:
+                result = subprocess.run(
+                    ["pip", "install", "."],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                    timeout=600,
+                    check=False,
+                    cwd=str(repo_dir)
+                )
+            if result.returncode == 0:
+                logger.info("Successfully installed from pyproject.toml")
+                installed_any = True
+            else:
+                logger.warning(f"Failed to install from pyproject.toml: {result.stderr[:500]}")
+                installed_any = True
+        except subprocess.TimeoutExpired:
+            logger.warning("Timeout installing from pyproject.toml")
+            installed_any = True
+        except Exception as e:
+            logger.warning(f"Error installing from pyproject.toml: {e}")
+            installed_any = True
+    
+    # Check for environment.yml (Conda format - we'll try to install with pip if possible)
+    environment_yml = repo_dir / "environment.yml"
+    if environment_yml.exists():
+        logger.info(f"Found environment.yml (Conda format). Note: Conda not available, skipping.")
+        # We don't have conda in the container, so we skip this
+        # In the future, we could parse the YAML and try to install pip packages
+    
+    return installed_any
+
 
 def install_module(module_name: str, logger: logging.Logger) -> bool:
     """
     Installs a Python module using pip.
     Returns True if successful, False otherwise.
     """
+    pip_name = MODULE_NAME_MAP.get(module_name, module_name)
+    
     try:
-        result = subprocess.run(
-            ["pip", "install", module_name],
-            capture_output=True,
-            text=True,
-            timeout=300,
-            check=False
-        )
+        # Python 3.7+ suporta capture_output
+        if sys.version_info >= (3, 7):
+            result = subprocess.run(
+                ["pip", "install", pip_name],
+                capture_output=True,
+                text=True,
+                timeout=300,
+                check=False
+            )
+        else:
+            # Python 3.6
+            result = subprocess.run(
+                ["pip", "install", pip_name],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                universal_newlines=True,
+                timeout=300,
+                check=False
+            )
         if result.returncode == 0:
-            logger.info(f"Successfully installed {module_name}")
+            logger.info(f"Successfully installed {pip_name}")
             return True
         else:
-            logger.warning(f"Failed to install {module_name}: {result.stderr[:500]}")
+            stderr_text = result.stderr if result.stderr else ""
+            logger.warning(f"Failed to install {pip_name}: {stderr_text[:500]}")
             return False
     except subprocess.TimeoutExpired:
-        logger.warning(f"Timeout installing {module_name}")
+        logger.warning(f"Timeout installing {pip_name}")
         return False
     except Exception as e:
-        logger.warning(f"Error installing {module_name}: {e}")
+        logger.warning(f"Error installing {pip_name}: {e}")
         return False
 
 
@@ -69,6 +262,7 @@ def main():
     run_id = os.environ.get("RUN_ID", "unknown")
     declared_python_version = os.environ.get("PYTHON_VERSION_DECLARED", "")
     notebook_id = os.environ.get("NOTEBOOK_ID", "")
+    policy = os.environ.get("POLICY", "relaxed").lower()
     
     if not notebook_rel_path:
         logger.error("NOTEBOOK_REL_PATH environment variable not set")
@@ -108,7 +302,17 @@ def main():
         sys.exit(1)
     
     logger.info(f"Executing notebook: {notebook_rel_path}")
-    logger.info(f"Timeout: {timeout_s}s, Run ID: {run_id}")
+    logger.info(f"Timeout: {timeout_s}s, Run ID: {run_id}, Policy: {policy}")
+    
+    # Install repository dependencies if policy is strict
+    repo_deps_installed = False
+    if policy == "strict":
+        logger.info("Policy is 'strict': attempting to install repository dependencies...")
+        repo_deps_installed = install_repo_dependencies(repo_dir, logger)
+        if repo_deps_installed:
+            logger.info("Repository dependency installation completed (may have succeeded or failed)")
+        else:
+            logger.info("No repository dependency files found")
     
     # Prepare config for execution
     config = {
@@ -116,6 +320,7 @@ def main():
         "kernel_name": "python3",
         "declared_python_version": declared_python_version,
         "repo_dir": repo_dir,
+        "logger": logger,  # Pass logger for debugging
     }
     
     # Track installed modules for retry (max 5 distinct modules)

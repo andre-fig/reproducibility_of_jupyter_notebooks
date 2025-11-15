@@ -215,6 +215,25 @@ def execute_notebook_in_current_env(
         # Read notebook
         nb = nbformat.read(str(notebook_abs_path), as_version=4)
         
+        # Inject code to change working directory to notebook's directory
+        # This allows notebooks to use relative paths like 'data/file.csv' correctly
+        # We inject this as the first cell so it runs before any other code
+        notebook_dir = notebook_abs_path.parent
+        # Use repr() to safely escape the path string
+        notebook_dir_str = repr(str(notebook_dir))
+        cwd_cell_code = f"import os\nos.chdir({notebook_dir_str})"
+        
+        # Create a new cell with the CWD change code
+        cwd_cell = nbformat.v4.new_code_cell(cwd_cell_code)
+        cwd_cell.metadata = {"tags": ["__injected_cwd_fix__"]}  # Mark as injected
+        
+        # Insert at the beginning of the notebook
+        nb.cells.insert(0, cwd_cell)
+        
+        logger = config.get("logger")
+        if logger:
+            logger.debug(f"Injected CWD change to notebook directory: {notebook_dir}")
+        
         # Execute with nbclient (environment variables are now set in os.environ)
         client = NotebookClient(
             nb,
@@ -223,6 +242,10 @@ def execute_notebook_in_current_env(
             allow_errors=False,
         )
         client.execute()
+        
+        # Remove the injected cell from the executed notebook before saving
+        # (so it doesn't appear in the final output)
+        nb.cells = [cell for cell in nb.cells if "__injected_cwd_fix__" not in cell.metadata.get("tags", [])]
         
         # Serialize executed notebook
         nb_dict = nbformat.writes(nb)

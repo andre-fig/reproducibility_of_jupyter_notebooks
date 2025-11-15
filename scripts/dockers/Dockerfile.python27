@@ -1,26 +1,71 @@
-# Base image: Python 2.7 slim
+# ============================================================================
+# Dockerfile para Python 2.7 - Executor de Notebooks Jupyter
+# ============================================================================
+# 
+# PROPÓSITO:
+# Esta imagem Docker fornece um ambiente isolado e reprodutível para executar
+# notebooks Jupyter coletados do GitHub que requerem Python 2.7. Esta versão
+# do Python está obsoleta e muitos pacotes modernos não são compatíveis.
+#
+# VERSÃO DO PYTHON: 2.7
+#
+# PACOTES INSTALADOS:
+# - Sistema: git, build-essential, gcc, g++, libc6-dev (para compilar extensões)
+# - Jupyter: jupyter, nbformat, ipykernel (versões compatíveis com Python 2.7)
+# - Básicos: requests, ipython
+# - NOTA: Muitos pacotes modernos (numpy recente, pandas, torch, etc.) não são
+#   compatíveis com Python 2.7 e não serão instalados
+#
+# VARIÁVEIS DE AMBIENTE:
+# - TIMEOUT_SECS: Timeout padrão para execução (300s)
+# - POLICY: Política de execução (relaxed/strict)
+# - NOTEBOOK_DIR: Diretório onde notebooks são montados
+# - Variáveis headless: DISPLAY, QT_QPA_PLATFORM, MPLBACKEND, etc.
+#
+# LIMITAÇÕES:
+# - Python 2.7 está obsoleto desde 2020
+# - Apenas pacotes compatíveis com Python 2.7 são instalados
+# - nbclient pode não estar disponível (usa fallback)
+# - Execução em modo headless (sem interface gráfica)
+# - Timeout padrão de 300 segundos por notebook
+# ============================================================================
+
 FROM python:2.7-slim
 
+# Configurar ambiente não-interativo para evitar prompts durante instalação
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Ajustar repositórios APT para usar arquivo Debian (Python 2.7 usa Debian antigo)
+# Necessário porque os repositórios padrão do Debian antigo não estão mais disponíveis
 RUN set -eux; \
     sed -i 's|http://deb.debian.org/debian|http://archive.debian.org/debian|g' /etc/apt/sources.list; \
     sed -i '/security.debian.org/d' /etc/apt/sources.list; \
     echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99freeze-check-valid-until
 
-# Install system dependencies
-RUN apt-get update -o Acquire::Check-Valid-Until=false && apt-get install -y --no-install-recommends \
-    git \
-    build-essential \
+# Atualizar sistema e instalar dependências do sistema
+# Estas dependências são necessárias para compilar extensões Python e usar git
+RUN apt-get update -o Acquire::Check-Valid-Until=false && \
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends \
+        git \
+        build-essential \
+        gcc \
+        g++ \
+        libc6-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy executor code
-WORKDIR /executor
-COPY . /executor
+# Criar diretório de trabalho padronizado
+WORKDIR /workspace
 
-# Install minimal dependencies (nbclient may not be available for Python 2.7)
-# Use nbconvert as fallback if needed
+# Copiar scripts do pipeline para o container
+# Os scripts são copiados para /opt/pipeline/scripts para manter organização
+COPY scripts /opt/pipeline/scripts
+ENV PYTHONPATH="/opt/pipeline:${PYTHONPATH}"
+
+# Instalar pacotes Python compatíveis com Python 2.7
+# Muitos pacotes modernos não são compatíveis, então instalamos apenas o essencial
+# Usamos || true para permitir que a instalação continue mesmo se alguns pacotes falharem
 RUN pip install --no-cache-dir \
     ipython \
     jupyter \
@@ -29,10 +74,11 @@ RUN pip install --no-cache-dir \
     requests \
     || true
 
-# Try to install nbclient (may fail for Python 2.7)
-RUN pip install --no-cache-dir nbclient || echo "nbclient not available for Python 2.7"
+# Tentar instalar nbclient (pode não estar disponível para Python 2.7)
+RUN pip install --no-cache-dir nbclient || echo "nbclient não disponível para Python 2.7"
 
-# Set environment variables for headless execution
+# Configurar variáveis de ambiente para execução headless (sem interface gráfica)
+# Essas variáveis garantem que notebooks não tentem abrir janelas gráficas
 ENV DISPLAY=""
 ENV QT_QPA_PLATFORM="offscreen"
 ENV SDL_VIDEODRIVER="dummy"
@@ -41,5 +87,14 @@ ENV PYGAME_HIDE_SUPPORT_PROMPT="1"
 ENV MPLBACKEND="Agg"
 ENV PYTHONWARNINGS="ignore"
 
-# Default entrypoint
-ENTRYPOINT ["python", "-m", "scripts.container_worker"]
+# Variáveis de configuração do executor (podem ser sobrescritas no docker run)
+ENV TIMEOUT_SECS=300
+ENV POLICY="relaxed"
+ENV NOTEBOOK_DIR="/workspace/notebooks"
+
+# Pontos de montagem para notebooks e dados
+VOLUME ["/workspace/notebooks", "/workspace/data"]
+
+# Comando padrão: executar o worker do container
+# Pode ser sobrescrito com argumentos do docker run
+CMD ["python", "-m", "scripts.container_worker"]

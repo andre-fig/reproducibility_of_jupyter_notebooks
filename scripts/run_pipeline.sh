@@ -91,6 +91,8 @@ OPÇÕES:
                          relaxed = usa imagem base apenas com pacotes essenciais
   --no-save-notebooks    Não salvar notebooks originais
   --save-full-repos      Fazer download completo dos repositórios processados (tarball do branch padrão)
+                         Quando ativo, os repositórios completos são automaticamente usados na execução
+                         para reduzir erros de "file_not_found" e evitar clonagens desnecessárias
   --repos-dir DIR        Diretório onde os repositórios completos serão salvos (padrão: data/outputs/repositorios_completos)
   --skip-collect         Pular etapa de coleta se collection.csv já existe
   --skip-execute         Pular etapa de execução se execution_results.csv já existe
@@ -417,7 +419,9 @@ ensure_docker_images() {
             continue
         fi
         info "Construindo imagem $image (Dockerfile: $dockerfile_path)..."
-        if docker build -t "$image" -f "$dockerfile_path" "$PROJECT_ROOT"; then
+        # Usar DOCKER_BUILDKIT=0 para evitar problemas de credenciais
+        # --pull=false usa cache local quando possível, evitando necessidade de autenticação
+        if DOCKER_BUILDKIT=0 docker build --pull=false -t "$image" -f "$dockerfile_path" "$PROJECT_ROOT"; then
             success "Imagem construída: $image"
         else
             error "Falha ao construir a imagem $image"
@@ -519,6 +523,11 @@ step_execute() {
     if [[ "$SAVE_NOTEBOOKS" == "true" && -d "$NOTEBOOKS_ORIG_DIR" ]]; then
         exec_args+=(--originals-dir "$NOTEBOOKS_ORIG_DIR")
         info "  --originals-dir: $NOTEBOOKS_ORIG_DIR"
+    fi
+
+    if [[ "$DOWNLOAD_FULL_REPOS" == "true" && -d "$REPOS_FULL_DIR" ]]; then
+        exec_args+=(--full-repos-dir "$REPOS_FULL_DIR")
+        info "  --full-repos-dir: $REPOS_FULL_DIR"
     fi
 
     if [[ -n "$EXEC_LIMIT" ]]; then
