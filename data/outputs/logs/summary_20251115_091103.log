@@ -21,10 +21,10 @@ Join report:
   right_only remaining (execution only): 0
 Master merged CSV written: data/outputs/master_notebooks_merged.csv (395 rows)
 # Execuções: 395  |  sucesso: 75 (19.0%)
-Erros mais comuns: [('file_not_found', 198), ('other', 118), ('timeout', 4)]
-elapsed_s (todos): median=2.41s, mean=6.64s
-elapsed_s (sucesso): median=1.75s, mean=13.02s
-elapsed_s (falha): median=2.46s, mean=5.11s
+Erros mais comuns: [('file_not_found', 211), ('other', 106), ('timeout', 3)]
+elapsed_s (todos): median=2.76s, mean=6.14s
+elapsed_s (sucesso): median=1.95s, mean=11.19s
+elapsed_s (falha): median=3.07s, mean=4.94s
 Repos com mais falhas: [('As17-01/brain_signals', 111), ('Subin-Vidhu/2025', 66), ('Saiful-Islam25/Machine-Learning', 34), ('wewnumam/learn-ai', 23), ('ralf-42/GenAI', 20), ('rogerqiu7/Cancer-Mortality-Prediction', 7), ('Nikhild1093/Nikhild1093', 7), ('romms921/arXiver', 6), ('FrankYang-17/FrankYang-17.github.io', 5), ('SongQingHao-Yang/SongQingHao-Yang.github.io', 5)]
 Notebooks com falha (top): [('wewnumam/learn-ai/data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_1.ipynb', 1), ('wewnumam/learn-ai/data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_2.ipynb', 1), ('wewnumam/learn-ai/data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_1.ipynb', 1), ('wewnumam/learn-ai/data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_2.ipynb', 1), ('wewnumam/learn-ai/data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-1-reading-csv-and-txt-files/files/Lecture.ipynb', 1), ('wewnumam/learn-ai/data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-11-reading-data-from-relational-databases/files/Lecture.ipynb', 1), ('wewnumam/learn-ai/data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-15-fetching-data-from-a-rest-api/files/Lecture.ipynb', 1), ('wewnumam/learn-ai/data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-17-reading-html-tables/files/Lecture.ipynb', 1), ('wewnumam/learn-ai/data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-19-complementary-file-types-and-io-tools/files/Lecture.ipynb', 1), ('wewnumam/learn-ai/data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-5-reading-excel-files/files/Lecture.ipynb', 1)]
 originais encontrados: 335 (84.8%)
@@ -32,17 +32,17 @@ outputs iguais (todas execuções): 14 (3.5%)
 outputs iguais (entre sucessos): 14 (18.7%)
 Exemplos de divergência (até 10):
  - wewnumam/learn-ai/data-science/freecodecamp-intro-to-numpy/Untitled.ipynb orig=b59da27e exec=81050f33 n_orig=9 n_exec=3
- - wewnumam/learn-ai/mka-ugm/pma/Tugas_1_Exploratory_Data_Analysis.ipynb orig=4789e190 exec=ffb82c44 n_orig=13 n_exec=14
+ - wewnumam/learn-ai/mka-ugm/pma/Tugas_1_Exploratory_Data_Analysis.ipynb orig=4789e190 exec=b1cf2dd2 n_orig=13 n_exec=14
  - wewnumam/learn-ai/mka-ugm/stmh/Analysis_of_Algorithms.ipynb orig=e3e6ffcd exec=4f53cda1 n_orig=10 n_exec=0
  - wewnumam/learn-ai/mka-ugm/stmh/Analysis_of_Algorithms_Enhanced.ipynb orig=8aa0e576 exec=4f53cda1 n_orig=11 n_exec=0
- - wewnumam/learn-ai/mka-ugm/stmh/GeneticAlgorithm.ipynb orig=6952943c exec=260dc0e7 n_orig=8 n_exec=2
- - wewnumam/learn-ai/mka-ugm/stmh/Quiz.ipynb orig=97ffbfcd exec=92d926e1 n_orig=2 n_exec=2
- - 1drie5/py-playground/pytorch-campusx/2_tensors_in_pytorch.ipynb orig=da21b9c0 exec=7fce56aa n_orig=76 n_exec=76
- - 1drie5/py-playground/pytorch-campusx/4_pytorch_training_pipeline.ipynb orig=7a5bdcf9 exec=0a74a15d n_orig=16 n_exec=16
- - 1drie5/py-playground/pytorch-campusx/5_pytorch_nn_module.ipynb orig=ac8dd6ca exec=2608d58f n_orig=13 n_exec=19
- - romms921/arXiver/arxiv_module.ipynb orig=82d2586d exec=af2c9efc n_orig=1 n_exec=1
+ - wewnumam/learn-ai/mka-ugm/stmh/GeneticAlgorithm.ipynb orig=6952943c exec=a0c87eb8 n_orig=8 n_exec=2
+ - wewnumam/learn-ai/mka-ugm/stmh/Quiz.ipynb orig=97ffbfcd exec=200435b4 n_orig=2 n_exec=2
+ - 1drie5/py-playground/pytorch-campusx/2_tensors_in_pytorch.ipynb orig=da21b9c0 exec=4a7838b4 n_orig=76 n_exec=76
+ - 1drie5/py-playground/pytorch-campusx/4_pytorch_training_pipeline.ipynb orig=7a5bdcf9 exec=b91dd185 n_orig=16 n_exec=16
+ - 1drie5/py-playground/pytorch-campusx/5_pytorch_nn_module.ipynb orig=ac8dd6ca exec=2299f7aa n_orig=13 n_exec=18
+ - romms921/arXiver/arxiv_module.ipynb orig=82d2586d exec=5810b177 n_orig=1 n_exec=1
 n_outputs_orig: median=15, mean=34.5
-n_outputs_exec: median=0, mean=4.4
+n_outputs_exec: median=0, mean=3.8
 Reprodutibilidade (entre originais): 4.2% (14/335)
 Reprodutibilidade (entre originais + exec_ok): 28.6% (14/49)
 

@@ -33,6 +33,8 @@ data/outputs/notebooks_originais/*
 .idea/
 *.swp
 .cursor/
+.cursorignore
+cursor_writing/
 paper/
 .venv-*/
 .ruff_cache/
