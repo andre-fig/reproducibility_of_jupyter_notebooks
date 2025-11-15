@@ -1,33 +1,37 @@
 {
   "metadata": {
     "source": "Pimentel et al. 2019",
-    "note": "Valores de referência do estudo original (aproximados)",
-    "notebooks_count": 1159166,
-    "python_notebooks_count": 863878
+    "note": "Valores de referência do estudo original (Pimentel et al., A Large-scale Study about Quality and Reproducibility of Jupyter Notebooks, 2019)",
+    "corpus_notebooks_count": 1159166,
+    "python_rq7_corpus_count": 863878
   },
   "metrics": {
     "rq1_literate_programming": {
       "no_markdown_ratio": 0.3093,
-      "comment": "Percentual de notebooks sem markdown"
+      "comment": "Percentual de notebooks sem células markdown. (30.93%)"
     },
     "rq2_naming": {
-      "untitled_ratio": 0.0,
-      "non_portable_name_ratio": 0.0
+      "untitled_ratio": 0.0199,
+      "non_portable_name_ratio": 0.2691,
+      "comment": "untitled_ratio: Notebooks que começam com 'Untitled' (1.99%). non_portable_name_ratio: Notebooks com caracteres não recomendados pelo POSIX (26.91%)."
     },
     "rq3_modularization": {
-      "local_imports_ratio": 0.103
+      "local_imports_ratio": 0.103,
+      "comment": "Percentual de notebooks Python válidos com importações de módulos locais. (10.30%)"
     },
     "rq4_testing": {
-      "notebooks_with_testing_import_ratio": 0.0154
+      "notebooks_with_testing_import_ratio": 0.0154,
+      "comment": "Percentual de notebooks Python válidos que importam módulos de teste conhecidos. (1.54%)"
     },
     "rq6_execution_order": {
       "out_of_order_ratio": 0.3636,
-      "has_skip_ratio": 0.769
+      "has_skip_ratio": 0.769,
+      "comment": "out_of_order_ratio: Notebooks fora de ordem (36.36%). has_skip_ratio: Notebooks com pelo menos um 'skip' no contador de execução (76.90%)."
     },
     "rq7_reproducibility": {
       "exec_ok_ratio": 0.2411,
-      "outputs_equal_ratio": 0.0403
+      "outputs_equal_ratio": 0.0403,
+      "comment": "exec_ok_ratio: Taxa de notebooks com execução bem-sucedida sem erros (24.11%). outputs_equal_ratio: Taxa de notebooks que produziram os mesmos resultados armazenados (4.03%)."
     }
   }
 }
-

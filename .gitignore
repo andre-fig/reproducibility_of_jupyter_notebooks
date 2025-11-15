@@ -26,7 +26,7 @@ data/outputs/notebooks_originais/*
 
 
 # Reports
-*.pdf
+paper/
 
 # IDE / Editor settings
 .vscode/
@@ -40,5 +40,6 @@ paper/
 .ruff_cache/
 data/run_20251028_144659/*
 data/run_*/
-
+data/old_results/run_*/
 plano*.md
+test_*.py
