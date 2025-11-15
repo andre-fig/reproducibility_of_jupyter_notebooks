@@ -1,4 +1,7 @@
 exec_error_type,count
 file_not_found,198
-other,118
-timeout,4
+missing_dependency,55
+other,31
+runtime_error,20
+timeout,14
+connection_error,2

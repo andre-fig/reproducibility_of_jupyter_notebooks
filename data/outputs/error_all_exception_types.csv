@@ -1,0 +1,5 @@
+tipo_excecao_python,quantidade,percentual
+CellExecutionError,312,97.5
+TimeoutExpired,3,0.94
+ResultMissing,3,0.94
+RuntimeError,2,0.62

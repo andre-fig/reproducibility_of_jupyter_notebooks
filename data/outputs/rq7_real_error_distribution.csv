@@ -1,0 +1,5 @@
+real_error_type,count
+file_not_found,196
+unclassified,50
+missing_dependency,45
+runtime_error,20
