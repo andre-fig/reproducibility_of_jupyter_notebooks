@@ -1,0 +1,23 @@
+{
+  "exec_ok": true,
+  "elapsed_s": 98.663,
+  "outputs_hash_exec": "2ee60eb25eaea2eee36d7e5cfe027176ec0cf7e722c0b1e7023c70dc8f084036",
+  "n_outputs_exec": 11,
+  "outputs_hash_canonical": "2ee60eb25eaea2eee36d7e5cfe027176ec0cf7e722c0b1e7023c70dc8f084036",
+  "outputs_n_cells": 10,
+  "outputs_n_bytes": 27770,
+  "exec_exception_type": null,
+  "exec_exception_module": null,
+  "exec_exception_str": null,
+  "exec_traceback_str": null,
+  "missing_module": null,
+  "retry_attempted": true,
+  "retry_missing_modules_count": 2,
+  "retry_missing_modules": [
+    "kagglehub",
+    "nltk"
+  ],
+  "retry_success": true,
+  "exec_env_python_version": "3.10.19",
+  "notebook_id": "51bac64ead40f44819a25a3e81eacfad6519d79e76f7497d8e951a8c5c1022c8"
+}

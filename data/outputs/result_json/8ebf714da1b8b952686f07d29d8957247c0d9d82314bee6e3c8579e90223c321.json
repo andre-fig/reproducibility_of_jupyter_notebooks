@@ -1,0 +1,22 @@
+{
+  "exec_ok": true,
+  "elapsed_s": 6.159,
+  "outputs_hash_exec": "6ad70adc7dfb833fa9be7b2ba87b6068f6fa0e0c414cc43a0dda1e0ad4a19312",
+  "n_outputs_exec": 110,
+  "outputs_hash_canonical": "6ad70adc7dfb833fa9be7b2ba87b6068f6fa0e0c414cc43a0dda1e0ad4a19312",
+  "outputs_n_cells": 15,
+  "outputs_n_bytes": 46488,
+  "exec_exception_type": null,
+  "exec_exception_module": null,
+  "exec_exception_str": null,
+  "exec_traceback_str": null,
+  "missing_module": null,
+  "retry_attempted": true,
+  "retry_missing_modules_count": 1,
+  "retry_missing_modules": [
+    "tensorflow"
+  ],
+  "retry_success": true,
+  "exec_env_python_version": "3.10.19",
+  "notebook_id": "8ebf714da1b8b952686f07d29d8957247c0d9d82314bee6e3c8579e90223c321"
+}

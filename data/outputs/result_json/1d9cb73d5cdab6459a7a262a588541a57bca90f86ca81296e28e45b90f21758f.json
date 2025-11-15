@@ -1,0 +1,20 @@
+{
+  "exec_ok": false,
+  "elapsed_s": 1.015,
+  "outputs_hash_exec": "",
+  "n_outputs_exec": 0,
+  "exec_exception_type": "CellExecutionError",
+  "exec_exception_module": "nbclient.exceptions",
+  "exec_exception_str": "An error occurred while executing the following cell:\n------------------\nimport pandas as pd\n------------------\n\n\u001b[0;31m---------------------------------------------------------------------------\u001b[0m\n\u001b[0;31mModuleNotFoundError\u001b[0m                       Traceback (most recent call last)\n\u001b[0;32m<ipython-input-1-7dd3504c366f>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0;32mimport\u001b[0m \u001b[0mpandas\u001b[0m \u001b[0;32mas\u001b[0m \u001b[0mpd\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\n\u001b[0;31mModuleNotFoundError\u001b[0m: No module named 'pandas'\nModuleNotFoundError: No module named 'pandas'\n",
+  "exec_traceback_str": "Traceback (most recent call last):\n  File \"/opt/pipeline/scripts/execution_core.py\", line 225, in execute_notebook_in_current_env\n    client.execute()\n  File \"/usr/local/lib/python3.6/site-packages/nbclient/util.py\", line 84, in wrapped\n    return just_run(coro(*args, **kwargs))\n  File \"/usr/local/lib/python3.6/site-packages/nbclient/util.py\", line 62, in just_run\n    return loop.run_until_complete(coro)\n  File \"/usr/local/lib/python3.6/asyncio/base_events.py\", line 488, in run_until_complete\n    return future.result()\n  File \"/usr/local/lib/python3.6/site-packages/nbclient/client.py\", line 560, in async_execute\n    cell, index, execution_count=self.code_cells_executed + 1\n  File \"/usr/local/lib/python3.6/site-packages/nbclient/client.py\", line 854, in async_execute_cell\n    self._check_raise_for_error(cell, exec_reply)\n  File \"/usr/local/lib/python3.6/site-packages/nbclient/client.py\", line 756, in _check_raise_for_error\n    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)\nnbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:\n------------------\nimport pandas as pd\n------------------\n\n\u001b[0;31m---------------------------------------------------------------------------\u001b[0m\n\u001b[0;31mModuleNotFoundError\u001b[0m                       Traceback (most recent call last)\n\u001b[0;32m<ipython-input-1-7dd3504c366f>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0;32mimport\u001b[0m \u001b[0mpandas\u001b[0m \u001b[0;32mas\u001b[0m \u001b[0mpd\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\n\u001b[0;31mModuleNotFoundError\u001b[0m: No module named 'pandas'\nModuleNotFoundError: No module named 'pandas'\n\n",
+  "missing_module": "pandas",
+  "outputs_hash_canonical": "",
+  "outputs_n_cells": 0,
+  "outputs_n_bytes": 0,
+  "retry_attempted": true,
+  "retry_missing_modules_count": 0,
+  "retry_missing_modules": [],
+  "retry_success": false,
+  "exec_env_python_version": "3.6.15",
+  "notebook_id": "1d9cb73d5cdab6459a7a262a588541a57bca90f86ca81296e28e45b90f21758f"
+}

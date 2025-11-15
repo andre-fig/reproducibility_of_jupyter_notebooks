@@ -1,0 +1,20 @@
+{
+  "exec_ok": false,
+  "elapsed_s": 1.853,
+  "outputs_hash_exec": "",
+  "n_outputs_exec": 0,
+  "exec_exception_type": "CellExecutionError",
+  "exec_exception_module": "nbclient.exceptions",
+  "exec_exception_str": "An error occurred while executing the following cell:\n------------------\noriginal_labels = label_encoder.inverse_transform(encoded_labels)\n\nprint(\"Encoded labels:\", encoded_labels)\nprint(\"Original labels:\", original_labels)\n------------------\n\n\n\u001b[31m---------------------------------------------------------------------------\u001b[39m\n\u001b[31mNameError\u001b[39m                                 Traceback (most recent call last)\n\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[5]\u001b[39m\u001b[32m, line 1\u001b[39m\n\u001b[32m----> \u001b[39m\u001b[32m1\u001b[39m original_labels = \u001b[43mlabel_encoder\u001b[49m.inverse_transform(encoded_labels)\n\u001b[32m      3\u001b[39m \u001b[38;5;28mprint\u001b[39m(\u001b[33m\"\u001b[39m\u001b[33mEncoded labels:\u001b[39m\u001b[33m\"\u001b[39m, encoded_labels)\n\u001b[32m      4\u001b[39m \u001b[38;5;28mprint\u001b[39m(\u001b[33m\"\u001b[39m\u001b[33mOriginal labels:\u001b[39m\u001b[33m\"\u001b[39m, original_labels)\n\n\u001b[31mNameError\u001b[39m: name 'label_encoder' is not defined\n",
+  "exec_traceback_str": "Traceback (most recent call last):\n  File \"/opt/pipeline/scripts/execution_core.py\", line 225, in execute_notebook_in_current_env\n    client.execute()\n  File \"/usr/local/lib/python3.11/site-packages/jupyter_core/utils/__init__.py\", line 165, in wrapped\n    return loop.run_until_complete(inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/base_events.py\", line 654, in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/site-packages/nbclient/client.py\", line 709, in async_execute\n    await self.async_execute_cell(\n  File \"/usr/local/lib/python3.11/site-packages/nbclient/client.py\", line 1062, in async_execute_cell\n    await self._check_raise_for_error(cell, cell_index, exec_reply)\n  File \"/usr/local/lib/python3.11/site-packages/nbclient/client.py\", line 918, in _check_raise_for_error\n    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)\nnbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:\n------------------\noriginal_labels = label_encoder.inverse_transform(encoded_labels)\n\nprint(\"Encoded labels:\", encoded_labels)\nprint(\"Original labels:\", original_labels)\n------------------\n\n\n\u001b[31m---------------------------------------------------------------------------\u001b[39m\n\u001b[31mNameError\u001b[39m                                 Traceback (most recent call last)\n\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[5]\u001b[39m\u001b[32m, line 1\u001b[39m\n\u001b[32m----> \u001b[39m\u001b[32m1\u001b[39m original_labels = \u001b[43mlabel_encoder\u001b[49m.inverse_transform(encoded_labels)\n\u001b[32m      3\u001b[39m \u001b[38;5;28mprint\u001b[39m(\u001b[33m\"\u001b[39m\u001b[33mEncoded labels:\u001b[39m\u001b[33m\"\u001b[39m, encoded_labels)\n\u001b[32m      4\u001b[39m \u001b[38;5;28mprint\u001b[39m(\u001b[33m\"\u001b[39m\u001b[33mOriginal labels:\u001b[39m\u001b[33m\"\u001b[39m, original_labels)\n\n\u001b[31mNameError\u001b[39m: name 'label_encoder' is not defined\n\n",
+  "outputs_hash_canonical": "",
+  "outputs_n_cells": 0,
+  "outputs_n_bytes": 0,
+  "missing_module": null,
+  "retry_attempted": false,
+  "retry_missing_modules_count": 0,
+  "retry_missing_modules": [],
+  "retry_success": false,
+  "exec_env_python_version": "3.11.14",
+  "notebook_id": "905f455b113f9f51fe02212da8e7d0fe8dcc60f5c32429c28da8d039eed1c2cc"
+}

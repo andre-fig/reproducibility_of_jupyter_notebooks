@@ -1,0 +1,20 @@
+{
+  "exec_ok": true,
+  "elapsed_s": 1.441,
+  "outputs_hash_exec": "1054af9d8394f6026130c25933e528721851053d63e844891188dc369e74cae7",
+  "n_outputs_exec": 117,
+  "outputs_hash_canonical": "1054af9d8394f6026130c25933e528721851053d63e844891188dc369e74cae7",
+  "outputs_n_cells": 115,
+  "outputs_n_bytes": 11514,
+  "exec_exception_type": null,
+  "exec_exception_module": null,
+  "exec_exception_str": null,
+  "exec_traceback_str": null,
+  "missing_module": null,
+  "retry_attempted": false,
+  "retry_missing_modules_count": 0,
+  "retry_missing_modules": [],
+  "retry_success": false,
+  "exec_env_python_version": "3.13.9",
+  "notebook_id": "2858f9d33f294a2101304ba8ddd3579cd2f80b2951172ff9558b4a5d9fa51405"
+}
