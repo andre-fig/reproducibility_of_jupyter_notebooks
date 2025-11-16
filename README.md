@@ -1,171 +1,130 @@
-# Replicação — Coleta e Execução (Jupyter Notebooks Reproducibility)
+# Replicação 
 
-Este diretório contém scripts e artefatos para **coletar metadados** e **executar notebooks** Jupyter públicos no GitHub, seguindo (e atualizando) a metodologia de Pimentel et al. (2019). Inclui também um **summarizer** para estatísticas descritivas.
+Este repositório documenta o pipeline empregado baseando-se no estudo de reprodutibilidade de notebooks de Pimentel et al. (2019), atualizado para o cenário de 2025. Toda a replicação deve ser feita via `scripts/run_pipeline.sh`, que automatiza a coleta, execução controlada e sumarização dos notebooks públicos analisados. As análises (RQs e exploração) devem ser conduzidas com `scripts/pipeline_master.ipynb`, utilizando os dados consolidados em `data/outputs/`.
 
-## ⚙️ Pré-requisitos
+---
 
-- Python 3.10+
-- Um **token do GitHub** com leitura pública (`GITHUB_TOKEN`)
-- Dependências do `requirements.txt`
+## 1. Pré-requisitos e preparação
+
+- Linux ou WSL2 com Docker ativo
+- Python **3.13+** instalado localmente
+- Token GitHub com permissão **read-only** (`GITHUB_TOKEN`)
+- Dependências listadas em `requirements.txt`
 
 ```bash
-python -m venv .venv && source .venv/bin/activate
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
-```
-
-Crie a pasta de saídas:
-
-```bash
 mkdir -p data/outputs
 ```
 
-## 🔑 Token do GitHub
+Configure o token:
 
 ```bash
-export GITHUB_TOKEN=ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+export GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxx
 ```
 
-> Dica: use token **só de leitura pública**. Se vazou, **revogue** no GitHub.
+Recomendações metodológicas:
+
+- Use ambientes isolados por repositório (a execução já aplica isso via Docker).
+- Monitore `data/outputs/logs` para garantir rastreabilidade.
+- Nunca edite os arquivos em `data/outputs/` manualmente sem documentar.
 
 ---
 
-## 🚀 1) Coleta de metadados (sem executar notebooks)
+## 2. Replicação com `scripts/run_pipeline.sh`
 
-Script: `scripts/collect_notebooks.py`  
-Descobre repositórios por `created:` (GitHub Search **repositories**), varre a árvore do branch padrão e processa cada `.ipynb` (sem clonar o repo).
+Esse script é a entrada única para todo o pipeline. Ele inclui:
 
-### Exemplos de uso
+1. **Coleta (`collect_notebooks.py`)** — busca notebooks com filtros temporais e salva `data/outputs/collection.csv`.
+2. **Execução controlada (`execute_notebook_docker.py`)** — executa notebooks em contêineres específicos por versão de Python e gera `data/outputs/execution_results.csv`.
+3. **Resumo (`summarize_collection.py`)** — executa validações e health checks, gerando relatórios em `data/outputs/logs/`.
 
-**Jan–Set/2025 (exemplo, ~2000 notebooks):**
+### Execução básica
 
 ```bash
-python3 scripts/collect_notebooks.py \
+GITHUB_TOKEN=ghp_xxx \
+bash scripts/run_pipeline.sh \
   --date-start 2025-01-01 \
-  --date-end   2025-01-07 \
-  --max-items  10 \
-  --output     data/outputs/notebooks_jan.csv \
-  --require-outputs \
-  --save-notebooks-dir data/outputs/raw_ipynb
+  --date-end   2025-01-31 \
+  --max-items  400 \
+  --exec-policy strict \
+  --exec-limit 120
 ```
 
-**Janela curta (sanidade):**
+Principais parâmetros:
 
-```bash
-python scripts/collect_notebooks.py \
-  --date-start 2025-03-01 \
-  --date-end   2025-03-07 \
-  --max-items  100 \
-  --output     data/outputs/notebooks_2025_mar_1w.csv
-```
+- `--date-start`, `--date-end`: intervalo obrigatório (UTC) para busca por `created:`.
+- `--max-items`: limite de notebooks coletados (default 400).
+- `--exec-policy`: `strict` (instala dependências do repo) ou `relaxed`.
+- `--exec-timeout`: timeout em segundos (default 300).
+- `--exec-limit`: restringe quantos notebooks executar (útil para amostras).
+- `--save-full-repos`: baixa o repositório completo e reduz erros `file_not_found`.
+- `--skip-collect`, `--skip-execute`, `--no-summary`: permitem retomar etapas.
 
-**Coleta “histórica” (comparabilidade 2019):**
+Variáveis de ambiente úteis:
 
-```bash
-python scripts/collect_notebooks.py \
-  --date-start 2019-01-01 \
-  --date-end   2019-01-05 \
-  --max-items  200 \
-  --output     data/outputs/notebooks_2019_jan_1w.csv
-```
+- `MAX_ITEMS`, `EXEC_TIMEOUT`, `EXEC_POLICY`, `EXEC_LIMIT`
+- `SAVE_NOTEBOOKS`, `DOWNLOAD_FULL_REPOS`
+- `REBUILD_IMAGES` para forçar rebuild das imagens Docker descritas no script
 
-> O script divide automaticamente o intervalo para respeitar o limite de **1000 resultados por consulta** da API de busca.
+Saídas esperadas (todas em `data/outputs/`):
 
-### Saída
+- `collection.csv`: metadados e métricas de cada notebook.
+- `execution_results.csv`: diagnóstico de execução notebook a notebook.
+- `logs/*.log`: log completo das etapas para auditoria.
+- `notebooks_originais/` (opcional): cópias `.ipynb` obtidas da coleta.
+- `repositorios_completos/` (quando `--save-full-repos`).
 
-CSV com **uma linha por notebook** contendo:
-
-- Identificação do repositório (`repo_full_name`, `repo_stars`, datas)
-- Caminho do `.ipynb` no repositório e URL
-- Contagem de células por tipo; execução e outputs
-- Métricas de ordem de execução (ambiguidade, _skips_, _out-of-order_)
-- AST de código: imports, funções, classes, controle de fluxo, _testing_ hints
-- Heurísticas de **IA** (marcadores em markdown/código)
-- Presença de arquivos de dependências (`requirements.txt`, `setup.py`, `Pipfile`)
-- Heurística de **paths absolutos**
-
-Validações embutidas:
-
-- `nbformat` (parse do JSON)
-- Filtro por **Python** (padrão)
-- _Retry/backoff_ para _rate limits_
-- _Fallback_ para `download_url` em arquivos grandes (LFS)
+Caso o script detecte inconsistências (CSV incompleto, ausência de token, Docker inativo), ele interrompe com mensagens claras para correção.
 
 ---
 
-## 🧪 2) Executor controlado (nbclient) — **opcional nesta fase**
+## 3. Análises com `scripts/pipeline_master.ipynb`
 
-Script: `scripts/execute_notebooks.py`  
-Clona cada repositório (shallow), cria **env isolado por repositório** (venv), aplica política de dependências e **executa** o notebook com **timeout**.
+Após o pipeline, abra `scripts/pipeline_master.ipynb` para reproduzir:
 
-Políticas:
+- **RQ1–RQ3**: qualidade, erros e fatores associados.
+- **RQ6–RQ8**: correlações, distribuição de falhas e comparação com literatura.
+- **Análise exploratória**: consolida métricas adicionais em `execution_exploratory.csv`.
 
-- `--policy relaxed` (padrão): instala baseline mínima (pip, wheel, nbclient, ipykernel).
-- `--policy strict`: tenta instalar `requirements.txt` / `Pipfile` / `setup.py`/`pyproject` do repositório.
+Orientações:
 
-```bash
-python3 scripts/execute_notebooks.py \
-  --input-csv  data/outputs/notebooks_jan.csv \
-  --output-csv data/outputs/execution_results_jan.csv \
-  --policy     strict \
-  --timeout    30 \
-  --limit      50 \
-  --originals-dir data/outputs/raw_ipynb
-```
-
-**Saída (`data/outputs/execution_results_*.csv`):**
-
-- `repo_full_name`, `repo_default_branch`, `file_path`
-- Metadados relevantes (`kernel_name`, `language`, `python_version_declared`)
-- **Resultados de execução**: `exec_ok`, `error`, `exc_name`, `failed_cell_index`, `elapsed_s`
-
-> Observação: esta etapa é **computacionalmente cara** e comparável ao desenho de Pimentel et al. (ambiente limpo + timeout + ordem de execução do notebook).
+- Use o mesmo ambiente virtual que contém as dependências do projeto.
+- Atualize os caminhos internos apenas se mover os arquivos; por padrão, o notebook lê diretamente de `data/outputs/collection.csv` e `data/outputs/execution_results.csv`.
+- Execute as células na ordem, documentando quaisquer modificações metodológicas.
+- Gere as versões exportadas (`pipeline_master.html` / `pipeline_master.pdf`) para registro dos resultados.
 
 ---
 
-## 📊 3) Summarizer (estatísticas descritivas)
+## 4. Dados de pesquisa em `data/outputs/`
 
-Script: `scripts/summarize_collection.py`  
-Lê o CSV de coleta (e opcionalmente o CSV de execução) e imprime estatísticas descritivas.
+Todo o material usado no artigo está em `data/outputs/`. Principais artefatos:
 
-```bash
-python scripts/summarize_collection.py \
-  --collection-csv data/outputs/notebooks_jan.csv \
-  --exec-csv       data/outputs/execution_results_jan.csv \
-  | tee data/outputs/summary_jan.txt
-```
+- **CSV mestre de coleta**: `collection.csv` (metadados brutos).
+- **Resultados de execução**: `execution_results.csv`, `execution_exploratory.csv`.
+- **Consolidações e métricas**:
+  - `master_notebooks_merged.csv`: junção pronta para análises.
+  - `cellexecution_error_analysis.csv`, `error_*` CSVs: diagnósticos de exceções.
+  - `file_not_found_analysis.csv`: casos de paths quebrados.
+  - `rq*_*.csv`: tabelas finais usadas nas seções do artigo (RQ1–RQ8).
+- **Representações gráficas e logs**:
+  - `figures/`: imagens exportadas das análises.
+  - `logs/` e `old_logs/`: rastreabilidade de execuções anteriores.
+  - `result_json/`: registros estruturados por notebook/repositório.
+- **Documentos finais**: `pipeline_master.html`, `pipeline_master.pdf`.
+- **Material bruto**: `notebooks_originais/` (cópias dos `.ipynb`) e `repositorios_completos/` (tarballs dos repositórios quando habilitado).
 
-Produz (exemplos):
-
-- Contagens e percentuais: `nb_ok_parse=True`, `language=python`, `deps_any=True`, `nb_has_unambiguous_exec_order=True`
-- Mediana/média de `n_code`, `n_markdown`, `% code executed`
-- **Top imports** agregados (a partir de `top_imports_json`)
-- Se execuções fornecidas: taxa de sucesso e erros mais comuns
-
----
-
-## 🧹 Boas práticas / Qualidade
-
-- **Garbage in, garbage out**: use `nb_ok_parse=True` e `language=python` para análises comparáveis a 2019.
-- Para _reprodutibilidade_, rode o executor com política **estrita** e relacione erros a `deps_*`, _ordem de execução_, _paths absolutos_, etc.
-- Faça janelas menores (semanas/meses) e **consolide**:
-
-```bash
-# exemplo de concatenação mantendo apenas um cabeçalho
-awk 'FNR==1 && NR!=1 {next} {print}' data/outputs/notebooks_2025_*.csv > data/outputs/notebooks_2025_all.csv
-```
+Nunca altere esses arquivos manualmente; gere novas versões via `run_pipeline.sh` e **guarde os logs** para comprovar as condições de execução.
 
 ---
 
-## 🔒 Ética e limites
+## 5. Boas práticas e troubleshooting
 
-- Apenas repositórios **públicos**
-- Coleta é **somente metadados**; execução é opcional e controlada
-- Não coletamos dados sensíveis; respeitamos _rate limits_ e termos da API
+- Valide sempre se `collection.csv` e `execution_results.csv` têm >=10 linhas antes de prosseguir.
+- Em casos de `rate limit`, o script aplica _retry/backoff_, mas você pode reduzir `--max-items` para janelas menores.
+- Para erros massivos de dependência, prefira `--exec-policy strict` ou habilite `--save-full-repos`.
+- Execute novamente apenas etapas necessárias com `--skip-collect` ou `--skip-execute` para economizar tempo.
+- Registre versões de Docker e Python utilizadas no relatório para assegurar comparabilidade longitudinal.
 
----
-
-### Troubleshooting rápido
-
-- **Mostra “Coletando notebooks: 0it”** → você está na versão antiga (busca por **código** com `created:`). A correta mostra **“Varredura de repositórios”**.
-- **`nb_ok_parse=False` em muitos casos** → notebooks grandes (LFS). Garanta que seu coletor está com o **fallback para `download_url`**.
-- **`TypeError: expected string, got list`** → normalizamos `cell.source` com helper `as_text(...)`.
+Com esses passos, qualquer pesquisador consegue replicar o pipeline end-to-end, reexecutar as análises no notebook mestre e validar os dados já publicados em `data/outputs/`.
