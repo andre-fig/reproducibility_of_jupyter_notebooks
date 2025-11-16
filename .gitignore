@@ -16,23 +16,30 @@ env/
 .DS_Store
 Thumbs.db
 
-# Logs
-*.log
 
 # Data inputs/outputs
 !data/inputs/.gitkeep
-data/outputs/*
+data/run_*/
+data/outputs/repositorios_completos/* 
+data/outputs/notebooks_originais/*
 !data/outputs/.gitkeep
 
-# Figures
-*.png
-*.jpg
-*.jpeg
 
 # Reports
-*.pdf
+paper/
 
 # IDE / Editor settings
 .vscode/
 .idea/
 *.swp
+.cursor/
+.cursorignore
+cursor_writing/
+paper/
+.venv-*/
+.ruff_cache/
+data/run_20251028_144659/*
+data/run_*/
+data/old_results/run_*/
+plano*.md
+test_*.py

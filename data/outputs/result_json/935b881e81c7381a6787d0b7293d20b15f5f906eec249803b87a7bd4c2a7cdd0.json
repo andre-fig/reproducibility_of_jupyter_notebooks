@@ -1,0 +1,20 @@
+{
+  "exec_ok": false,
+  "elapsed_s": 10.877,
+  "outputs_hash_exec": "",
+  "n_outputs_exec": 0,
+  "exec_exception_type": "CellExecutionError",
+  "exec_exception_module": "nbclient.exceptions",
+  "exec_exception_str": "An error occurred while executing the following cell:\n------------------\ncat_encoder = OneHotEncoder(sparse=False)\nhousing_cat_1hot = cat_encoder.fit_transform(housing_cat)\nhousing_cat_1hot\n------------------\n\n\n\u001b[0;31m---------------------------------------------------------------------------\u001b[0m\n\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)\nCell \u001b[0;32mIn[70], line 1\u001b[0m\n\u001b[0;32m----> 1\u001b[0m cat_encoder \u001b[38;5;241m=\u001b[39m \u001b[43mOneHotEncoder\u001b[49m\u001b[43m(\u001b[49m\u001b[43msparse\u001b[49m\u001b[38;5;241;43m=\u001b[39;49m\u001b[38;5;28;43;01mFalse\u001b[39;49;00m\u001b[43m)\u001b[49m\n\u001b[1;32m      2\u001b[0m housing_cat_1hot \u001b[38;5;241m=\u001b[39m cat_encoder\u001b[38;5;241m.\u001b[39mfit_transform(housing_cat)\n\u001b[1;32m      3\u001b[0m housing_cat_1hot\n\n\u001b[0;31mTypeError\u001b[0m: OneHotEncoder.__init__() got an unexpected keyword argument 'sparse'\n",
+  "exec_traceback_str": "Traceback (most recent call last):\n  File \"/opt/pipeline/scripts/execution_core.py\", line 225, in execute_notebook_in_current_env\n    client.execute()\n  File \"/usr/local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py\", line 165, in wrapped\n    return loop.run_until_complete(inner)\n  File \"/usr/local/lib/python3.10/asyncio/base_events.py\", line 649, in run_until_complete\n    return future.result()\n  File \"/usr/local/lib/python3.10/site-packages/nbclient/client.py\", line 709, in async_execute\n    await self.async_execute_cell(\n  File \"/usr/local/lib/python3.10/site-packages/nbclient/client.py\", line 1062, in async_execute_cell\n    await self._check_raise_for_error(cell, cell_index, exec_reply)\n  File \"/usr/local/lib/python3.10/site-packages/nbclient/client.py\", line 918, in _check_raise_for_error\n    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)\nnbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:\n------------------\ncat_encoder = OneHotEncoder(sparse=False)\nhousing_cat_1hot = cat_encoder.fit_transform(housing_cat)\nhousing_cat_1hot\n------------------\n\n\n\u001b[0;31m---------------------------------------------------------------------------\u001b[0m\n\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)\nCell \u001b[0;32mIn[70], line 1\u001b[0m\n\u001b[0;32m----> 1\u001b[0m cat_encoder \u001b[38;5;241m=\u001b[39m \u001b[43mOneHotEncoder\u001b[49m\u001b[43m(\u001b[49m\u001b[43msparse\u001b[49m\u001b[38;5;241;43m=\u001b[39;49m\u001b[38;5;28;43;01mFalse\u001b[39;49;00m\u001b[43m)\u001b[49m\n\u001b[1;32m      2\u001b[0m housing_cat_1hot \u001b[38;5;241m=\u001b[39m cat_encoder\u001b[38;5;241m.\u001b[39mfit_transform(housing_cat)\n\u001b[1;32m      3\u001b[0m housing_cat_1hot\n\n\u001b[0;31mTypeError\u001b[0m: OneHotEncoder.__init__() got an unexpected keyword argument 'sparse'\n\n",
+  "outputs_hash_canonical": "",
+  "outputs_n_cells": 0,
+  "outputs_n_bytes": 0,
+  "missing_module": null,
+  "retry_attempted": false,
+  "retry_missing_modules_count": 0,
+  "retry_missing_modules": [],
+  "retry_success": false,
+  "exec_env_python_version": "3.10.19",
+  "notebook_id": "935b881e81c7381a6787d0b7293d20b15f5f906eec249803b87a7bd4c2a7cdd0"
+}

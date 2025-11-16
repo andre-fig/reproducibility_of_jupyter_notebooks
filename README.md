@@ -136,7 +136,7 @@ python3 scripts/summarize_collection.py \
 
 Produz (exemplos):
 
-- Contagens e percentuais: `nb_ok_parse=True`, `language=python`, `deps_any=True`, `has_unambiguous_order=True`
+- Contagens e percentuais: `nb_ok_parse=True`, `language=python`, `deps_any=True`, `nb_has_unambiguous_exec_order=True`
 - Mediana/média de `n_code`, `n_markdown`, `% code executed`
 - **Top imports** agregados (a partir de `top_imports_json`)
 - Se execuções fornecidas: taxa de sucesso e erros mais comuns

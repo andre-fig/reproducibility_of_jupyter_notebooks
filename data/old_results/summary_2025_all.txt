@@ -1,0 +1,33 @@
+# Notebooks (linhas): 311
+nb_ok_parse=True: 307 (98.7%)
+language=python: 307 (98.7%)
+repos com deps_any=True: 145 (46.6%)
+unambiguous order: 307 (98.7%)
+n_code: median=15, mean=27.19
+n_markdown: median=3, mean=10.99
+%code executed: median=93.8, mean=85.8
+Top imports (agregado): [('matplotlib', 331), ('numpy', 317), ('sklearn', 241), ('pandas', 192), ('dolfinx', 165), ('os', 164), ('torch', 108), ('scipy', 97), ('seaborn', 71), ('alfred', 50)]
+# Execuções: 270  |  sucesso: 19 (7.0%)
+Erros mais comuns: [('ModuleNotFoundError', 213), ('FileNotFoundError', 14), ('TimeoutExpired', 9), ('StdinNotImplementedError', 5), ('SyntaxError', 2), ('ValueError', 2), ('ImportError', 2), ('UsageError', 2), ('DataSourceError', 1), ('ConnectionError', 1)]
+elapsed_s (todos): median=1.84s, mean=4.02s
+elapsed_s (sucesso): median=2.43s, mean=3.24s
+elapsed_s (falha): median=1.83s, mean=4.08s
+Repos com mais falhas: [('Gayara-Fernando/BPM', 10), ('Subin-Vidhu/2025', 10), ('YoussefHeshamAlsoly/DataCamp', 10), ('dylanschlichting/mpaso-numerical-mixing', 10), ('grmc1999/PhysicsSimulationDeepLearning', 10), ('LinderCa/NotebooksEstrategias', 9), ('Lollith/Python-2DGC-Alignment', 9), ('MIldredDelgado/IA_EXPL', 9), ('NewYorkCityCouncil/vision-zero-final', 9), ('TheYuanLiao/netmob25', 9)]
+Notebooks com falha (top): [('Angelk119/DA2025_Lectures2/Mod1/M1L2-Numpy_STUDENT.ipynb', 1), ('Angelk119/DA2025_Lectures2/Mod2/DataChallenges/Plotly_STUDENT.ipynb', 1), ('Angelk119/DA2025_Lectures2/Mod2/LiveLab_DataChallenges/Experiment.ipynb', 1), ('Angelk119/DA2025_Lectures2/Mod2/LiveLab_DataChallenges/LiveLab_DataChallenge_MatplotlibSeaborn-STUDENT.ipynb', 1), ('Angelk119/DA2025_Lectures2/Mod4_StatsReview/StatisticsReview_ANSWERS.ipynb', 1), ('Angelk119/DA2025_Lectures2/Mod5/CodeAlongs/Mod5L1_CodeAlong_STUDENT.ipynb', 1), ('Angelk119/DA2025_Lectures2/Mod5/DataChallenges/notebooks/Mod5L1_DC1_STUDENT.ipynb', 1), ('Angelk119/DA2025_Lectures2/Mod5/DataChallenges/notebooks/Mod5L2_DC2_STUDENT.ipynb', 1), ('Cuonghoangit/GeoMineralInsight/notebooks/EDA.ipynb', 1), ('DenOfEquity/ersatzForge/repositories/BLIP/demo.ipynb', 1)]
+originais encontrados: 247 (91.5%)
+outputs iguais (todas execuções): 10 (3.7%)
+outputs iguais (entre sucessos): 10 (52.6%)
+Exemplos de divergência (até 10):
+ - Anndischeh/Deep-Learning-for-Image-Analysis-Coursework/App.ipynb orig=cc08d5f8 exec=579fa97c n_orig=4 n_exec=4
+ - TUDelft-books/CT1000/book/week_13/session_1/intro.ipynb orig=528dda5b exec=04da67c4 n_orig=2 n_exec=1
+ - TUDelft-books/CT1000/book/week_14/session_1/intro.ipynb orig=528dda5b exec=4a62156a n_orig=2 n_exec=1
+ - UCL-CCS/ferrmion/docs/source/notebooks/molecular_hamiltonian.ipynb orig=5a2ecdac exec=4c6b81d2 n_orig=7 n_exec=7
+ - atorgoffice/launcher-app/DeFooocus_colab.ipynb orig=90ba8c0b exec=5cf4c9f9 n_orig=1 n_exec=24
+ - gc-os-ai/MAWS_2025/notebooks/maws/debug.ipynb orig=daba29f3 exec=714ec4e8 n_orig=9 n_exec=8
+ - jasiElB20028/R9s0qhY/GA_DPSO.ipynb orig=0f2a1613 exec=1c043b6a n_orig=28 n_exec=12
+ - ligujie123/ligujie123.github.io/assets/jupyter/blog.ipynb orig=1911fde8 exec=ff294596 n_orig=1 n_exec=1
+ - napo/parklogtrento/data4web.ipynb orig=0e0921d0 exec=36569568 n_orig=4 n_exec=3
+n_outputs_orig: median=11, mean=28.1
+n_outputs_exec: median=0, mean=0.4
+Reprodutibilidade (entre originais): 4.0% (10/247)
+Reprodutibilidade (entre originais + exec_ok): 52.6% (10/19)

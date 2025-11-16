@@ -1,0 +1,5 @@
+exception_module,exception_type,count,percent_failures
+nbclient.exceptions,CellExecutionError,312,97.5
+unknown,ResultMissing,3,0.94
+unknown,TimeoutExpired,3,0.94
+builtins,RuntimeError,2,0.62

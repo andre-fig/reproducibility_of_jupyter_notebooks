@@ -1,0 +1,16 @@
+metric_name,count,total,ratio_2025
+bad_no_markdown,67,400,0.1675
+bad_low_markdown_ratio,87,400,0.2175
+bad_untitled,6,400,0.015
+bad_copy_name,0,400,0.0
+bad_non_portable_name,263,400,0.6575
+bad_no_functions,319,400,0.7975
+bad_no_local_imports,389,400,0.9725
+bad_no_testing_imports,395,400,0.9875
+bad_out_of_order_exec,66,400,0.165
+bad_has_exec_skips,143,400,0.3575
+bad_has_non_executed_code_in_middle,30,400,0.075
+repo_has_env_spec,284,400,0.71
+repo_has_ci_workflow,9,400,0.0225
+repo_has_tests_dir,3,400,0.0075
+repo_has_data_dir,118,400,0.295

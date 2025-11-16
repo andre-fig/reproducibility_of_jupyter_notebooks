@@ -1,0 +1,8 @@
+exec_error_type,CellExecutionError,ResultMissing,RuntimeError,TimeoutExpired,All
+connection_error,2,0,0,0,2
+file_not_found,198,0,0,0,198
+missing_dependency,55,0,0,0,55
+other,28,3,0,0,31
+runtime_error,20,0,0,0,20
+timeout,9,0,2,3,14
+All,312,3,2,3,320

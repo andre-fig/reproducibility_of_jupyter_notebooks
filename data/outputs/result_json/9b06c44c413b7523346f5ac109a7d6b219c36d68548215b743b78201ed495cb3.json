@@ -1,0 +1,25 @@
+{
+  "exec_ok": false,
+  "elapsed_s": 361.421,
+  "outputs_hash_exec": "",
+  "n_outputs_exec": 0,
+  "exec_exception_type": "CellTimeoutError",
+  "exec_exception_module": "nbclient.exceptions",
+  "exec_exception_str": "A cell timed out while it was being executed, after 300 seconds.\nThe message was: Cell execution timed out.\nHere is a preview of the cell contents:\n-------------------\ngrid_search = GridSearchCV(estimator=model_ran,\n                           param_grid=param_grid_ran,\n                           cv=5,\n                           n_jobs=-1,\n                           verbose=2,\n                           scoring='accuracy')\n\ngrid_search.fit(xtrain, ytrain)\n-------------------\n",
+  "exec_traceback_str": "Traceback (most recent call last):\n  File \"/usr/local/lib/python3.11/site-packages/nbclient/client.py\", line 782, in _async_poll_for_reply\n    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/site-packages/jupyter_core/utils/__init__.py\", line 214, in ensure_async\n    result = await obj\n             ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/site-packages/jupyter_client/channels.py\", line 313, in get_msg\n    raise Empty\n_queue.Empty\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/opt/pipeline/scripts/execution_core.py\", line 225, in execute_notebook_in_current_env\n    client.execute()\n  File \"/usr/local/lib/python3.11/site-packages/jupyter_core/utils/__init__.py\", line 165, in wrapped\n    return loop.run_until_complete(inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/base_events.py\", line 654, in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/site-packages/nbclient/client.py\", line 709, in async_execute\n    await self.async_execute_cell(\n  File \"/usr/local/lib/python3.11/site-packages/nbclient/client.py\", line 1005, in async_execute_cell\n    exec_reply = await self.task_poll_for_reply\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/site-packages/nbclient/client.py\", line 806, in _async_poll_for_reply\n    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/site-packages/nbclient/client.py\", line 856, in _async_handle_timeout\n    raise CellTimeoutError.error_from_timeout_and_cell(\nnbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 300 seconds.\nThe message was: Cell execution timed out.\nHere is a preview of the cell contents:\n-------------------\ngrid_search = GridSearchCV(estimator=model_ran,\n                           param_grid=param_grid_ran,\n                           cv=5,\n                           n_jobs=-1,\n                           verbose=2,\n                           scoring='accuracy')\n\ngrid_search.fit(xtrain, ytrain)\n-------------------\n\n",
+  "outputs_hash_canonical": "",
+  "outputs_n_cells": 0,
+  "outputs_n_bytes": 0,
+  "missing_module": null,
+  "retry_attempted": true,
+  "retry_missing_modules_count": 4,
+  "retry_missing_modules": [
+    "imblearn",
+    "nltk",
+    "wordcloud",
+    "xgboost"
+  ],
+  "retry_success": false,
+  "exec_env_python_version": "3.11.14",
+  "notebook_id": "9b06c44c413b7523346f5ac109a7d6b219c36d68548215b743b78201ed495cb3"
+}

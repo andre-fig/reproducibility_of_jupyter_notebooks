@@ -1,0 +1,1451 @@
+2025-11-12 00:58:57,256 | INFO | == Iniciando executor de notebooks (headless + timeout real) ==
+2025-11-12 00:58:57,256 | INFO | Parâmetros: input=/home/asu/reproducibility_of_jupyter_notebooks-1/data/outputs/collection.csv output=/home/asu/reproducibility_of_jupyter_notebooks-1/data/outputs/execution_results.csv policy=strict timeout=300s limit=None originals_dir=/home/asu/reproducibility_of_jupyter_notebooks-1/data/outputs/notebooks_originais
+2025-11-12 00:58:57,256 | INFO | 🔍 Analisando versões Python nos notebooks...
+2025-11-12 00:58:57,259 | INFO | 📊 Versões Python encontradas: {'3.13': 30, '3.6': 7, 'unknown': 6, '3.12': 3, '3.10': 110}
+2025-11-12 00:58:57,259 | INFO | 🎯 Versão mais comum: Python 3.10
+2025-11-12 00:58:57,259 | INFO | 🐳 Imagem Docker sugerida: notebook-executor
+2025-11-12 00:58:57,259 | INFO | 💡 Para usar a versão correta, execute:
+2025-11-12 00:58:57,259 | INFO |    docker build -t notebook-executor -f Dockerfile.python310 .
+2025-11-12 00:58:57,259 | INFO | Workspace temporário: /tmp/nbexec_mctm0ho5
+2025-11-12 00:58:57,575 | INFO | Clonando wewnumam/learn-ai@main
+2025-11-12 00:58:59,228 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_1.ipynb
+2025-11-12 00:58:59,228 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__FreeCodeCamp-Pandas-Real-Life-Example__Exercises_1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=c2e53f77127f68dd7cb996540e06a7bfa63d1b63cc2fa697c00f311cf42dd2d6 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:04,777 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:01,264 | INFO | Executing notebook: data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_1.ipynb
+2025-11-12 03:59:01,264 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:02,317 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:02,661 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:04,789 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_2.ipynb
+2025-11-12 00:59:04,789 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__FreeCodeCamp-Pandas-Real-Life-Example__Exercises_2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=d97db5d1574e42f3c2700c5f9fae8c9e5858a5b4a8ec6810b0e9fea3a50a9a7f notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:07,452 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:05,927 | INFO | Executing notebook: data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Exercises_2.ipynb
+2025-11-12 03:59:05,927 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:06,708 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:07,050 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:07,466 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_1.ipynb
+2025-11-12 00:59:07,466 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__FreeCodeCamp-Pandas-Real-Life-Example__Lecture_1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=931de126d369b599ed4f430b7c00ff9973990ffee7777a99daf51daa70586392 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:10,059 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:08,545 | INFO | Executing notebook: data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_1.ipynb
+2025-11-12 03:59:08,545 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:09,308 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:09,647 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:10,068 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_2.ipynb
+2025-11-12 00:59:10,069 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__FreeCodeCamp-Pandas-Real-Life-Example__Lecture_2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=7707961d01863dfa29aded1f2a9291575746cfd0ffc12753383f619b11166303 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:12,734 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:11,183 | INFO | Executing notebook: data-analysis/FreeCodeCamp-Pandas-Real-Life-Example/Lecture_2.ipynb
+2025-11-12 03:59:11,183 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:12,143 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:12,378 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:12,804 | INFO | Executando via Docker: image=notebook-executor-py36 nb=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-1-reading-csv-and-txt-files/files/Lecture.ipynb
+2025-11-12 00:59:12,804 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__RDP-Reading-Data-with-Python-and-Pandas__unit-1-reading-data-with-python-and-pandas__lesson-1-reading-csv-and-txt-files__files__Lecture.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-1-reading-csv-and-txt-files/files/Lecture.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.6 -e NOTEBOOK_ID=da43bbd214c4f8acd75fb7b713ecc219b3232971f8589d7058f57bd1cd7074cc notebook-executor-py36 python -m scripts.container_worker
+2025-11-12 00:59:13,631 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/local/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/executor/scripts/container_worker.py", line 23, in <module>
+    from scripts.execution_core import execute_notebook_in_current_env
+  File "/executor/scripts/execution_core.py", line 85, in <module>
+    def hash_outputs_from_nbjson(nbjson: dict) -> tuple[str, int]:
+TypeError: 'type' object is not subscriptable
+
+2025-11-12 00:59:13,638 | INFO | Executando via Docker: image=notebook-executor-py36 nb=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-11-reading-data-from-relational-databases/files/Lecture.ipynb
+2025-11-12 00:59:13,638 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__RDP-Reading-Data-with-Python-and-Pandas__unit-1-reading-data-with-python-and-pandas__lesson-11-reading-data-from-relational-databases__files__Lecture.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-11-reading-data-from-relational-databases/files/Lecture.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.6 -e NOTEBOOK_ID=ce1f0f4876ea82818df6638f3e3554aa22fbfc48a8a238f86e3d4f01b29252ce notebook-executor-py36 python -m scripts.container_worker
+2025-11-12 00:59:14,280 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/local/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/executor/scripts/container_worker.py", line 23, in <module>
+    from scripts.execution_core import execute_notebook_in_current_env
+  File "/executor/scripts/execution_core.py", line 85, in <module>
+    def hash_outputs_from_nbjson(nbjson: dict) -> tuple[str, int]:
+TypeError: 'type' object is not subscriptable
+
+2025-11-12 00:59:14,288 | INFO | Executando via Docker: image=notebook-executor-py36 nb=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-15-fetching-data-from-a-rest-api/files/Lecture.ipynb
+2025-11-12 00:59:14,289 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__RDP-Reading-Data-with-Python-and-Pandas__unit-1-reading-data-with-python-and-pandas__lesson-15-fetching-data-from-a-rest-api__files__Lecture.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-15-fetching-data-from-a-rest-api/files/Lecture.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.6 -e NOTEBOOK_ID=1d9cb73d5cdab6459a7a262a588541a57bca90f86ca81296e28e45b90f21758f notebook-executor-py36 python -m scripts.container_worker
+2025-11-12 00:59:14,916 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/local/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/executor/scripts/container_worker.py", line 23, in <module>
+    from scripts.execution_core import execute_notebook_in_current_env
+  File "/executor/scripts/execution_core.py", line 85, in <module>
+    def hash_outputs_from_nbjson(nbjson: dict) -> tuple[str, int]:
+TypeError: 'type' object is not subscriptable
+
+2025-11-12 00:59:14,923 | INFO | Executando via Docker: image=notebook-executor-py36 nb=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-17-reading-html-tables/files/Lecture.ipynb
+2025-11-12 00:59:14,923 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__RDP-Reading-Data-with-Python-and-Pandas__unit-1-reading-data-with-python-and-pandas__lesson-17-reading-html-tables__files__Lecture.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-17-reading-html-tables/files/Lecture.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.6 -e NOTEBOOK_ID=58a25dbb7e3cee5c8b8343fda33bfc2b2522263ecc613cadd6dfb163005c9f3b notebook-executor-py36 python -m scripts.container_worker
+2025-11-12 00:59:15,542 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/local/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/executor/scripts/container_worker.py", line 23, in <module>
+    from scripts.execution_core import execute_notebook_in_current_env
+  File "/executor/scripts/execution_core.py", line 85, in <module>
+    def hash_outputs_from_nbjson(nbjson: dict) -> tuple[str, int]:
+TypeError: 'type' object is not subscriptable
+
+2025-11-12 00:59:15,550 | INFO | Executando via Docker: image=notebook-executor-py36 nb=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-19-complementary-file-types-and-io-tools/files/Lecture.ipynb
+2025-11-12 00:59:15,550 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__RDP-Reading-Data-with-Python-and-Pandas__unit-1-reading-data-with-python-and-pandas__lesson-19-complementary-file-types-and-io-tools__files__Lecture.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-19-complementary-file-types-and-io-tools/files/Lecture.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.6 -e NOTEBOOK_ID=92fdf1af23611040cb77056b3548ff872db87baae81cf3b5210229778fa730db notebook-executor-py36 python -m scripts.container_worker
+2025-11-12 00:59:16,250 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/local/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/executor/scripts/container_worker.py", line 23, in <module>
+    from scripts.execution_core import execute_notebook_in_current_env
+  File "/executor/scripts/execution_core.py", line 85, in <module>
+    def hash_outputs_from_nbjson(nbjson: dict) -> tuple[str, int]:
+TypeError: 'type' object is not subscriptable
+
+2025-11-12 00:59:16,257 | INFO | Executando via Docker: image=notebook-executor-py36 nb=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-5-reading-excel-files/files/Lecture.ipynb
+2025-11-12 00:59:16,257 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__RDP-Reading-Data-with-Python-and-Pandas__unit-1-reading-data-with-python-and-pandas__lesson-5-reading-excel-files__files__Lecture.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-5-reading-excel-files/files/Lecture.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.6 -e NOTEBOOK_ID=965bbf9ab3550a9dac0de3fbaefd2fc63786416c11cf844a12c307bc62621ffd notebook-executor-py36 python -m scripts.container_worker
+2025-11-12 00:59:16,889 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/local/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/executor/scripts/container_worker.py", line 23, in <module>
+    from scripts.execution_core import execute_notebook_in_current_env
+  File "/executor/scripts/execution_core.py", line 85, in <module>
+    def hash_outputs_from_nbjson(nbjson: dict) -> tuple[str, int]:
+TypeError: 'type' object is not subscriptable
+
+2025-11-12 00:59:16,895 | INFO | Executando via Docker: image=notebook-executor-py36 nb=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-8-reading-json-files/files/Lecture.ipynb
+2025-11-12 00:59:16,896 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__RDP-Reading-Data-with-Python-and-Pandas__unit-1-reading-data-with-python-and-pandas__lesson-8-reading-json-files__files__Lecture.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/RDP-Reading-Data-with-Python-and-Pandas/unit-1-reading-data-with-python-and-pandas/lesson-8-reading-json-files/files/Lecture.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.6 -e NOTEBOOK_ID=9c8b089b8a6be14aadb22e01391f07381185feaefaea98a156bc27efc243b939 notebook-executor-py36 python -m scripts.container_worker
+2025-11-12 00:59:17,527 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/local/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/executor/scripts/container_worker.py", line 23, in <module>
+    from scripts.execution_core import execute_notebook_in_current_env
+  File "/executor/scripts/execution_core.py", line 85, in <module>
+    def hash_outputs_from_nbjson(nbjson: dict) -> tuple[str, int]:
+TypeError: 'type' object is not subscriptable
+
+2025-11-12 00:59:17,529 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/data-cleaning-rmotr-freecodecamp/1 - Missing Data.ipynb
+2025-11-12 00:59:17,529 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__data-cleaning-rmotr-freecodecamp__1 - Missing Data.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/data-cleaning-rmotr-freecodecamp/1 - Missing Data.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=f5d517369a7c78daae0af067ef014668a4fa800a0565ad0b5fab7bf2f0dbed4d notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:20,212 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:18,727 | INFO | Executing notebook: data-analysis/data-cleaning-rmotr-freecodecamp/1 - Missing Data.ipynb
+2025-11-12 03:59:18,727 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:19,484 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:19,818 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:20,213 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/data-cleaning-rmotr-freecodecamp/2 - Handling Missing Data with Pandas.ipynb
+2025-11-12 00:59:20,213 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__data-cleaning-rmotr-freecodecamp__2 - Handling Missing Data with Pandas.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/data-cleaning-rmotr-freecodecamp/2 - Handling Missing Data with Pandas.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=3602e8019807053a848681da02e9d5f5e5d52b10c020a69cdccfcd5f609cc5b4 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:22,804 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:21,337 | INFO | Executing notebook: data-analysis/data-cleaning-rmotr-freecodecamp/2 - Handling Missing Data with Pandas.ipynb
+2025-11-12 03:59:21,337 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:22,100 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:22,437 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:22,806 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/data-cleaning-rmotr-freecodecamp/3 - Cleaning Not Null Values.ipynb
+2025-11-12 00:59:22,806 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__data-cleaning-rmotr-freecodecamp__3 - Cleaning Not Null Values.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/data-cleaning-rmotr-freecodecamp/3 - Cleaning Not Null Values.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=b24652ff968e871c4657d7c602236d0d9dbf128fa6c193ba741fac799f9b4a40 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:25,570 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:23,985 | INFO | Executing notebook: data-analysis/data-cleaning-rmotr-freecodecamp/3 - Cleaning Not Null Values.ipynb
+2025-11-12 03:59:23,985 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:24,932 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:25,166 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:25,571 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/data-cleaning-rmotr-freecodecamp/4 - More Visualizations.ipynb
+2025-11-12 00:59:25,571 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__data-cleaning-rmotr-freecodecamp__4 - More Visualizations.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/data-cleaning-rmotr-freecodecamp/4 - More Visualizations.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=2983c66ede47e8f995218bc475be10e9eef33bb2b0a996ff54873c16a296f94f notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:28,215 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:26,690 | INFO | Executing notebook: data-analysis/data-cleaning-rmotr-freecodecamp/4 - More Visualizations.ipynb
+2025-11-12 03:59:26,690 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:27,455 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:27,792 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:28,217 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/data-cleaning-rmotr-freecodecamp/5 - Real Example.ipynb
+2025-11-12 00:59:28,217 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__data-cleaning-rmotr-freecodecamp__5 - Real Example.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/data-cleaning-rmotr-freecodecamp/5 - Real Example.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=fb7c2a129af47f80c10156b86679555b32bc98cf3e1fe77ed2fa8723043c0501 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:30,926 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:29,339 | INFO | Executing notebook: data-analysis/data-cleaning-rmotr-freecodecamp/5 - Real Example.ipynb
+2025-11-12 03:59:29,339 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:30,124 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:30,464 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:30,927 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/freecodecamp-intro-to-pandas/1 - Pandas - Series.ipynb
+2025-11-12 00:59:30,927 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__freecodecamp-intro-to-pandas__1 - Pandas - Series.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/freecodecamp-intro-to-pandas/1 - Pandas - Series.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=bc2fe5203c71eafe437c4be9f8bcc0a597ec49de634fce790321089ff9435fe7 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:33,566 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:32,064 | INFO | Executing notebook: data-analysis/freecodecamp-intro-to-pandas/1 - Pandas - Series.ipynb
+2025-11-12 03:59:32,064 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:32,823 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:33,159 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:33,568 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/freecodecamp-intro-to-pandas/2 - Pandas Series exercises.ipynb
+2025-11-12 00:59:33,568 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__freecodecamp-intro-to-pandas__2 - Pandas Series exercises.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/freecodecamp-intro-to-pandas/2 - Pandas Series exercises.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=b4e5a597df960403067a9e96c4afdcc44409466d47a7a1f34c0e01ee36f91235 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:36,172 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:34,698 | INFO | Executing notebook: data-analysis/freecodecamp-intro-to-pandas/2 - Pandas Series exercises.ipynb
+2025-11-12 03:59:34,698 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:35,453 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:35,793 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:36,174 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/freecodecamp-intro-to-pandas/3 - Pandas - DataFrames.ipynb
+2025-11-12 00:59:36,174 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__freecodecamp-intro-to-pandas__3 - Pandas - DataFrames.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/freecodecamp-intro-to-pandas/3 - Pandas - DataFrames.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=2a4d7f4eb0d345db0b141ec89440989b9958da7002b122981c91c668a681af73 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:38,787 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:37,311 | INFO | Executing notebook: data-analysis/freecodecamp-intro-to-pandas/3 - Pandas - DataFrames.ipynb
+2025-11-12 03:59:37,311 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:38,070 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:38,408 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:38,788 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/freecodecamp-intro-to-pandas/4 - Pandas DataFrames exercises.ipynb
+2025-11-12 00:59:38,788 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__freecodecamp-intro-to-pandas__4 - Pandas DataFrames exercises.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/freecodecamp-intro-to-pandas/4 - Pandas DataFrames exercises.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=415d8ebd1b64e8feaf4a774b21fe884fdb4b1e70c770ec4d1fc877ff08561daf notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:41,420 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:39,946 | INFO | Executing notebook: data-analysis/freecodecamp-intro-to-pandas/4 - Pandas DataFrames exercises.ipynb
+2025-11-12 03:59:39,946 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:40,708 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:41,047 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:41,421 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/freecodecamp-intro-to-pandas/5 - Pandas - Reading CSV and Basic Plotting.ipynb
+2025-11-12 00:59:41,421 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__freecodecamp-intro-to-pandas__5 - Pandas - Reading CSV and Basic Plotting.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/freecodecamp-intro-to-pandas/5 - Pandas - Reading CSV and Basic Plotting.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=e5e6ce15f5a6a5528d6ed0483b1468c9f57a64e9c76cc80e5fffa524985b887c notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:44,066 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:42,562 | INFO | Executing notebook: data-analysis/freecodecamp-intro-to-pandas/5 - Pandas - Reading CSV and Basic Plotting.ipynb
+2025-11-12 03:59:42,562 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:43,326 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:43,661 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:44,092 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-analysis/programming-with-mosh/HelloWorld.ipynb
+2025-11-12 00:59:44,092 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-analysis__programming-with-mosh__HelloWorld.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-analysis/programming-with-mosh/HelloWorld.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=c08f6d4f7295a9c8225d9d298f61f7738c3c02b0ee3ea45a2499c8c1d70ce03b notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:46,739 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:45,206 | INFO | Executing notebook: data-analysis/programming-with-mosh/HelloWorld.ipynb
+2025-11-12 03:59:45,206 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:45,954 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:46,269 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:46,741 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-science/freecodecamp-intro-to-numpy/1. Introduction to Data Science.ipynb
+2025-11-12 00:59:46,741 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-science__freecodecamp-intro-to-numpy__1. Introduction to Data Science.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-science/freecodecamp-intro-to-numpy/1. Introduction to Data Science.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=2f265f05414c75f1328687c31fd55d8da421470c91e6ae1c7cf920417d3e9196 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:49,126 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-science/freecodecamp-intro-to-numpy/2. NumPy.ipynb
+2025-11-12 00:59:49,127 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-science__freecodecamp-intro-to-numpy__2. NumPy.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-science/freecodecamp-intro-to-numpy/2. NumPy.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=2858f9d33f294a2101304ba8ddd3579cd2f80b2951172ff9558b4a5d9fa51405 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:51,768 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:50,248 | INFO | Executing notebook: data-science/freecodecamp-intro-to-numpy/2. NumPy.ipynb
+2025-11-12 03:59:50,248 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:51,034 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:51,368 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:51,770 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-science/freecodecamp-intro-to-numpy/3. NumPy exercises.ipynb
+2025-11-12 00:59:51,770 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-science__freecodecamp-intro-to-numpy__3. NumPy exercises.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-science/freecodecamp-intro-to-numpy/3. NumPy exercises.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=5a7650594104fca13d0d714f5807799e84970f7d903125e28eff973ebdbc1c12 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:54,503 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:52,887 | INFO | Executing notebook: data-science/freecodecamp-intro-to-numpy/3. NumPy exercises.ipynb
+2025-11-12 03:59:52,888 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:53,658 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:54,000 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:54,508 | INFO | Executando via Docker: image=notebook-executor-py313 nb=data-science/freecodecamp-intro-to-numpy/Untitled.ipynb
+2025-11-12 00:59:54,509 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/data-science__freecodecamp-intro-to-numpy__Untitled.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=data-science/freecodecamp-intro-to-numpy/Untitled.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=24d4e9827fa2276e4e0f622db05e7e997d61ca19a778a0e98f2e14e94ee26371 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 00:59:57,435 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:55,687 | INFO | Executing notebook: data-science/freecodecamp-intro-to-numpy/Untitled.ipynb
+2025-11-12 03:59:55,688 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:56,480 | INFO | Executing notebook with kernel: python3
+2025-11-12 03:59:56,833 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 00:59:57,440 | INFO | Executando via Docker: image=notebook-executor-py313 nb=machine-learning/decision-tree-classifier/MusicGenreClassifier.ipynb
+2025-11-12 00:59:57,440 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/machine-learning__decision-tree-classifier__MusicGenreClassifier.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=machine-learning/decision-tree-classifier/MusicGenreClassifier.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=9a72d4b0ff503a4548aa3a128e4957eded8c5971d9a184683789c34edd8d5482 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 01:00:00,620 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 03:59:58,754 | INFO | Executing notebook: machine-learning/decision-tree-classifier/MusicGenreClassifier.ipynb
+2025-11-12 03:59:58,754 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 03:59:59,774 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:00:00,093 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:00:00,622 | INFO | Executando via Docker: image=notebook-executor-py313 nb=machine-learning/decision-tree-classifier/PresistingModel.ipynb
+2025-11-12 01:00:00,622 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/machine-learning__decision-tree-classifier__PresistingModel.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=machine-learning/decision-tree-classifier/PresistingModel.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=becfe407b02fcdaa75a18aad5d90699def023b2fcc133e4900be03e443f0bfb9 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 01:00:03,425 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:00:01,766 | INFO | Executing notebook: machine-learning/decision-tree-classifier/PresistingModel.ipynb
+2025-11-12 04:00:01,766 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:00:02,551 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:00:02,871 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:00:03,496 | INFO | Executando via Docker: image=notebook-executor nb=mka-ugm/ace/summary/Summarizer.ipynb
+2025-11-12 01:00:03,496 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/mka-ugm__ace__summary__Summarizer.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=mka-ugm/ace/summary/Summarizer.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED= -e NOTEBOOK_ID=aa94d220b7d39f342b8835e43cbb1039c7fefc988db4011a7ba536c2a2056503 notebook-executor python -m scripts.container_worker
+2025-11-12 01:00:37,669 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:00:04,894 | INFO | Executing notebook: mka-ugm/ace/summary/Summarizer.ipynb
+2025-11-12 04:00:04,894 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:00:05,842 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:00:36,072 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:00:37,764 | INFO | Executando via Docker: image=notebook-executor nb=mka-ugm/pma/Tugas_1_Exploratory_Data_Analysis.ipynb
+2025-11-12 01:00:37,764 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/mka-ugm__pma__Tugas_1_Exploratory_Data_Analysis.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=mka-ugm/pma/Tugas_1_Exploratory_Data_Analysis.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED= -e NOTEBOOK_ID=bb642fb641415bdb4da4192112567696b410a2bfc3ac3f9f1e079b22183e1ddb notebook-executor python -m scripts.container_worker
+2025-11-12 01:00:40,880 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:00:39,129 | INFO | Executing notebook: mka-ugm/pma/Tugas_1_Exploratory_Data_Analysis.ipynb
+2025-11-12 04:00:39,129 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:00:39,942 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:00:40,298 | INFO | Result written to /workspace/out/result.json
+
+/home/asu/reproducibility_of_jupyter_notebooks-1/.venv-for-project/lib/python3.13/site-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  validate(nb)
+2025-11-12 01:00:40,892 | INFO | Executando via Docker: image=notebook-executor-py313 nb=mka-ugm/stmh/Analysis_of_Algorithms.ipynb
+2025-11-12 01:00:40,893 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/mka-ugm__stmh__Analysis_of_Algorithms.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=mka-ugm/stmh/Analysis_of_Algorithms.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=9753aac533759c40772a38c4ee3a9e849cdb2ef3980de12ef96a4244674e5663 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 01:00:44,130 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:00:42,182 | INFO | Executing notebook: mka-ugm/stmh/Analysis_of_Algorithms.ipynb
+2025-11-12 04:00:42,182 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:00:43,232 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:00:43,561 | INFO | Result written to /workspace/out/result.json
+
+/home/asu/reproducibility_of_jupyter_notebooks-1/.venv-for-project/lib/python3.13/site-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  validate(nb)
+2025-11-12 01:00:44,138 | INFO | Executando via Docker: image=notebook-executor-py313 nb=mka-ugm/stmh/Analysis_of_Algorithms_Enhanced.ipynb
+2025-11-12 01:00:44,139 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/mka-ugm__stmh__Analysis_of_Algorithms_Enhanced.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=mka-ugm/stmh/Analysis_of_Algorithms_Enhanced.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=57fa626092a7d919a3a82d4acb3e35c7163a581058361bc8a3d0992f14267acf notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 01:00:47,097 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:00:45,380 | INFO | Executing notebook: mka-ugm/stmh/Analysis_of_Algorithms_Enhanced.ipynb
+2025-11-12 04:00:45,380 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:00:46,211 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:00:46,535 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:00:47,100 | INFO | Executando via Docker: image=notebook-executor-py313 nb=mka-ugm/stmh/FeatureSelectionGA.ipynb
+2025-11-12 01:00:47,101 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/mka-ugm__stmh__FeatureSelectionGA.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=mka-ugm/stmh/FeatureSelectionGA.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=91c0afbec4ee0321728abfb490cbb5e1b950af359bb20cfc57d843939ffbb200 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 01:00:50,399 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:00:48,530 | INFO | Executing notebook: mka-ugm/stmh/FeatureSelectionGA.ipynb
+2025-11-12 04:00:48,530 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:00:49,580 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:00:49,897 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:00:50,404 | INFO | Executando via Docker: image=notebook-executor-py313 nb=mka-ugm/stmh/GeneticAlgorithm.ipynb
+2025-11-12 01:00:50,404 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/mka-ugm__stmh__GeneticAlgorithm.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=mka-ugm/stmh/GeneticAlgorithm.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=6c6014b6d0af72ea41093534b5c5df3cca8422ae9e241709ee6a49e62663b0c4 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 01:00:53,837 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:00:51,707 | INFO | Executing notebook: mka-ugm/stmh/GeneticAlgorithm.ipynb
+2025-11-12 04:00:51,707 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:00:52,769 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:00:53,258 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:00:53,840 | INFO | Executando via Docker: image=notebook-executor-py313 nb=mka-ugm/stmh/Quiz.ipynb
+2025-11-12 01:00:53,840 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/mka-ugm__stmh__Quiz.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=mka-ugm/stmh/Quiz.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=d43509acb374901552d7384fa55bf29f5ac2a60d99ccf8934def0d630ac5f798 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 01:00:56,595 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:00:55,092 | INFO | Executing notebook: mka-ugm/stmh/Quiz.ipynb
+2025-11-12 04:00:55,092 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:00:55,854 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:00:56,172 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:00:56,599 | INFO | Executando via Docker: image=notebook-executor-py313 nb=projects/data-analysis-with-python-projects/demographic-data-analysis/Untitled.ipynb
+2025-11-12 01:00:56,599 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/projects__data-analysis-with-python-projects__demographic-data-analysis__Untitled.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=projects/data-analysis-with-python-projects/demographic-data-analysis/Untitled.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=541a16f5eb0f2b6d438e62aaa5a6c67400e709d757e8bf4859fe7dbb688cbdf4 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 01:00:59,247 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:00:57,758 | INFO | Executing notebook: projects/data-analysis-with-python-projects/demographic-data-analysis/Untitled.ipynb
+2025-11-12 04:00:57,758 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:00:58,512 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:00:58,833 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:00:59,251 | INFO | Executando via Docker: image=notebook-executor-py313 nb=projects/data-analysis-with-python-projects/medical-data-visualizer/Untitled.ipynb
+2025-11-12 01:00:59,251 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/projects__data-analysis-with-python-projects__medical-data-visualizer__Untitled.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=projects/data-analysis-with-python-projects/medical-data-visualizer/Untitled.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=c6144e14aa7154ba913b5260f08376fb63251e12b754d77cd5d7cbe64c365c95 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 01:01:05,103 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:01:00,415 | INFO | Executing notebook: projects/data-analysis-with-python-projects/medical-data-visualizer/Untitled.ipynb
+2025-11-12 04:01:00,415 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:01:01,180 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:01:04,664 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:01:05,107 | INFO | Executando via Docker: image=notebook-executor-py313 nb=projects/data-analysis-with-python-projects/sea-level-predictor/Untitled.ipynb
+2025-11-12 01:01:05,108 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/projects__data-analysis-with-python-projects__sea-level-predictor__Untitled.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=projects/data-analysis-with-python-projects/sea-level-predictor/Untitled.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=f90bb3769edaee7bb1e23bffcfc00f9fafb9f049543e9d69b948ed883407a21f notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 01:01:07,736 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:01:06,270 | INFO | Executing notebook: projects/data-analysis-with-python-projects/sea-level-predictor/Untitled.ipynb
+2025-11-12 04:01:06,270 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:01:07,035 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:01:07,351 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:01:07,741 | INFO | Executando via Docker: image=notebook-executor-py313 nb=projects/data-analysis-with-python-projects/time-series-visualizer/Untitled.ipynb
+2025-11-12 01:01:07,741 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/wewnumam__learn-ai/_out/projects__data-analysis-with-python-projects__time-series-visualizer__Untitled.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=projects/data-analysis-with-python-projects/time-series-visualizer/Untitled.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.13 -e NOTEBOOK_ID=e6e90d26a96ec508860e40cf3b21d0125b4fa69146dd8b683917743c816cc3d0 notebook-executor-py313 python -m scripts.container_worker
+2025-11-12 01:01:10,381 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:01:08,920 | INFO | Executing notebook: projects/data-analysis-with-python-projects/time-series-visualizer/Untitled.ipynb
+2025-11-12 04:01:08,920 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:01:09,685 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:01:10,006 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:01:10,383 | INFO | Clonando jasonkneen/smolagents@main
+2025-11-12 01:01:11,117 | INFO | Executando via Docker: image=notebook-executor-python312 nb=examples/open_deep_research/analysis.ipynb
+2025-11-12 01:01:11,117 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/jasonkneen__smolagents:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/jasonkneen__smolagents/_out/examples__open_deep_research__analysis.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=examples/open_deep_research/analysis.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.12 -e NOTEBOOK_ID=aaae41c39c5534912ee5fa9094451fe7eab0897c061de6b45fe4e18b0a5a37c5 notebook-executor-python312 python -m scripts.container_worker
+2025-11-12 01:01:23,131 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:01:12,380 | INFO | Executing notebook: examples/open_deep_research/analysis.ipynb
+2025-11-12 04:01:12,380 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:01:13,523 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:01:22,483 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:01:23,134 | INFO | Executando via Docker: image=notebook-executor-python312 nb=examples/open_deep_research/visual_vs_text_browser.ipynb
+2025-11-12 01:01:23,135 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/jasonkneen__smolagents:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/jasonkneen__smolagents/_out/examples__open_deep_research__visual_vs_text_browser.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=examples/open_deep_research/visual_vs_text_browser.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.12 -e NOTEBOOK_ID=7ffdce5485c1f1a3f36c4199a0751deceb7cbfea05d6af384cfcc00f7aa3239b notebook-executor-python312 python -m scripts.container_worker
+2025-11-12 01:01:34,389 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:01:24,382 | INFO | Executing notebook: examples/open_deep_research/visual_vs_text_browser.ipynb
+2025-11-12 04:01:24,382 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:01:25,218 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:01:33,637 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:01:34,392 | INFO | Executando via Docker: image=notebook-executor-python312 nb=examples/smolagents_benchmark/score.ipynb
+2025-11-12 01:01:34,393 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/jasonkneen__smolagents:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/jasonkneen__smolagents/_out/examples__smolagents_benchmark__score.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=examples/smolagents_benchmark/score.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.12 -e NOTEBOOK_ID=9c948c5085a427829c9195bef3cfa770ced3aa5dbedb7fa9498fe26cd6af6f89 notebook-executor-python312 python -m scripts.container_worker
+2025-11-12 01:01:38,354 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:01:35,624 | INFO | Executing notebook: examples/smolagents_benchmark/score.ipynb
+2025-11-12 04:01:35,624 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:01:36,684 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:01:37,645 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:01:38,370 | INFO | Clonando 1drie5/py-playground@main
+2025-11-12 01:01:39,563 | INFO | Executando via Docker: image=notebook-executor nb=pytorch-campusx/2_tensors_in_pytorch.ipynb
+2025-11-12 01:01:39,563 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/1drie5__py-playground:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/1drie5__py-playground/_out/pytorch-campusx__2_tensors_in_pytorch.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=pytorch-campusx/2_tensors_in_pytorch.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED= -e NOTEBOOK_ID=48c0ad09c6478f1852779c0dce2378c050055abd260d88750421118c7797a620 notebook-executor python -m scripts.container_worker
+2025-11-12 01:01:44,856 | INFO | Executando via Docker: image=notebook-executor nb=pytorch-campusx/3_pytorch_autograd.ipynb
+2025-11-12 01:01:44,856 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/1drie5__py-playground:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/1drie5__py-playground/_out/pytorch-campusx__3_pytorch_autograd.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=pytorch-campusx/3_pytorch_autograd.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED= -e NOTEBOOK_ID=bcf3988d483f5877bb571105fb0af7350bef01c840e41411b458325b388a40a2 notebook-executor python -m scripts.container_worker
+2025-11-12 01:01:49,619 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:01:46,211 | INFO | Executing notebook: pytorch-campusx/3_pytorch_autograd.ipynb
+2025-11-12 04:01:46,211 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:01:46,986 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:01:49,092 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:01:49,626 | INFO | Executando via Docker: image=notebook-executor nb=pytorch-campusx/4_pytorch_training_pipeline.ipynb
+2025-11-12 01:01:49,626 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/1drie5__py-playground:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/1drie5__py-playground/_out/pytorch-campusx__4_pytorch_training_pipeline.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=pytorch-campusx/4_pytorch_training_pipeline.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED= -e NOTEBOOK_ID=201396860268cfc3212f75cde7830699873c61a5ad7e721f6b982479f48fee9c notebook-executor python -m scripts.container_worker
+2025-11-12 01:01:56,091 | INFO | Executando via Docker: image=notebook-executor nb=pytorch-campusx/5_pytorch_nn_module.ipynb
+2025-11-12 01:01:56,091 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/1drie5__py-playground:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/1drie5__py-playground/_out/pytorch-campusx__5_pytorch_nn_module.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=pytorch-campusx/5_pytorch_nn_module.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED= -e NOTEBOOK_ID=0a8ee176667ea5293fd5c9cf42e3b4d0f97fb3420f8d80e8f9a99317976b226b notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:04,465 | INFO | Clonando As17-01/brain_signals@main
+2025-11-12 01:02:06,388 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Comparison_plot.ipynb
+2025-11-12 01:02:06,389 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Comparison_plot.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Comparison_plot.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=6d095960536f37765ce49e1b402b8c96960e4261bf26b7c9ab398969004365f0 notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:09,914 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:07,692 | INFO | Executing notebook: notebooks/archieve/embedded/Comparison_plot.ipynb
+2025-11-12 04:02:07,692 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:08,417 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:09,348 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:09,923 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv1.ipynb
+2025-11-12 01:02:09,923 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=b62468a341b4a7f414c2366044c12a8228ca898be5d59a73d2e9b91690c34f26 notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:13,098 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:11,206 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv1.ipynb
+2025-11-12 04:02:11,206 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:11,950 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:12,530 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:13,107 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv1_emb1.ipynb
+2025-11-12 01:02:13,108 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv1_emb1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv1_emb1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=29749a476c884fbb71e2a090e184ecad49e8cfc0b1ee5185e3b1f81735a725cb notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:16,291 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:14,344 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv1_emb1.ipynb
+2025-11-12 04:02:14,344 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:15,078 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:15,754 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:16,300 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv1_emb2.ipynb
+2025-11-12 01:02:16,301 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv1_emb2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv1_emb2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=50b5838c4f9c3905b47af7b0aa2ab5f7f419be5a45d953d40e54d1c2e967a64c notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:19,791 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:17,623 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv1_emb2.ipynb
+2025-11-12 04:02:17,623 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:18,446 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:19,178 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:19,802 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv1_emb3.ipynb
+2025-11-12 01:02:19,803 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv1_emb3.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv1_emb3.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=10ec2fea97899b80746a27d29d4a4499b85d802de7381e629bca25c6a84d3b6d notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:23,410 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:21,227 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv1_emb3.ipynb
+2025-11-12 04:02:21,227 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:21,966 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:22,689 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:23,422 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv1_emb4.ipynb
+2025-11-12 01:02:23,422 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv1_emb4.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv1_emb4.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=f29f7d0b3c59d8fb6f341fa8459ffb6fa8aacd6af587ce8fada4ad2e584cd11a notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:26,666 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:24,655 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv1_emb4.ipynb
+2025-11-12 04:02:24,655 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:25,381 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:26,099 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:26,670 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv1_plot.ipynb
+2025-11-12 01:02:26,670 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv1_plot.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv1_plot.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=66e6669556225c07779e5fb99d8c6dedf333edb06314af9412361db24af32ac8 notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:30,134 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:27,953 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv1_plot.ipynb
+2025-11-12 04:02:27,953 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:28,687 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:29,566 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:30,144 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv2.ipynb
+2025-11-12 01:02:30,144 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=edcf05c91e54f51f7afb82a8eccfb1dff13b208745b891ae210bfdb0e924d77f notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:33,476 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:31,472 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv2.ipynb
+2025-11-12 04:02:31,472 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:32,202 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:32,911 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:33,484 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv2_conv.ipynb
+2025-11-12 01:02:33,484 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv2_conv.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv2_conv.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=0d5c11a76cb54d4e3b4853bb1899ead2ce910a7fd8e960ad721142c3cd8f455f notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:36,695 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:34,715 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv2_conv.ipynb
+2025-11-12 04:02:34,715 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:35,449 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:36,152 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:36,706 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv2_conv2.ipynb
+2025-11-12 01:02:36,706 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv2_conv2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv2_conv2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=2819bba1d33cf6383b777587c3b837278bc386ce244c7604046b3eff7923470f notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:40,093 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:38,004 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv2_conv2.ipynb
+2025-11-12 04:02:38,004 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:38,793 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:39,492 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:40,112 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv2_conv_expanded.ipynb
+2025-11-12 01:02:40,112 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv2_conv_expanded.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv2_conv_expanded.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=1105097479a1f5bfcd3a1dc7ea6017f6cacb73296fac654112dd4bf199537210 notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:43,549 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:41,502 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv2_conv_expanded.ipynb
+2025-11-12 04:02:41,502 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:42,268 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:42,976 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:43,559 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv2_emb1.ipynb
+2025-11-12 01:02:43,559 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv2_emb1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv2_emb1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=d80b1e41346f6f8e301c5f92ef82939597776660727ba4cc678b00d6d07ed97f notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:46,847 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:44,867 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv2_emb1.ipynb
+2025-11-12 04:02:44,867 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:45,617 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:46,253 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:46,865 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv2_emb1_expanded.ipynb
+2025-11-12 01:02:46,865 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv2_emb1_expanded.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv2_emb1_expanded.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=3604ecc09e4297d6f6742ac1510bc51e005fba58bdd383a80b85a0d173eb0a52 notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:50,185 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:48,304 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv2_emb1_expanded.ipynb
+2025-11-12 04:02:48,304 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:49,047 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:49,648 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:50,196 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv2_emb2.ipynb
+2025-11-12 01:02:50,196 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv2_emb2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv2_emb2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=6bb52f0637c505526faaa6cfbe8ad0453e1c5b4d1f113ca821448ad7d4a70821 notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:53,299 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:51,457 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv2_emb2.ipynb
+2025-11-12 04:02:51,457 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:52,204 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:52,788 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:53,316 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv2_emb3.ipynb
+2025-11-12 01:02:53,316 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv2_emb3.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv2_emb3.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=68d81e3f60999eadd95f8820ddc23105d6fc2dcec157166a82329988f2fba56c notebook-executor python -m scripts.container_worker
+2025-11-12 01:02:56,465 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:54,642 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv2_emb3.ipynb
+2025-11-12 04:02:54,642 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:55,372 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:55,951 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:02:56,475 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv2_emb4.ipynb
+2025-11-12 01:02:56,475 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv2_emb4.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv2_emb4.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=f9c1f81c1f3f532f0993fb5d555a7f001c84fee54e73ec630b85a15f9b2f7a87 notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:00,268 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:02:57,855 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv2_emb4.ipynb
+2025-11-12 04:02:57,856 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:02:58,918 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:02:59,634 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:00,285 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv2_expanded.ipynb
+2025-11-12 01:03:00,285 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv2_expanded.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv2_expanded.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=b83a736791bd617ee21dba619732c2fdc0ed498674beeef0fa3cb465fe753d28 notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:03,311 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:01,552 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv2_expanded.ipynb
+2025-11-12 04:03:01,552 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:02,283 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:02,866 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:03,317 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/GRUv2_plot.ipynb
+2025-11-12 01:03:03,317 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__GRUv2_plot.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/GRUv2_plot.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=7cfd054176913b00ffcfd300a16b6a09a1c9253c208bdcb654ca2e0a9fc6333a notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:06,406 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:04,543 | INFO | Executing notebook: notebooks/archieve/embedded/GRUv2_plot.ipynb
+2025-11-12 04:03:04,543 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:05,261 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:05,997 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:06,414 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv1.ipynb
+2025-11-12 01:03:06,414 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=a4b2c58bcffbe05efcd1e26878a1cc7296b8545035a5011f1b11a6894c5582ae notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:09,352 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:07,633 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv1.ipynb
+2025-11-12 04:03:07,633 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:08,367 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:08,925 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:09,360 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv1_emb1.ipynb
+2025-11-12 01:03:09,360 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv1_emb1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv1_emb1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=36dabb87eeee7dfa110f401a971cac1a27400051fa88d033e58be12b78d0ca84 notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:12,269 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:10,577 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv1_emb1.ipynb
+2025-11-12 04:03:10,577 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:11,294 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:11,879 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:12,278 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv1_emb2.ipynb
+2025-11-12 01:03:12,278 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv1_emb2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv1_emb2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=ce45bc8ac818de4757f4fa2e153585cb8c20393c64d5acff9bd7b2ff510d93ce notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:15,192 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:13,513 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv1_emb2.ipynb
+2025-11-12 04:03:13,513 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:14,238 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:14,818 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:15,199 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv1_emb3.ipynb
+2025-11-12 01:03:15,200 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv1_emb3.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv1_emb3.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=113b80f0eb527a22281b022f988295263ce617946ffdccb50a1c730e55cecbd0 notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:18,584 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:16,475 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv1_emb3.ipynb
+2025-11-12 04:03:16,475 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:17,241 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:18,049 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:18,593 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv1_emb4.ipynb
+2025-11-12 01:03:18,593 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv1_emb4.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv1_emb4.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=511721d35c24b47570287fdc5d995c527dfdcfdc7199a41aac4a599b39ab6852 notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:21,646 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:19,834 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv1_emb4.ipynb
+2025-11-12 04:03:19,834 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:20,579 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:21,175 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:21,650 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv1_plot.ipynb
+2025-11-12 01:03:21,650 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv1_plot.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv1_plot.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=60e95fd06ae906ab6e63e8d2384981432bb4a81515d78f0640967332fdb910e2 notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:24,759 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:22,833 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv1_plot.ipynb
+2025-11-12 04:03:22,833 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:23,615 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:24,377 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:24,768 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv2.ipynb
+2025-11-12 01:03:24,768 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=330abbdb0c0f18dc0c474fd5a5e3a87b66b9045456979f280ac28912f76e96c7 notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:27,679 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:25,981 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv2.ipynb
+2025-11-12 04:03:25,981 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:26,695 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:27,264 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:27,689 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv2_conv.ipynb
+2025-11-12 01:03:27,689 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv2_conv.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv2_conv.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=c7401cecfd08a93b5dffb0b5299d6ca56792e6432db8792bc205db46565c8dd6 notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:30,469 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:28,810 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv2_conv.ipynb
+2025-11-12 04:03:28,810 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:29,527 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:30,091 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:30,479 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv2_conv2.ipynb
+2025-11-12 01:03:30,479 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv2_conv2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv2_conv2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=319ffbaf2b8f2b5f5ee142c7ee8374a364d492b65095c12fad8dcb666458aef4 notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:33,473 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:31,687 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv2_conv2.ipynb
+2025-11-12 04:03:31,687 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:32,407 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:32,990 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:33,487 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv2_conv_expanded.ipynb
+2025-11-12 01:03:33,487 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv2_conv_expanded.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv2_conv_expanded.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=37655e8f566034bae2f5a88a0328dbe2208051a693aed9606b4b5f163f08c345 notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:36,676 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:34,755 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv2_conv_expanded.ipynb
+2025-11-12 04:03:34,755 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:35,483 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:36,175 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:36,685 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv2_emb1.ipynb
+2025-11-12 01:03:36,685 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv2_emb1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv2_emb1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=47e293285bc58ffe8d814bde08199e782c94e452f396b4a8426b326993e9e489 notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:39,624 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:37,919 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv2_emb1.ipynb
+2025-11-12 04:03:37,919 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:38,642 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:39,209 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:39,637 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv2_emb1_expanded.ipynb
+2025-11-12 01:03:39,637 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv2_emb1_expanded.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv2_emb1_expanded.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=49930e800c2ae4e8ffdc23be7b554191c2286eae63647db929f560234cb5fc25 notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:42,694 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:40,898 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv2_emb1_expanded.ipynb
+2025-11-12 04:03:40,898 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:41,631 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:42,210 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:42,704 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv2_emb2.ipynb
+2025-11-12 01:03:42,704 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv2_emb2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv2_emb2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=644fa10e7baa411a478044d7c1f79acd5bd649046bfcdd4f973c42cdc57a3f25 notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:45,838 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:43,987 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv2_emb2.ipynb
+2025-11-12 04:03:43,988 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:44,725 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:45,330 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:45,848 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv2_emb3.ipynb
+2025-11-12 01:03:45,849 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv2_emb3.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv2_emb3.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=d3bdd6bbbe574ed862dd07d8d9c44007c7139c9eb85ce671ca5d50b9d68d3a6b notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:48,791 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:47,043 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv2_emb3.ipynb
+2025-11-12 04:03:47,043 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:47,763 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:48,370 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:48,798 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv2_emb4.ipynb
+2025-11-12 01:03:48,798 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv2_emb4.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv2_emb4.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=0033813e43938d90787beb6089f3a29c2068526305d16cc63fe5e62c78e367aa notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:52,041 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:50,038 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv2_emb4.ipynb
+2025-11-12 04:03:50,038 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:50,782 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:51,572 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:52,055 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv2_expanded.ipynb
+2025-11-12 01:03:52,055 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv2_expanded.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv2_expanded.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=aea04662572daa0f1705ebd3f943e459e7cbb2fbdefc53204e287c3230cfe988 notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:55,391 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:53,397 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv2_expanded.ipynb
+2025-11-12 04:03:53,397 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:54,142 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:54,857 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:55,398 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/LSTMv2_plot.ipynb
+2025-11-12 01:03:55,399 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__LSTMv2_plot.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/LSTMv2_plot.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=6295c18ab9415ed023588a0aef621d001f692da18ca5e8f0ea0eb260c6eb00ff notebook-executor python -m scripts.container_worker
+2025-11-12 01:03:58,887 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:03:56,675 | INFO | Executing notebook: notebooks/archieve/embedded/LSTMv2_plot.ipynb
+2025-11-12 04:03:56,675 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:03:57,396 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:03:58,322 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:03:58,900 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Linearv1_expanded.ipynb
+2025-11-12 01:03:58,901 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Linearv1_expanded.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Linearv1_expanded.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=f876e471a621f8e7792a8d85f802dcf907924dd6c535fcffe4f6f23697478378 notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:02,162 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:00,160 | INFO | Executing notebook: notebooks/archieve/embedded/Linearv1_expanded.ipynb
+2025-11-12 04:04:00,160 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:00,897 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:01,613 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:02,173 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv1.ipynb
+2025-11-12 01:04:02,173 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=cbb0c61ef1927dbe868dcd10c388554de831018b84cd1b7dcddf4ec960f5d16f notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:05,264 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:03,407 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv1.ipynb
+2025-11-12 04:04:03,407 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:04,137 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:04,723 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:05,273 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv1_emb1.ipynb
+2025-11-12 01:04:05,274 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv1_emb1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv1_emb1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=12faea6f5c95bf1abae6c92fb03271e9e3d8169a6361c3f73a97172efaf0fc8a notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:08,588 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:06,505 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv1_emb1.ipynb
+2025-11-12 04:04:06,505 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:07,200 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:07,884 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:08,597 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv1_emb2.ipynb
+2025-11-12 01:04:08,597 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv1_emb2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv1_emb2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=29b254a93e01f4a984c26c478ce847321d54f30022c34eaac9aefe8c90a140b6 notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:11,943 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:09,968 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv1_emb2.ipynb
+2025-11-12 04:04:09,968 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:10,732 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:11,451 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:11,952 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv1_emb3.ipynb
+2025-11-12 01:04:11,952 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv1_emb3.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv1_emb3.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=7fc571434509ff9edcd8bf67d9707534d4a06e1f7ee69c640df240839dd80d85 notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:15,098 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:13,244 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv1_emb3.ipynb
+2025-11-12 04:04:13,244 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:13,991 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:14,572 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:15,108 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv1_emb4.ipynb
+2025-11-12 01:04:15,108 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv1_emb4.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv1_emb4.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=c93b6159869da3cb48a99ce58aaf0a197c0f5e4279036710962ed5bcc02a687d notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:18,429 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:16,361 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv1_emb4.ipynb
+2025-11-12 04:04:16,361 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:17,095 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:17,788 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:18,434 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv1_plot.ipynb
+2025-11-12 01:04:18,435 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv1_plot.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv1_plot.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=8f314e62fc09466e0117d41ce3cd7256cf9463972aa2374b2146218cda726bba notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:22,077 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:19,782 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv1_plot.ipynb
+2025-11-12 04:04:19,783 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:20,531 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:21,508 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:22,088 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv2.ipynb
+2025-11-12 01:04:22,088 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=0d58c2f778cf76bd117b556345b314cb56ad7caa99b1854543e59d1a1a1ebdd1 notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:25,321 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:23,455 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv2.ipynb
+2025-11-12 04:04:23,455 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:24,177 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:24,770 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:25,329 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv2_emb1.ipynb
+2025-11-12 01:04:25,329 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv2_emb1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv2_emb1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=8ba95e4d72410ddbf280119982e5820579e191b79b2e96a514ba6fccdca52788 notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:28,391 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:26,570 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv2_emb1.ipynb
+2025-11-12 04:04:26,570 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:27,293 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:27,887 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:28,400 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv2_emb2.ipynb
+2025-11-12 01:04:28,400 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv2_emb2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv2_emb2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=d7227316e2eb5313704ad5bbc9aa2e0e39abb8aa02ca2fa2b218bfdb310c7015 notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:31,959 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:29,833 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv2_emb2.ipynb
+2025-11-12 04:04:29,833 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:30,576 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:31,338 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:31,968 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv2_emb3.ipynb
+2025-11-12 01:04:31,969 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv2_emb3.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv2_emb3.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=a72a54d40e16d7a40b34dc6db41047795ad90ad4c8f654abca6db2f180af40ff notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:35,211 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:33,256 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv2_emb3.ipynb
+2025-11-12 04:04:33,256 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:33,988 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:34,680 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:35,220 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv2_emb4.ipynb
+2025-11-12 01:04:35,220 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv2_emb4.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv2_emb4.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=9fb85fa18802cc0e0d663eee38f5c5ca64266c740962272903f02806e13b1ff4 notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:38,465 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:36,484 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv2_emb4.ipynb
+2025-11-12 04:04:36,484 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:37,214 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:37,906 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:38,469 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv2_plot.ipynb
+2025-11-12 01:04:38,470 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv2_plot.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv2_plot.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=85ba8ba048a284ef752b2d13ff7d3461cf0dec73c17b68b2aa6c72004346617e notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:41,823 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:39,708 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv2_plot.ipynb
+2025-11-12 04:04:39,709 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:40,437 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:41,294 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:41,832 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv3.ipynb
+2025-11-12 01:04:41,832 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv3.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv3.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=24933d78b1e29e8575845412f8f9f8df3b34f6cb0cf7ce182b8d514149c5be0d notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:45,100 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:43,102 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv3.ipynb
+2025-11-12 04:04:43,102 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:43,852 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:44,544 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:45,106 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv3_conv.ipynb
+2025-11-12 01:04:45,106 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv3_conv.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv3_conv.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=418eedc1a73b8bbff2dfcdad6278eab1a6e0330611a753bb57771111e561130c notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:48,573 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:46,479 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv3_conv.ipynb
+2025-11-12 04:04:46,479 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:47,218 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:47,935 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:48,584 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv3_emb1.ipynb
+2025-11-12 01:04:48,584 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv3_emb1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv3_emb1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=edf0b8f118629b2b8094d359fb7469a04e50abce6ae72fe5d7a5335dd46d7cc4 notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:52,063 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:49,998 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv3_emb1.ipynb
+2025-11-12 04:04:49,999 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:50,735 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:51,472 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:52,078 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv3_emb1_expanded.ipynb
+2025-11-12 01:04:52,079 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv3_emb1_expanded.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv3_emb1_expanded.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=a26d8094389b4f09ed58c3e452a898b087cf59243fc8342cb6cd840b541e1c10 notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:55,352 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:53,390 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv3_emb1_expanded.ipynb
+2025-11-12 04:04:53,390 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:54,123 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:54,804 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:55,366 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv3_expanded.ipynb
+2025-11-12 01:04:55,366 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv3_expanded.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv3_expanded.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=987c1cd2032d5ff8079c36157b26f0ca7f77c9dbe55b0d6bad9c22fe0faa0fcf notebook-executor python -m scripts.container_worker
+2025-11-12 01:04:58,518 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:56,622 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv3_expanded.ipynb
+2025-11-12 04:04:56,622 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:04:57,342 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:04:58,015 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:04:58,523 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/embedded/Liquidv3_plot.ipynb
+2025-11-12 01:04:58,523 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__embedded__Liquidv3_plot.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/embedded/Liquidv3_plot.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=24271785b55879d0a6144ebcf966afd05bb38dccbc2ca650d4750995bc09f938 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:01,993 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:04:59,780 | INFO | Executing notebook: notebooks/archieve/embedded/Liquidv3_plot.ipynb
+2025-11-12 04:04:59,780 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:00,504 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:01,397 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:02,002 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/feature_importance/GRUv1.ipynb
+2025-11-12 01:05:02,002 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__feature_importance__GRUv1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/feature_importance/GRUv1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=150e2075373625001d974a4dca8a9215f70d3d6dcd8619a107dc704b06b98011 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:05,258 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:03,285 | INFO | Executing notebook: notebooks/archieve/feature_importance/GRUv1.ipynb
+2025-11-12 04:05:03,285 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:04,018 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:04,716 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:05,267 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/feature_importance/GRUv2_conv.ipynb
+2025-11-12 01:05:05,267 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__feature_importance__GRUv2_conv.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/feature_importance/GRUv2_conv.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=d49abee8695e6584a2f500d957308d73e8b26832247e8de4f21470468f63f593 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:08,584 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:06,569 | INFO | Executing notebook: notebooks/archieve/feature_importance/GRUv2_conv.ipynb
+2025-11-12 04:05:06,569 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:07,316 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:08,034 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:08,592 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/feature_importance/GRUv2_emb1.ipynb
+2025-11-12 01:05:08,593 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__feature_importance__GRUv2_emb1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/feature_importance/GRUv2_emb1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=1217a3a893d9073fb7f938ebfbbe3b1951e713deffebb02f619f6722d3c439a8 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:12,452 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:09,935 | INFO | Executing notebook: notebooks/archieve/feature_importance/GRUv2_emb1.ipynb
+2025-11-12 04:05:09,935 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:10,984 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:11,724 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:12,461 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/feature_importance/LSTMv1.ipynb
+2025-11-12 01:05:12,461 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__feature_importance__LSTMv1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/feature_importance/LSTMv1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=edaf501cc0daebe3e265528dfd439081c3b6b4f42c413c4b259bbd2560a49b55 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:15,843 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:13,871 | INFO | Executing notebook: notebooks/archieve/feature_importance/LSTMv1.ipynb
+2025-11-12 04:05:13,872 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:14,618 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:15,313 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:15,852 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/feature_importance/LSTMv2_conv.ipynb
+2025-11-12 01:05:15,852 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__feature_importance__LSTMv2_conv.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/feature_importance/LSTMv2_conv.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=25c5e89847c6d796d9b16ab79c1cff82255fd1be570fdee5dcc17e4f67293f6d notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:19,138 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:17,113 | INFO | Executing notebook: notebooks/archieve/feature_importance/LSTMv2_conv.ipynb
+2025-11-12 04:05:17,113 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:17,835 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:18,556 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:19,145 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/feature_importance/LSTMv2_emb1.ipynb
+2025-11-12 01:05:19,145 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__feature_importance__LSTMv2_emb1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/feature_importance/LSTMv2_emb1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=9fae7201076fb5c0586f3b09aa502f3b1ec46d7be43c169bfa70c1000fe0c25b notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:22,414 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:20,390 | INFO | Executing notebook: notebooks/archieve/feature_importance/LSTMv2_emb1.ipynb
+2025-11-12 04:05:20,390 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:21,131 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:21,826 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:22,422 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/feature_importance/Liquidv1.ipynb
+2025-11-12 01:05:22,422 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__feature_importance__Liquidv1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/feature_importance/Liquidv1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=416b1a89298de8760aaaa1b6b459304d550de5770c48366bfe99dae9a3427521 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:25,824 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:23,807 | INFO | Executing notebook: notebooks/archieve/feature_importance/Liquidv1.ipynb
+2025-11-12 04:05:23,807 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:24,541 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:25,249 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:25,831 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/feature_importance/Liquidv3_conv.ipynb
+2025-11-12 01:05:25,832 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__feature_importance__Liquidv3_conv.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/feature_importance/Liquidv3_conv.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=bceb459ba135047b2d6be094b74525363bd8efc003fd547f9bd781cc389f71b8 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:28,888 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:27,078 | INFO | Executing notebook: notebooks/archieve/feature_importance/Liquidv3_conv.ipynb
+2025-11-12 04:05:27,078 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:27,814 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:28,387 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:28,897 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/feature_importance/Liquidv3_emb1.ipynb
+2025-11-12 01:05:28,898 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__feature_importance__Liquidv3_emb1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/feature_importance/Liquidv3_emb1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=0a420e5b60eaf312b7c08efa499d374a9a3b66df93d6a0fd32ed4cb5b4cccb11 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:32,261 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:30,137 | INFO | Executing notebook: notebooks/archieve/feature_importance/Liquidv3_emb1.ipynb
+2025-11-12 04:05:30,137 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:30,885 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:31,618 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:32,272 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Combined.ipynb
+2025-11-12 01:05:32,272 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Combined.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Combined.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=89e2aa9f01d437d1e68d9f8586ad0f16a29c469f93343049ee0b8abc346741d8 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:35,443 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:33,629 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Combined.ipynb
+2025-11-12 04:05:33,629 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:34,367 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:34,954 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:35,452 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Combined_consequitive.ipynb
+2025-11-12 01:05:35,452 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Combined_consequitive.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Combined_consequitive.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=5194f62f6f195184117e9338ecc77c8134a8d2a8534207cc105f6772355e7a61 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:38,627 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:36,676 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Combined_consequitive.ipynb
+2025-11-12 04:05:36,676 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:37,407 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:38,095 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:38,636 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRU_Liquidv1_autoencoder.ipynb
+2025-11-12 01:05:38,637 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRU_Liquidv1_autoencoder.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRU_Liquidv1_autoencoder.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=9ca3a296538c9aaeb27d92a31ac0d9ac90aae35122da286228d86d009b5a5a49 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:41,842 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:39,903 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRU_Liquidv1_autoencoder.ipynb
+2025-11-12 04:05:39,904 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:40,635 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:41,320 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:41,852 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRUv1.ipynb
+2025-11-12 01:05:41,852 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRUv1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRUv1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=49eea4f68c32113d423385d431a8a81000e4345c949223a893e0a72ef565df08 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:45,211 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:43,196 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRUv1.ipynb
+2025-11-12 04:05:43,196 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:43,948 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:44,650 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:45,221 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRUv2.ipynb
+2025-11-12 01:05:45,221 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRUv2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRUv2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=afd265b25c1246a2dcf08398d5ff0a453600336d66632a897cfdeff68e4f3ae2 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:48,595 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:46,538 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRUv2.ipynb
+2025-11-12 04:05:46,539 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:47,268 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:47,964 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:48,604 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRUv3.ipynb
+2025-11-12 01:05:48,604 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRUv3.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRUv3.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=352eb94d07750f5a2d58df4dd5f7d29d42a455255dce2e4b697621a2b7354ba7 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:52,091 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:49,943 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRUv3.ipynb
+2025-11-12 04:05:49,943 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:50,716 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:51,427 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:52,100 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRUv4.ipynb
+2025-11-12 01:05:52,101 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRUv4.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRUv4.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=3488e1939e1ae39ee911ae78ae2f5e666aaf428add6ec07ce4634cb50da61995 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:55,465 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:53,411 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRUv4.ipynb
+2025-11-12 04:05:53,411 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:54,166 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:54,885 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:55,475 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRUv4_augmentationsv0.ipynb
+2025-11-12 01:05:55,475 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRUv4_augmentationsv0.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRUv4_augmentationsv0.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=a3286ddc1514b3ab11fcb479e1633bbc7e79793533dbfe666026faefa56ce797 notebook-executor python -m scripts.container_worker
+2025-11-12 01:05:58,826 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:05:56,764 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRUv4_augmentationsv0.ipynb
+2025-11-12 04:05:56,764 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:05:57,500 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:05:58,211 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:05:58,836 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRUv4_autoencoderv0.ipynb
+2025-11-12 01:05:58,836 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRUv4_autoencoderv0.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRUv4_autoencoderv0.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=ab67738797ee5dcdd7bdc789d2869b3273b56f5604400ee129830d8c9b2eee5c notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:02,097 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:00,122 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRUv4_autoencoderv0.ipynb
+2025-11-12 04:06:00,122 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:00,863 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:01,559 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:02,105 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRUv4_autoencoderv0_increased_lr.ipynb
+2025-11-12 01:06:02,106 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRUv4_autoencoderv0_increased_lr.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRUv4_autoencoderv0_increased_lr.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=dae09eeb9619872080d32b99990a721fbc77c67cb2402a18f6c694674814e2a7 notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:05,309 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:03,331 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRUv4_autoencoderv0_increased_lr.ipynb
+2025-11-12 04:06:03,331 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:04,067 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:04,765 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:05,316 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRUv4_autoencoderv1.ipynb
+2025-11-12 01:06:05,316 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRUv4_autoencoderv1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRUv4_autoencoderv1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=945be34bfff0f4190573c5b7bc83a56fc1180fe6d1063495ebda50336fc95e0d notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:08,685 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:06,548 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRUv4_autoencoderv1.ipynb
+2025-11-12 04:06:06,548 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:07,275 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:08,106 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:08,695 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRUv4_best_increased_lr.ipynb
+2025-11-12 01:06:08,695 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRUv4_best_increased_lr.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRUv4_best_increased_lr.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=cfbebe8f186efc025486e92261c78a0260f58933e68a5b712ee364111a444440 notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:12,102 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:10,072 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRUv4_best_increased_lr.ipynb
+2025-11-12 04:06:10,072 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:10,861 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:11,557 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:12,111 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRUv5.ipynb
+2025-11-12 01:06:12,111 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRUv5.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRUv5.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=f87365a91af7623f5082c969c7f671823004b749c1b44c3b391df1cf9813b52d notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:15,280 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:13,345 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRUv5.ipynb
+2025-11-12 04:06:13,346 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:14,081 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:14,767 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:15,287 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRUv6.ipynb
+2025-11-12 01:06:15,288 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRUv6.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRUv6.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=bd8654bcd41ffa1f4102a23ce919abaa619a0a444db6be188b5dc2f7c274bcde notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:18,513 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:16,499 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRUv6.ipynb
+2025-11-12 04:06:16,499 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:17,226 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:17,930 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:18,520 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRUv7.ipynb
+2025-11-12 01:06:18,521 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRUv7.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRUv7.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=f60ea8a89ddb2c4a0f21f28576dff99f90d9cc88bb44926537a04a187fd94ce7 notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:21,707 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:19,756 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRUv7.ipynb
+2025-11-12 04:06:19,756 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:20,489 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:21,179 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:21,715 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRUv8.ipynb
+2025-11-12 01:06:21,715 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRUv8.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRUv8.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=7c89f6c246d0fd325d6a02e9081f87dc8a64d496f313e6c3575ca6f229a6460b notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:24,853 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:22,938 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRUv8.ipynb
+2025-11-12 04:06:22,938 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:23,763 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:24,354 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:24,861 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/GRUv9.ipynb
+2025-11-12 01:06:24,862 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__GRUv9.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/GRUv9.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=5cf507c917f32f12a875b7865db88d4b32bfcd389ba8c1142c1bd8325a223bc1 notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:28,137 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:26,100 | INFO | Executing notebook: notebooks/archieve/no_embeddings/GRUv9.ipynb
+2025-11-12 04:06:26,100 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:26,819 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:27,499 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:28,147 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/LSTMv1.ipynb
+2025-11-12 01:06:28,147 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__LSTMv1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/LSTMv1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=8793da00610b76fc1929574a2c35880049becdc552f041aaae9ae0aa253de0e7 notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:31,424 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:29,482 | INFO | Executing notebook: notebooks/archieve/no_embeddings/LSTMv1.ipynb
+2025-11-12 04:06:29,482 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:30,232 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:30,934 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:31,432 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/LSTMv2.ipynb
+2025-11-12 01:06:31,432 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__LSTMv2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/LSTMv2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=fcf4e7a0dd06a5d8057b21af8dfd1db55fb180dc35a7ed454836398e24063b09 notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:34,429 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:32,606 | INFO | Executing notebook: notebooks/archieve/no_embeddings/LSTMv2.ipynb
+2025-11-12 04:06:32,607 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:33,343 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:33,917 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:34,438 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/LSTMv2_best_increased_lr2.ipynb
+2025-11-12 01:06:34,438 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__LSTMv2_best_increased_lr2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/LSTMv2_best_increased_lr2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=d74f95ee419156d59323f59bfcaf93e59cf1c4e0b8c00440c245ceb1cc7f51c6 notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:37,510 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:35,641 | INFO | Executing notebook: notebooks/archieve/no_embeddings/LSTMv2_best_increased_lr2.ipynb
+2025-11-12 04:06:35,642 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:36,370 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:36,966 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:37,521 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/LSTMv2_increased_lr1.ipynb
+2025-11-12 01:06:37,521 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__LSTMv2_increased_lr1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/LSTMv2_increased_lr1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=e0fb59d28b737a21f70737824d1db46036ee5c36064fb1500b6b3875dea1642f notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:40,994 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:38,854 | INFO | Executing notebook: notebooks/archieve/no_embeddings/LSTMv2_increased_lr1.ipynb
+2025-11-12 04:06:38,854 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:39,626 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:40,356 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:41,004 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/LSTMv3.ipynb
+2025-11-12 01:06:41,004 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__LSTMv3.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/LSTMv3.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=6083cb3bb173cede18155cf8bcafa94b17ad72439490e67d6f741b21add39323 notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:44,108 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:42,241 | INFO | Executing notebook: notebooks/archieve/no_embeddings/LSTMv3.ipynb
+2025-11-12 04:06:42,241 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:42,975 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:43,563 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:44,117 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/LSTMv3_increased_lr1.ipynb
+2025-11-12 01:06:44,117 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__LSTMv3_increased_lr1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/LSTMv3_increased_lr1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=aba5dab3fe04ec9f214efc0c24ae0e8f3dc08bb94fd683a5d03745f4b523cfca notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:47,265 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:45,348 | INFO | Executing notebook: notebooks/archieve/no_embeddings/LSTMv3_increased_lr1.ipynb
+2025-11-12 04:06:45,348 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:46,075 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:46,763 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:47,276 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/LSTMv4.ipynb
+2025-11-12 01:06:47,276 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__LSTMv4.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/LSTMv4.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=fcc0190b6bbc6877697f71fbd504fd6e57340f5b8b72a7890614bc23c4e7d4e3 notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:50,478 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:48,568 | INFO | Executing notebook: notebooks/archieve/no_embeddings/LSTMv4.ipynb
+2025-11-12 04:06:48,568 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:49,293 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:49,981 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:50,486 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Linearv1.ipynb
+2025-11-12 01:06:50,486 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Linearv1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Linearv1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=34fb732f7d5898429cb47feedb7fecc85e791d8ac101823b9d733f3ea0342dfe notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:53,735 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:51,749 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Linearv1.ipynb
+2025-11-12 04:06:51,749 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:52,490 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:53,188 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:53,744 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Linearv2_best.ipynb
+2025-11-12 01:06:53,744 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Linearv2_best.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Linearv2_best.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=2d0f7edde87e924d52926d1ac7f612ec2c933f69ac6fdb468236b4f5632d40e9 notebook-executor python -m scripts.container_worker
+2025-11-12 01:06:56,872 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:55,027 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Linearv2_best.ipynb
+2025-11-12 04:06:55,027 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:55,766 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:56,359 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:06:56,879 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Liquidv1.ipynb
+2025-11-12 01:06:56,880 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Liquidv1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Liquidv1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=8af5c26ef845c258c58dd2e5925cf175da9c18e9ce5b1a3a61e01f5791a65be1 notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:00,163 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:06:58,101 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Liquidv1.ipynb
+2025-11-12 04:06:58,101 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:06:58,890 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:06:59,599 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:00,173 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Liquidv2.ipynb
+2025-11-12 01:07:00,173 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Liquidv2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Liquidv2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=8b8926a16ba6fef4a0d08f89670530c7707662a07557469aa152255a8170118b notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:03,262 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:01,460 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Liquidv2.ipynb
+2025-11-12 04:07:01,460 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:02,207 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:02,788 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:03,271 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Liquidv3.ipynb
+2025-11-12 01:07:03,271 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Liquidv3.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Liquidv3.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=319afdadf0b8cedfeb252b1a99d8f9d09fe4eaae35c9f19357fae8f5627cac6c notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:06,644 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:04,501 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Liquidv3.ipynb
+2025-11-12 04:07:04,501 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:05,277 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:05,986 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:06,654 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Liquidv4.ipynb
+2025-11-12 01:07:06,655 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Liquidv4.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Liquidv4.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=787efcdbd65e2e3ad455138697d80f06d836cc20decdb1e18bb23e18bdf15f77 notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:09,973 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:08,029 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Liquidv4.ipynb
+2025-11-12 04:07:08,029 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:08,786 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:09,478 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:09,983 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Liquidv5.ipynb
+2025-11-12 01:07:09,983 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Liquidv5.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Liquidv5.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=1e0edd92019f981a5f39f24a9b8678d63e37a5fc6efe40183fafff16fd019a96 notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:13,030 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:11,215 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Liquidv5.ipynb
+2025-11-12 04:07:11,215 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:11,952 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:12,535 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:13,041 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Liquidv6.ipynb
+2025-11-12 01:07:13,041 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Liquidv6.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Liquidv6.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=93fa3b4b3a9d7b9c59e7503d672c7383861fa2b068bef29a37b8c97ecbac5b1f notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:16,257 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:14,283 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Liquidv6.ipynb
+2025-11-12 04:07:14,283 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:15,011 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:15,696 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:16,269 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Liquidv6_increased_lr1.ipynb
+2025-11-12 01:07:16,269 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Liquidv6_increased_lr1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Liquidv6_increased_lr1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=48dbfb23866b86291da8ae632d9ab73501fccbb83dfb0853add108e1b544edd4 notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:19,606 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:17,616 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Liquidv6_increased_lr1.ipynb
+2025-11-12 04:07:17,616 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:18,360 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:19,048 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:19,616 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Liquidv7.ipynb
+2025-11-12 01:07:19,616 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Liquidv7.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Liquidv7.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=e3c2a871e836ad608806038a80af2c89bdb264256a8d31c7cb63e8b0fc449979 notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:22,859 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:20,899 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Liquidv7.ipynb
+2025-11-12 04:07:20,899 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:21,627 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:22,318 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:22,868 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Liquidv8.ipynb
+2025-11-12 01:07:22,868 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Liquidv8.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Liquidv8.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=777891b226d9fd2977b195a3d91c2399899efbb2da9edb385d8a166f4c1b903c notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:26,053 | WARNING | Docker returned 1. STDOUT/ERR tail:
+2025-11-12 04:07:24,214 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:24,943 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:25,524 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:26,063 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Liquidv8_best_increased_lr2.ipynb
+2025-11-12 01:07:26,063 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Liquidv8_best_increased_lr2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Liquidv8_best_increased_lr2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=ab198cea05d51881437b0317e4b271f272b51c2d3777e88ded5f92d069759353 notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:29,176 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:27,285 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Liquidv8_best_increased_lr2.ipynb
+2025-11-12 04:07:27,285 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:28,010 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:28,698 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:29,185 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Liquidv8_increased_lr1.ipynb
+2025-11-12 01:07:29,185 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Liquidv8_increased_lr1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Liquidv8_increased_lr1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=356e0a3330c5fd4bb5d5dc5296c0371fa52df77e2d6c54d00a93783c3bb3cb73 notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:32,417 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:30,456 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Liquidv8_increased_lr1.ipynb
+2025-11-12 04:07:30,456 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:31,185 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:31,823 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:32,425 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Liquidv9_increased_lr1.ipynb
+2025-11-12 01:07:32,426 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Liquidv9_increased_lr1.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Liquidv9_increased_lr1.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=e5ad320e727e434d9f634109927e5ca613614a6ae7525f7c7df869ee0a438ec6 notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:35,633 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:33,671 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Liquidv9_increased_lr1.ipynb
+2025-11-12 04:07:33,671 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:34,402 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:35,086 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:35,642 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/no_embeddings/Liquidv9_increased_lr2.ipynb
+2025-11-12 01:07:35,642 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__no_embeddings__Liquidv9_increased_lr2.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/no_embeddings/Liquidv9_increased_lr2.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=0ec8bfe73a6e8831e70a8cd691d2678ec60836c521104f7fd18ddca552f7c80c notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:38,857 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:36,876 | INFO | Executing notebook: notebooks/archieve/no_embeddings/Liquidv9_increased_lr2.ipynb
+2025-11-12 04:07:36,876 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:37,619 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:38,292 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:38,868 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/statistics/EEG_Classical_ML.ipynb
+2025-11-12 01:07:38,868 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__statistics__EEG_Classical_ML.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/statistics/EEG_Classical_ML.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=49a670035a22d091dc5593362d00ae181918f8b15b07efeb69a150c257f5181d notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:43,069 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:40,117 | INFO | Executing notebook: notebooks/archieve/statistics/EEG_Classical_ML.ipynb
+2025-11-12 04:07:40,117 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:40,841 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:42,514 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:43,077 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/statistics/comparison_plot_best.ipynb
+2025-11-12 01:07:43,077 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__statistics__comparison_plot_best.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/statistics/comparison_plot_best.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=adb5f5984a4ec9e4546a32833dc83f8e600935354f660a14f4366bedfd8bfd2e notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:46,458 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:44,373 | INFO | Executing notebook: notebooks/archieve/statistics/comparison_plot_best.ipynb
+2025-11-12 04:07:44,373 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:45,114 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:45,875 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:46,464 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/statistics/comparison_plot_best_raw_data.ipynb
+2025-11-12 01:07:46,464 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__statistics__comparison_plot_best_raw_data.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/statistics/comparison_plot_best_raw_data.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=07115f38dbf0f1aff3ecfbef436dabab91f8c2b5c3e2879c93c80324178cc4aa notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:50,108 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:47,846 | INFO | Executing notebook: notebooks/archieve/statistics/comparison_plot_best_raw_data.ipynb
+2025-11-12 04:07:47,846 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:48,651 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:49,515 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:50,123 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/archieve/statistics/raw_plot.ipynb
+2025-11-12 01:07:50,123 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__archieve__statistics__raw_plot.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/archieve/statistics/raw_plot.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=7b46e1cc091b4027a423a5d662968a9876dd0aa585d1113a5b3ff3a3c1668f8b notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:54,555 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:51,402 | INFO | Executing notebook: notebooks/archieve/statistics/raw_plot.ipynb
+2025-11-12 04:07:51,403 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:52,142 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:54,023 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:54,566 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/manuscript/GRU.ipynb
+2025-11-12 01:07:54,566 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__manuscript__GRU.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/manuscript/GRU.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=a1980128e9c1838a11e8d8feda7528e40aff584a4b7d95400a940c5d92f88ef3 notebook-executor python -m scripts.container_worker
+2025-11-12 01:07:57,980 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:55,893 | INFO | Executing notebook: notebooks/manuscript/GRU.ipynb
+2025-11-12 04:07:55,893 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:07:56,643 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:07:57,389 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:07:57,985 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/manuscript/comparison_plot_reworked.ipynb
+2025-11-12 01:07:57,985 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__manuscript__comparison_plot_reworked.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/manuscript/comparison_plot_reworked.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=4e96f0c13780d2c87eb0b88d2e838ec3c91573d0c79c5d4b737ab9cfa551b9d3 notebook-executor python -m scripts.container_worker
+2025-11-12 01:08:02,177 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:07:59,302 | INFO | Executing notebook: notebooks/manuscript/comparison_plot_reworked.ipynb
+2025-11-12 04:07:59,302 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:08:00,093 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:08:01,580 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:08:02,186 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/manuscript/description.ipynb
+2025-11-12 01:08:02,186 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__manuscript__description.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/manuscript/description.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=f16baf4c147804d0a729d7b7cc071cd7232bc2e17b57911cbafef7cb5df841e7 notebook-executor python -m scripts.container_worker
+2025-11-12 01:08:06,469 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:08:03,497 | INFO | Executing notebook: notebooks/manuscript/description.ipynb
+2025-11-12 04:08:03,497 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:08:04,217 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:08:05,976 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:08:06,479 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/manuscript/distributions.ipynb
+2025-11-12 01:08:06,479 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__manuscript__distributions.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/manuscript/distributions.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=ec817fd25b450959959c3647a62f7640c73f930146c4cb7ea378697e60906314 notebook-executor python -m scripts.container_worker
+2025-11-12 01:08:09,943 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:08:07,734 | INFO | Executing notebook: notebooks/manuscript/distributions.ipynb
+2025-11-12 04:08:07,734 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:08:08,472 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:08:09,364 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:08:09,947 | INFO | Executando via Docker: image=notebook-executor nb=notebooks/manuscript/regressions.ipynb
+2025-11-12 01:08:09,948 | INFO | docker run: docker run --rm -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals:/workspace/repo:ro -v /tmp/nbexec_mctm0ho5/As17-01__brain_signals/_out/notebooks__manuscript__regressions.ipynb:/workspace/out -e NOTEBOOK_REL_PATH=notebooks/manuscript/regressions.ipynb -e TIMEOUT_SECONDS=300 -e PYTHON_VERSION_DECLARED=3.10 -e NOTEBOOK_ID=14e052c85abd0907415581436df198ba205539fd7c8a0f58af015a8408d08054 notebook-executor python -m scripts.container_worker
+2025-11-12 01:08:14,011 | WARNING | Docker returned 1. STDOUT/ERR tail:
+
+2025-11-12 04:08:11,248 | INFO | Executing notebook: notebooks/manuscript/regressions.ipynb
+2025-11-12 04:08:11,248 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:08:12,027 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:08:13,426 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:08:14,020 | INFO | Clonando rogerqiu7/Cancer-Mortality-Prediction@main
+2025-11-12 01:08:15,514 | INFO | Construindo imagem Docker notebook-executor-python39 (Dockerfile: /home/asu/reproducibility_of_jupyter_notebooks-1/scripts/dockers/Dockerfile.python39) ...
+otebooks/manuscript/regressions.ipynb
+2025-11-12 04:08:11,248 | INFO | Timeout: 300s, Run ID: unknown
+2025-11-12 04:08:12,027 | INFO | Executing notebook with kernel: python3
+2025-11-12 04:08:13,426 | INFO | Result written to /workspace/out/result.json
+
+2025-11-12 01:08:14,020 | INFO | Clonando rogerqiu7/Cancer-Mortality-Prediction@main
+2025-11-12 01:08:15,514 | INFO | Construindo imagem Docker notebook-executor-python39 (Dockerfile: /home/asu/reproducibility_of_jupyter_notebooks-1/scripts/dockers/Dockerfile.python39) ...

@@ -1,0 +1,7 @@
+tipo_erro,quantidade,percentual
+file_not_found,198,61.9
+missing_dependency,55,17.2
+other,31,9.7
+runtime_error,20,6.2
+timeout,14,4.4
+connection_error,2,0.6

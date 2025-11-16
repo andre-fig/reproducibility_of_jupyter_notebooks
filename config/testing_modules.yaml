@@ -1,0 +1,40 @@
+testing_modules:
+  generic:
+    - unittest
+    - pytest
+    - nose
+    - nose2
+    - doctest
+  mocking:
+    - mock
+    - pytest_mock
+    - unittest.mock
+    - freezegun
+  property_based:
+    - hypothesis
+    - quickcheck
+  ci_helpers:
+    - tox
+    - coverage
+    - pytest_cov
+  web_frameworks_testing:
+    - django.test
+    - flask.testing
+  snapshot:
+    - snapshottest
+    - syrupy
+  mutation_testing:
+    - mutmut
+    - mutpy
+  async_testing:
+    - pytest_asyncio
+  plugins_misc:
+    - pytest_benchmark
+    - pytest_timeout
+    - pytest_xdist
+    - pytest_django
+    - pytest_flask
+    - pytest_tornado
+    - pytest_twisted
+    - pytest_qt
+

@@ -1,0 +1,137 @@
+# ============================================================================
+# Dockerfile para Python 3.13 - Executor de Notebooks Jupyter
+# ============================================================================
+# 
+# PROPÓSITO:
+# Esta imagem Docker fornece um ambiente isolado e reprodutível para executar
+# notebooks Jupyter coletados do GitHub. A imagem inclui todas as dependências
+# necessárias para execução de notebooks científicos e de machine learning.
+#
+# VERSÃO DO PYTHON: 3.13
+#
+# PACOTES INSTALADOS:
+# - Sistema: git, build-essential, gcc, g++, libc6-dev (para compilar extensões)
+# - Jupyter: jupyter, nbconvert, nbclient, nbformat, ipykernel, jupyter_client
+# - Científicos: numpy, pandas, scipy, scikit-learn, matplotlib, seaborn
+# - ML/DL: torch, torchvision, torchaudio, transformers
+# - Web: flask, fastapi, django, streamlit
+# - Outros: requests, tqdm, click, pyyaml, pytest, black, flake8, mypy
+#
+# VARIÁVEIS DE AMBIENTE:
+# - TIMEOUT_SECS: Timeout padrão para execução (300s)
+# - POLICY: Política de execução (relaxed/strict)
+# - NOTEBOOK_DIR: Diretório onde notebooks são montados
+# - Variáveis headless: DISPLAY, QT_QPA_PLATFORM, MPLBACKEND, etc.
+#
+# LIMITAÇÕES:
+# - Execução em modo headless (sem interface gráfica)
+# - Timeout padrão de 300 segundos por notebook
+# - Alguns pacotes podem não estar totalmente compatíveis com Python 3.13
+# ============================================================================
+
+FROM python:3.13-slim
+
+# Atualizar sistema e instalar dependências do sistema
+# Estas dependências são necessárias para compilar extensões Python e usar git
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends \
+        git \
+        build-essential \
+        gcc \
+        g++ \
+        libc6-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instalar pacotes Python necessários para execução de notebooks
+# Lista padronizada para garantir reprodutibilidade entre todas as versões
+# Alguns pacotes podem falhar em Python 3.13 devido à novidade da versão
+RUN pip install --no-cache-dir \
+    jupyter \
+    nbconvert \
+    nbclient \
+    ipykernel \
+    nbformat \
+    jupyter_client \
+    numpy \
+    pandas \
+    scipy \
+    scikit-learn \
+    matplotlib \
+    seaborn \
+    requests \
+    torch \
+    torchvision \
+    torchaudio \
+    transformers \
+    openai \
+    langchain \
+    streamlit \
+    plotly \
+    bokeh \
+    altair \
+    plotnine \
+    statsmodels \
+    sympy \
+    networkx \
+    pillow \
+    opencv-python \
+    beautifulsoup4 \
+    lxml \
+    html5lib \
+    xlrd \
+    openpyxl \
+    sqlalchemy \
+    psycopg2-binary \
+    pymongo \
+    redis \
+    celery \
+    flask \
+    fastapi \
+    django \
+    pytest \
+    black \
+    flake8 \
+    mypy \
+    jupyterlab \
+    ipywidgets \
+    tqdm \
+    click \
+    pyyaml \
+    toml \
+    python-dotenv \
+    python-dateutil \
+    pytz \
+    tzdata
+
+# Criar diretório de trabalho padronizado
+WORKDIR /workspace
+
+# Copiar scripts do pipeline para o container
+# Os scripts são copiados para /opt/pipeline/scripts para manter organização
+COPY scripts /opt/pipeline/scripts
+ENV PYTHONPATH="/opt/pipeline:${PYTHONPATH}"
+
+# Configurar variáveis de ambiente para execução headless (sem interface gráfica)
+# Essas variáveis garantem que notebooks não tentem abrir janelas gráficas
+ENV DEBIAN_FRONTEND=noninteractive
+ENV DISPLAY=""
+ENV QT_QPA_PLATFORM="offscreen"
+ENV SDL_VIDEODRIVER="dummy"
+ENV SDL_AUDIODRIVER="dummy"
+ENV PYGAME_HIDE_SUPPORT_PROMPT="1"
+ENV MPLBACKEND="Agg"
+ENV PYTHONWARNINGS="ignore"
+
+# Variáveis de configuração do executor (podem ser sobrescritas no docker run)
+ENV TIMEOUT_SECS=300
+ENV POLICY="relaxed"
+ENV NOTEBOOK_DIR="/workspace/notebooks"
+
+# Pontos de montagem para notebooks e dados
+VOLUME ["/workspace/notebooks", "/workspace/data"]
+
+# Comando padrão: executar o worker do container
+# Pode ser sobrescrito com argumentos do docker run
+CMD ["python", "-m", "scripts.container_worker"]

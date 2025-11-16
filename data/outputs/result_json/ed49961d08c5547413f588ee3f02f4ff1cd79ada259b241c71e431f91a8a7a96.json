@@ -1,0 +1,20 @@
+{
+  "exec_ok": false,
+  "elapsed_s": 1.243,
+  "outputs_hash_exec": "",
+  "n_outputs_exec": 0,
+  "exec_exception_type": "RuntimeError",
+  "exec_exception_module": "builtins",
+  "exec_exception_str": "Kernel died before replying to kernel_info",
+  "exec_traceback_str": "Traceback (most recent call last):\n  File \"/opt/pipeline/scripts/execution_core.py\", line 225, in execute_notebook_in_current_env\n    client.execute()\n  File \"/usr/local/lib/python3.11/site-packages/jupyter_core/utils/__init__.py\", line 165, in wrapped\n    return loop.run_until_complete(inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/base_events.py\", line 654, in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/site-packages/nbclient/client.py\", line 693, in async_execute\n    async with self.async_setup_kernel(**kwargs):\n  File \"/usr/local/lib/python3.11/contextlib.py\", line 210, in __aenter__\n    return await anext(self.gen)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/site-packages/nbclient/client.py\", line 651, in async_setup_kernel\n    await self.async_start_new_kernel_client()\n  File \"/usr/local/lib/python3.11/site-packages/nbclient/client.py\", line 566, in async_start_new_kernel_client\n    await ensure_async(self.kc.wait_for_ready(timeout=self.startup_timeout))\n  File \"/usr/local/lib/python3.11/site-packages/jupyter_core/utils/__init__.py\", line 214, in ensure_async\n    result = await obj\n             ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/site-packages/jupyter_client/client.py\", line 203, in _async_wait_for_ready\n    raise RuntimeError(msg)\nRuntimeError: Kernel died before replying to kernel_info\n",
+  "outputs_hash_canonical": "",
+  "outputs_n_cells": 0,
+  "outputs_n_bytes": 0,
+  "missing_module": null,
+  "retry_attempted": false,
+  "retry_missing_modules_count": 0,
+  "retry_missing_modules": [],
+  "retry_success": false,
+  "exec_env_python_version": "3.11.14",
+  "notebook_id": "ed49961d08c5547413f588ee3f02f4ff1cd79ada259b241c71e431f91a8a7a96"
+}

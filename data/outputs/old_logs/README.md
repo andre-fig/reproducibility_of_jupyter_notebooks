@@ -1,0 +1,2 @@
+Aqui estão os logs antigos do pipeline, coletas, execuções ou sumários que não foram mais necessários. E foram usados para construção do pipeline. Tais achados não devem ser considerados para a análise dos resultados.
+Sendo apenas considerado o que está no repositório anterior. data/outputs/logs/

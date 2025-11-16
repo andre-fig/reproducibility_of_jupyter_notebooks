@@ -1,0 +1,22 @@
+{
+  "exec_ok": false,
+  "elapsed_s": 1.036,
+  "outputs_hash_exec": "",
+  "n_outputs_exec": 0,
+  "exec_exception_type": "CellExecutionError",
+  "exec_exception_module": "nbclient.exceptions",
+  "exec_exception_str": "An error occurred while executing the following cell:\n------------------\nfrom google.colab import drive\ndrive.mount('/content/drive')\n------------------\n\n\n\u001b[0;31m---------------------------------------------------------------------------\u001b[0m\n\u001b[0;31mModuleNotFoundError\u001b[0m                       Traceback (most recent call last)\nCell \u001b[0;32mIn[1], line 1\u001b[0m\n\u001b[0;32m----> 1\u001b[0m \u001b[38;5;28;01mfrom\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;21;01mgoogle\u001b[39;00m\u001b[38;5;21;01m.\u001b[39;00m\u001b[38;5;21;01mcolab\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;28;01mimport\u001b[39;00m drive\n\u001b[1;32m      2\u001b[0m drive\u001b[38;5;241m.\u001b[39mmount(\u001b[38;5;124m'\u001b[39m\u001b[38;5;124m/content/drive\u001b[39m\u001b[38;5;124m'\u001b[39m)\n\n\u001b[0;31mModuleNotFoundError\u001b[0m: No module named 'google.colab'\n",
+  "exec_traceback_str": "Traceback (most recent call last):\n  File \"/usr/local/lib/python3.8/site-packages/jupyter_core/utils/__init__.py\", line 154, in wrapped\n    asyncio.get_running_loop()\nRuntimeError: no running event loop\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/opt/pipeline/scripts/execution_core.py\", line 225, in execute_notebook_in_current_env\n    client.execute()\n  File \"/usr/local/lib/python3.8/site-packages/jupyter_core/utils/__init__.py\", line 158, in wrapped\n    return loop.run_until_complete(inner)\n  File \"/usr/local/lib/python3.8/asyncio/base_events.py\", line 616, in run_until_complete\n    return future.result()\n  File \"/usr/local/lib/python3.8/site-packages/nbclient/client.py\", line 709, in async_execute\n    await self.async_execute_cell(\n  File \"/usr/local/lib/python3.8/site-packages/nbclient/client.py\", line 1062, in async_execute_cell\n    await self._check_raise_for_error(cell, cell_index, exec_reply)\n  File \"/usr/local/lib/python3.8/site-packages/nbclient/client.py\", line 918, in _check_raise_for_error\n    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)\nnbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:\n------------------\nfrom google.colab import drive\ndrive.mount('/content/drive')\n------------------\n\n\n\u001b[0;31m---------------------------------------------------------------------------\u001b[0m\n\u001b[0;31mModuleNotFoundError\u001b[0m                       Traceback (most recent call last)\nCell \u001b[0;32mIn[1], line 1\u001b[0m\n\u001b[0;32m----> 1\u001b[0m \u001b[38;5;28;01mfrom\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;21;01mgoogle\u001b[39;00m\u001b[38;5;21;01m.\u001b[39;00m\u001b[38;5;21;01mcolab\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;28;01mimport\u001b[39;00m drive\n\u001b[1;32m      2\u001b[0m drive\u001b[38;5;241m.\u001b[39mmount(\u001b[38;5;124m'\u001b[39m\u001b[38;5;124m/content/drive\u001b[39m\u001b[38;5;124m'\u001b[39m)\n\n\u001b[0;31mModuleNotFoundError\u001b[0m: No module named 'google.colab'\n\n",
+  "missing_module": "google",
+  "outputs_hash_canonical": "",
+  "outputs_n_cells": 0,
+  "outputs_n_bytes": 0,
+  "retry_attempted": true,
+  "retry_missing_modules_count": 1,
+  "retry_missing_modules": [
+    "google"
+  ],
+  "retry_success": false,
+  "exec_env_python_version": "3.8.20",
+  "notebook_id": "91cde24695231d4d76110489638de5b83584c55883bc784e08d4996def47ff11"
+}

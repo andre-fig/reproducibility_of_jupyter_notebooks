@@ -1,0 +1,113 @@
+🔍 Iniciando coleta de notebooks...
+   Período: 2025-01-01 até 2025-01-31
+   Meta: 2 notebooks
+   Requer outputs: False
+   Output: /home/asu/reproducibility_of_jupyter_notebooks-1/data/outputs/collection.csv
+
+Varredura de repositórios: 0it [00:00, ?it/s][Repo 1] Processando: jijingdeyi/cv-rookie ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 1it [00:06,  6.58s/it][Repo 2] Processando: ALucek/ppt2desc ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 2it [00:07,  2.99s/it][Repo 3] Processando: bigdargon/hostsVN-DeadDomainsLinter ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 3it [00:07,  1.82s/it][Repo 4] Processando: d-shimily/d-shimily ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 4it [00:07,  1.28s/it][Repo 5] Processando: dsc-courses/dsc140a-2025-wi ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 5it [00:08,  1.01it/s][Repo 6] Processando: dillfrescott/mvsep-beta ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 6it [00:08,  1.25it/s][Repo 7] Processando: rvaughan/cardiff_trains ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 7it [00:09,  1.39it/s][Repo 8] Processando: SwightsNotFound/swightshome ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 8it [00:09,  1.48it/s][Repo 9] Processando: alihusains/YouTube_to_m3u ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 9it [00:10,  1.65it/s][Repo 10] Processando: craftycodie/bnet-website ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 10it [00:10,  1.78it/s][Repo 11] Processando: makaubenson/auto-follow-unfollow ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 11it [00:11,  1.89it/s][Repo 12] Processando: marcndo/algo_ds_playground ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 12it [00:11,  2.00it/s][Repo 13] Processando: samimiair/git-point ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 13it [00:12,  1.97it/s][Repo 14] Processando: carloslk18/beecrowd-pr ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 14it [00:12,  2.06it/s][Repo 15] Processando: AuthScape/AuthScape.Core ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 15it [00:13,  1.76it/s][Repo 16] Processando: Divyanshudiv/Divyanshudiv ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 16it [00:13,  1.83it/s][Repo 17] Processando: bryce-hoehn/profile ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 17it [00:14,  1.68it/s][Repo 18] Processando: cindycarson09/commit ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 18it [00:15,  1.81it/s][Repo 19] Processando: javadkhajavi/multi-proxy-config-fetcher ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 19it [00:15,  1.90it/s][Repo 20] Processando: vpnineh/v3 ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 20it [00:16,  1.71it/s][Repo 21] Processando: javadkhajavi/auto-warp-config ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 21it [00:16,  1.81it/s][Repo 22] Processando: alihusains/iptv-generator-youtube ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 22it [00:17,  1.84it/s][Repo 23] Processando: CloudEngineHub/next.js ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 23it [00:19,  1.10it/s][Repo 24] Processando: CloudEngineHub/n8n ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 24it [00:20,  1.02s/it][Repo 25] Processando: zhnnou/AutoBuildImmortalWrt ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 25it [00:20,  1.18it/s][Repo 26] Processando: CloudEngineHub/MarkEdit ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 26it [00:21,  1.35it/s][Repo 27] Processando: hhanh00/zcash-vote-server ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 27it [00:21,  1.53it/s][Repo 28] Processando: theGeekist/with-clap ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 28it [00:22,  1.66it/s][Repo 29] Processando: kusnadi26/auto-commit ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 29it [00:22,  1.67it/s][Repo 30] Processando: WiscArData/Emperor ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 30it [00:23,  1.41it/s][Repo 31] Processando: StruggleYang/AwesomeYang.com ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 31it [00:24,  1.58it/s][Repo 32] Processando: chieflens/chieflens ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 32it [00:24,  1.72it/s][Repo 33] Processando: uswelcomeu/uswelcomeu ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 33it [00:25,  1.80it/s][Repo 34] Processando: deembear0001/hf-live-3g ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 34it [00:25,  1.90it/s][Repo 35] Processando: soyonorin123/SteamFriends ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 35it [00:26,  1.94it/s][Repo 36] Processando: papra-hq/papra ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 36it [00:26,  1.91it/s][Repo 37] Processando: toothpaster/upptime ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 37it [00:27,  2.00it/s][Repo 38] Processando: shazron/caprover ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 38it [00:27,  2.02it/s][Repo 39] Processando: RocYuki/SteamFriends ...
+  └─ Nenhum notebook encontrado
+Varredura de repositórios: 39it [00:28,  2.07it/s][Repo 40] Processando: wewnumam/learn-ai ...
+  └─ Encontrados 43 notebook(s), analisando...
+  └─ Módulos Python locais detectados: 70
+  └─ Repositório completo salvo em: /home/asu/reproducibility_of_jupyter_notebooks-1/data/outputs/repositorios_completos/wewnumam/learn-ai/8ab772e1ed75123431f37ef9483e6c15dba4d264
+Varredura de repositórios: 39it [00:32,  1.21it/s]
+Traceback (most recent call last):
+  File "/home/asu/reproducibility_of_jupyter_notebooks-1/scripts/collect_notebooks.py", line 1190, in <module>
+    main()
+    ~~~~^^
+  File "/home/asu/reproducibility_of_jupyter_notebooks-1/scripts/collect_notebooks.py", line 1177, in main
+    collect(
+    ~~~~~~~^
+        token=token,
+        ^^^^^^^^^^^^
+    ...<7 lines>...
+        download_full_repo_dir=download_full_repo_dir
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/asu/reproducibility_of_jupyter_notebooks-1/scripts/collect_notebooks.py", line 1093, in collect
+    w.writerow(row)
+    ~~~~~~~~~~^^^^^
+  File "/home/asu/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/csv.py", line 226, in writerow
+    return self.writer.writerow(self._dict_to_list(rowdict))
+                                ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/asu/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/csv.py", line 221, in _dict_to_list
+    raise ValueError("dict contains fields not in fieldnames: "
+                     + ", ".join([repr(x) for x in wrong_fields]))
+ValueError: dict contains fields not in fieldnames: 'nb_n_imports_total'

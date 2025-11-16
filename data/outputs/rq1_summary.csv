@@ -1,0 +1,4 @@
+metric_name,value
+exec_ok_ratio_2025,0.189873
+outputs_equal_ratio_all_2025,0.035443
+outputs_equal_ratio_cond_exec_ok_2025,0.186667

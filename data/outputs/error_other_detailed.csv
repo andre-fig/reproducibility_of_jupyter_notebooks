@@ -1,0 +1,3 @@
+tipo_excecao_python,quantidade,percentual_dos_other,percentual_das_falhas
+CellExecutionError,28,90.3,8.8
+ResultMissing,3,9.7,0.9

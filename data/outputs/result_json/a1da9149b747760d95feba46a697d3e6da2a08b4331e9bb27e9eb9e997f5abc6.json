@@ -1,0 +1,22 @@
+{
+  "exec_ok": false,
+  "elapsed_s": 729.758,
+  "outputs_hash_exec": "",
+  "n_outputs_exec": 0,
+  "exec_exception_type": "CellTimeoutError",
+  "exec_exception_module": "nbclient.exceptions",
+  "exec_exception_str": "A cell timed out while it was being executed, after 300 seconds.\nThe message was: Cell execution timed out.\nHere is a preview of the cell contents:\n-------------------\nfrom sklearn.preprocessing import StandardScaler\nscaler = StandardScaler()\nX_train_scaled = scaler.fit_transform(X_train.astype(np.float64))\ncross_val_score(sgd_clf, X_train_scaled, y_train, cv=3, scoring=\"accuracy\")\n-------------------\n",
+  "exec_traceback_str": "Traceback (most recent call last):\n  File \"/usr/local/lib/python3.10/site-packages/nbclient/client.py\", line 782, in _async_poll_for_reply\n    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))\n  File \"/usr/local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py\", line 214, in ensure_async\n    result = await obj\n  File \"/usr/local/lib/python3.10/site-packages/jupyter_client/channels.py\", line 313, in get_msg\n    raise Empty\n_queue.Empty\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/opt/pipeline/scripts/execution_core.py\", line 225, in execute_notebook_in_current_env\n    client.execute()\n  File \"/usr/local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py\", line 165, in wrapped\n    return loop.run_until_complete(inner)\n  File \"/usr/local/lib/python3.10/asyncio/base_events.py\", line 649, in run_until_complete\n    return future.result()\n  File \"/usr/local/lib/python3.10/site-packages/nbclient/client.py\", line 709, in async_execute\n    await self.async_execute_cell(\n  File \"/usr/local/lib/python3.10/site-packages/nbclient/client.py\", line 1005, in async_execute_cell\n    exec_reply = await self.task_poll_for_reply\n  File \"/usr/local/lib/python3.10/site-packages/nbclient/client.py\", line 806, in _async_poll_for_reply\n    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)\n  File \"/usr/local/lib/python3.10/site-packages/nbclient/client.py\", line 856, in _async_handle_timeout\n    raise CellTimeoutError.error_from_timeout_and_cell(\nnbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 300 seconds.\nThe message was: Cell execution timed out.\nHere is a preview of the cell contents:\n-------------------\nfrom sklearn.preprocessing import StandardScaler\nscaler = StandardScaler()\nX_train_scaled = scaler.fit_transform(X_train.astype(np.float64))\ncross_val_score(sgd_clf, X_train_scaled, y_train, cv=3, scoring=\"accuracy\")\n-------------------\n\n",
+  "outputs_hash_canonical": "",
+  "outputs_n_cells": 0,
+  "outputs_n_bytes": 0,
+  "missing_module": null,
+  "retry_attempted": true,
+  "retry_missing_modules_count": 1,
+  "retry_missing_modules": [
+    "tensorflow"
+  ],
+  "retry_success": false,
+  "exec_env_python_version": "3.10.19",
+  "notebook_id": "a1da9149b747760d95feba46a697d3e6da2a08b4331e9bb27e9eb9e997f5abc6"
+}

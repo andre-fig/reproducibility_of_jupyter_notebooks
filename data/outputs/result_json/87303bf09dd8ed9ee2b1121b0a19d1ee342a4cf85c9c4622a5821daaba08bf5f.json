@@ -1,0 +1,24 @@
+{
+  "exec_ok": true,
+  "elapsed_s": 350.577,
+  "outputs_hash_exec": "bb0ced93f2e9eea045cb9088a69927eb90517efcdb6bc384b0028f22bd166eac",
+  "n_outputs_exec": 8,
+  "outputs_hash_canonical": "bb0ced93f2e9eea045cb9088a69927eb90517efcdb6bc384b0028f22bd166eac",
+  "outputs_n_cells": 8,
+  "outputs_n_bytes": 568093,
+  "exec_exception_type": null,
+  "exec_exception_module": null,
+  "exec_exception_str": null,
+  "exec_traceback_str": null,
+  "missing_module": null,
+  "retry_attempted": true,
+  "retry_missing_modules_count": 3,
+  "retry_missing_modules": [
+    "PyPDF2",
+    "groq",
+    "scholarly"
+  ],
+  "retry_success": true,
+  "exec_env_python_version": "3.11.14",
+  "notebook_id": "87303bf09dd8ed9ee2b1121b0a19d1ee342a4cf85c9c4622a5821daaba08bf5f"
+}

@@ -1,0 +1,22 @@
+{
+  "exec_ok": false,
+  "elapsed_s": 5.105,
+  "outputs_hash_exec": "",
+  "n_outputs_exec": 0,
+  "exec_exception_type": "CellExecutionError",
+  "exec_exception_module": "nbclient.exceptions",
+  "exec_exception_str": "An error occurred while executing the following cell:\n------------------\nstability_index(data[\"Close\"][\"PETR4.SA\"], detrend=True)\n------------------\n\n\n\u001b[31m---------------------------------------------------------------------------\u001b[39m\n\u001b[31mNameError\u001b[39m                                 Traceback (most recent call last)\n\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[18]\u001b[39m\u001b[32m, line 1\u001b[39m\n\u001b[32m----> \u001b[39m\u001b[32m1\u001b[39m \u001b[43mstability_index\u001b[49m(data[\u001b[33m\"\u001b[39m\u001b[33mClose\u001b[39m\u001b[33m\"\u001b[39m][\u001b[33m\"\u001b[39m\u001b[33mPETR4.SA\u001b[39m\u001b[33m\"\u001b[39m], detrend=\u001b[38;5;28;01mTrue\u001b[39;00m)\n\n\u001b[31mNameError\u001b[39m: name 'stability_index' is not defined\n",
+  "exec_traceback_str": "Traceback (most recent call last):\n  File \"/opt/pipeline/scripts/execution_core.py\", line 225, in execute_notebook_in_current_env\n    client.execute()\n  File \"/usr/local/lib/python3.12/site-packages/jupyter_core/utils/__init__.py\", line 165, in wrapped\n    return loop.run_until_complete(inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/asyncio/base_events.py\", line 691, in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/nbclient/client.py\", line 709, in async_execute\n    await self.async_execute_cell(\n  File \"/usr/local/lib/python3.12/site-packages/nbclient/client.py\", line 1062, in async_execute_cell\n    await self._check_raise_for_error(cell, cell_index, exec_reply)\n  File \"/usr/local/lib/python3.12/site-packages/nbclient/client.py\", line 918, in _check_raise_for_error\n    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)\nnbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:\n------------------\nstability_index(data[\"Close\"][\"PETR4.SA\"], detrend=True)\n------------------\n\n\n\u001b[31m---------------------------------------------------------------------------\u001b[39m\n\u001b[31mNameError\u001b[39m                                 Traceback (most recent call last)\n\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[18]\u001b[39m\u001b[32m, line 1\u001b[39m\n\u001b[32m----> \u001b[39m\u001b[32m1\u001b[39m \u001b[43mstability_index\u001b[49m(data[\u001b[33m\"\u001b[39m\u001b[33mClose\u001b[39m\u001b[33m\"\u001b[39m][\u001b[33m\"\u001b[39m\u001b[33mPETR4.SA\u001b[39m\u001b[33m\"\u001b[39m], detrend=\u001b[38;5;28;01mTrue\u001b[39;00m)\n\n\u001b[31mNameError\u001b[39m: name 'stability_index' is not defined\n\n",
+  "outputs_hash_canonical": "",
+  "outputs_n_cells": 0,
+  "outputs_n_bytes": 0,
+  "missing_module": null,
+  "retry_attempted": true,
+  "retry_missing_modules_count": 1,
+  "retry_missing_modules": [
+    "yfinance"
+  ],
+  "retry_success": false,
+  "exec_env_python_version": "3.12.12",
+  "notebook_id": "e84c630ed173bd97073fd7bcda737d2a79b666446eaf324717102f93cefed4cc"
+}
